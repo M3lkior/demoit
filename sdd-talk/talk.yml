@@ -1,0 +1,22 @@
+layout: default
+title: Le développeur *Product Engineer*.
+subtitle: Le développement piloté par les spécifications, par Ludovic Dussart
+theme:
+  # The fixed 1920x1080 stage, scaled to fit whatever it is projected on.
+  stage: true
+  # Renders the theme switcher: t toggles light/dark, d cycles the display
+  # profile (screen / tv / projector).
+  dark: true
+# The speaker's own logo, on the cover and in every slide header. `white` is
+# what a light theme shows, `dark` what a dark theme shows.
+logo:
+  white: /images/zatsit_logo.svg
+  dark: /images/zatsit_logo_or.svg
+
+# No eventLogo: this talk opens a half-day for a developers' club, not a named
+# conference. Declare the block the day it is given at one -- an undeclared
+# block is dropped rather than rendered as an <img> with an empty src, so the
+# slides carry the zatsit logo alone until then.
+eventLogo:
+  white: /images/la-cite-de-lia.svg
+  dark: /images/la-cite-de-lia.svg

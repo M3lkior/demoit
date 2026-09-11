@@ -53,6 +53,9 @@
 {{ define "source" }}{{ with .Source }}<div class="px-2 text-center text-fg-muted">
     <span>Source: {{ . }}</span>
 </div>
+{{ end }}{{ with .Sources }}<ul class="sources">
+{{ range . }}    <li>{{ . }}</li>
+{{ end }}</ul>
 {{ end }}{{ end }}
 
 {{ define "notes" }}{{ with .Notes }}<speaker-notes>{{ . }}</speaker-notes>
