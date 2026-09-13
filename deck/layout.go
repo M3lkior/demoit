@@ -46,6 +46,10 @@ type Slide struct {
 	Title template.HTML
 	// Source is the reference displayed at the bottom of the slide.
 	Source string
+	// Sources is the list of references displayed at the foot of the slide, as
+	// a bullet list the stylesheet lays out on one line. Capped at MaxSources
+	// entries, which renderSlide enforces.
+	Sources []string
 	// Class holds the CSS classes for the slide's main element. It is empty
 	// when the slide declares no class: key, and every layout supplies its own
 	// fallback for that case with {{ if .Class }}...{{ else }}...{{ end }}. The
