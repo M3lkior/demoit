@@ -131,9 +131,14 @@ func renderSlide(raw RawSlide, talk Talk, layouts *Layouts, file string) templat
 		return errorHTML(file, raw.StartLine, err)
 	}
 
+	if len(known.Sources) > MaxSources {
+		return errorHTML(file, raw.StartLine, fmt.Errorf("sources: %d entries, at most %d fit on the line under a slide", len(known.Sources), MaxSources))
+	}
+
 	slide := Slide{
 		Talk:      talk,
 		Source:    known.Source,
+		Sources:   known.Sources,
 		Class:     known.Class,
 		Height:    known.Height,
 		Layout:    known.Layout,

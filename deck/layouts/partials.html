@@ -14,6 +14,9 @@
 {{ define "source" }}{{ with .Source }}<div class="center-align middle-align">
     <span>Source: {{ . }}</span>
 </div>
+{{ end }}{{ with .Sources }}<ul class="sources">
+{{ range . }}    <li>{{ . }}</li>
+{{ end }}</ul>
 {{ end }}{{ end }}
 
 {{ define "notes" }}{{ with .Notes }}<speaker-notes>{{ . }}</speaker-notes>

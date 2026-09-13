@@ -244,3 +244,51 @@ func TestLoadLetsATalkOverrideALayoutsDefaultClasses(t *testing.T) {
 		t.Errorf("got %q, want none of the embedded default.html's classes — the talk's layout replaced it wholesale", slides[0])
 	}
 }
+
+func TestLoadRendersTheSourcesListAtTheFootOfASlide(t *testing.T) {
+	t.Parallel()
+
+	folder := writeDeck(t, map[string]string{
+		".demoit/talk.yml": "layout: default\n",
+		"demoit.md":        "---\ntitle: Les chiffres\nsources:\n  - dora.dev/ai/roi\n  - metr.org\n---\nDu texte.\n",
+	})
+
+	slides, err := deck.Load(folder, "")
+	if err != nil {
+		t.Fatalf("got error %v, want none", err)
+	}
+
+	for _, want := range []string{
+		`<ul class="sources">`,
+		"<li>dora.dev/ai/roi</li>",
+		"<li>metr.org</li>",
+	} {
+		if !strings.Contains(string(slides[0]), want) {
+			t.Errorf("got %q, want it to contain %q", slides[0], want)
+		}
+	}
+}
+
+func TestLoadReportsTooManySources(t *testing.T) {
+	t.Parallel()
+
+	// One entry past MaxSources: the list would wrap into the slide, so the
+	// author is told which slide to trim instead of losing a reference.
+	sources := strings.Repeat("  - example.com\n", deck.MaxSources+1)
+	folder := writeDeck(t, map[string]string{
+		".demoit/talk.yml": "layout: default\n",
+		"demoit.md":        "---\ntitle: Trop\nsources:\n" + sources + "---\nDu texte.\n",
+	})
+
+	slides, err := deck.Load(folder, "")
+	if err != nil {
+		t.Fatalf("got error %v, want none", err)
+	}
+
+	if want := "at most 5"; !strings.Contains(string(slides[0]), want) {
+		t.Errorf("got %q, want an error block mentioning %q", slides[0], want)
+	}
+	if strings.Contains(string(slides[0]), `<ul class="sources">`) {
+		t.Errorf("got %q, want no sources list on a slide reported as an error", slides[0])
+	}
+}

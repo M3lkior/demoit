@@ -370,3 +370,60 @@ blockquote.charniere h5 {
     font-weight: 400;
     opacity: 0.8;
 }
+
+/* Slides de transition entre les parties du talk. Fond plein, texte blanc,
+   aucun header : la salle voit qu'on change de partie sans avoir à lire. */
+.transition {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(180deg, var(--color-main) 0%, #2a0a89 100%);
+}
+
+.transition > * {
+    color: white !important;
+    margin: 0.25em 0;
+}
+
+.transition .numero {
+    opacity: .6;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+}
+
+.transition em {
+    color: white;
+    font-style: italic;
+}
+
+/* Liste de sources en pied de slide, alimentée par la clé `sources:` du
+   frontmatter. C'est un vrai <ul> pour que la structure reste propre, mais il
+   se rend sur une seule ligne, les puces remplacées par un point médian : cinq
+   sources empilées verticalement mangeraient le bas d'une slide 16:9. Elle est
+   là pour être lue de près ou photographiée, pas depuis le fond de la salle. */
+ul.sources {
+    position: absolute;
+    bottom: 1vw;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0 3vw;
+    list-style: none;
+    text-align: center;
+    font-size: 0.55rem;
+    line-height: 1.4;
+    opacity: 0.45;
+}
+
+ul.sources li {
+    display: inline;
+    white-space: nowrap;
+}
+
+ul.sources li + li::before {
+    content: " \00B7 ";
+    white-space: pre;
+}
