@@ -41,19 +41,19 @@ class: slide-main slide-narrow slide-prose flex flex-col justify-center text-cen
   <div class="contact-row"><img src="/images/blog.png"/><h5>https://blog.zatsit.fr</h5></div>
 </div>
 <div class="h-10"></div>
-<blockquote class="quote">
-  <h6>Engager notre <em>expertise numérique</em> au service de <em>l'impact des entreprises</em>, en créant un écosystème <em>durable</em>, <em>partenarial</em> et <em>positif</em></h6>
-</blockquote>
+
+<h6 class="quote">Engager notre <em>expertise numérique</em> au service de <em>l'impact des entreprises</em>, en créant un écosystème <em>durable</em>, <em>partenarial</em> et <em>positif</em></h6>
+
 
 
 ---
-layout: default
+layout: quote
 title: Disclamer
 ---
 
-<blockquote class="quote charniere">
-  <h4>L'écosystème IA évolue bien trop vite pour que l'humain puisse suivre et tout maitriser.</h4>
-</blockquote>
+
+<h4>L'écosystème IA évolue bien trop vite pour que l'humain puisse suivre et tout maitriser.</h4>
+
 ---
 layout: bare
 class: slide-main slide-hero flex flex-col items-center justify-center text-center
@@ -178,7 +178,7 @@ speakernotes: |
 ---
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
-:::col{class="col-span-4 panel"}
+:::col{class="col-span-4 panel" reveal}
 
 ##### La cause
 
@@ -186,7 +186,7 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-4 panel"}
+:::col{class="col-span-4 panel" reveal}
 
 ##### Le changement
 
@@ -194,7 +194,7 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-4 panel"}
+:::col{class="col-span-4 panel" reveal}
 
 ##### La conséquence
 
@@ -207,8 +207,8 @@ speakernotes: |
 <div class="h-8"></div>
 
 <blockquote class="text-left">
-  <h5><em>Aujourd'hui (Pizza Team)</em> : les <em>PO/PM</em> écrivent les besoins, <em>un ingénieur</em> produit le code et livre, un <em>PO/PM</em> va voir les utilisateurs, la boucle continue.</h5>
-  <h5><em>Demain (Sandwich Team)</em>: <em>une seule personne</em> livre, itère, collecte le feedback, et itère de nouveau.</h5>
+  <h5 class="reveal"><em>Aujourd'hui (Pizza Team)</em> : les <em>PO/PM</em> écrivent les besoins, <em>un ingénieur</em> produit le code et livre, un <em>PO/PM</em> va voir les utilisateurs, la boucle continue.</h5>
+  <h5 class="reveal"><em>Demain (Sandwich Team)</em>: <em>une seule personne</em> livre, itère, collecte le feedback, et itère de nouveau.</h5>
 </blockquote>
 
 :::
@@ -221,8 +221,7 @@ layout: default
 title: Le vrai goulot n'est pas le code
 class: slide-main slide-narrow slide-prose flex flex-col justify-center
 sources:
-  - dora.dev/ai/roi/report
-  - hitechnology.io
+
 speakernotes: |
   S5 - LA charnière du talk, avec S30. Trois temps, dans cet ordre.
   1. Le diagnostic : le temps de développement est rarement le vrai frein. Les
@@ -255,7 +254,7 @@ speakernotes: |
 
 <div class="h-12"></div>
 
-<blockquote class="quote charniere">
+<blockquote class="quote charniere reveal">
   <h4>Sans SDD, un product engineer n'est qu'un dev augmenté à qui on a retiré son PM.</h4>
   <h5>Il a besoin d'un artefact pour porter l'intention. Cet artefact, c'est la <em>spec</em>.</h5>
 </blockquote>
@@ -280,7 +279,6 @@ speakernotes: |
 layout: default
 title: L'échelle de délégation
 sources:
-  - arxiv.org/abs/2609.00252
 speakernotes: |
   S6 - Autocomplétion, chat, agent, agent autonome.
   Le secteur passe de pratiques assistées comme le vibe coding, où l'assistant
@@ -300,7 +298,7 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="col-span-3 panel text-center"}
+:::col{class="col-span-3 panel text-center" reveal}
 
 ##### 1. Autocomplétion
 
@@ -310,7 +308,7 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-3 panel text-center"}
+:::col{class="col-span-3 panel text-center" reveal}
 
 ##### 2. Chat
 
@@ -320,7 +318,7 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-3 panel text-center"}
+:::col{class="col-span-3 panel text-center" reveal}
 
 ##### 3. Agent
 
@@ -330,7 +328,7 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-3 panel text-center"}
+:::col{class="col-span-3 panel text-center" reveal}
 
 ##### 4. Agent autonome
 
@@ -344,11 +342,11 @@ speakernotes: |
 
 <div class="h-8"></div>
 
-<h4> Plus on monte, moins l'intention tient dans ta tête. Il faut l'<em>écrire</em>.</h4>
+<h4 class="reveal"> Plus on monte, moins l'intention tient dans ta tête. Il faut l'<em>écrire</em>.</h4>
 
 
 
-<h5 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Vous êtes où, aujourd'hui ?</h1>
+<h5 class="mb-0 text-6xl leading-tight font-bold tracking-tight reveal">Vous êtes où, aujourd'hui ?</h1>
 
 :::
 :::
@@ -357,8 +355,7 @@ speakernotes: |
 layout: default
 title: Comment fonctionne un agent
 sources:
-  - arxiv.org/abs/2604.08224
-  - arxiv.org/abs/2605.01160
+  
 speakernotes: |
   S7 - Le slide le plus utile du talk. Si celui-là passe, le reste coule.
   Pas de mémoire persistante, seulement une fenêtre de contexte.
@@ -384,7 +381,7 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="col-span-6"}
+:::col{class="col-span-6" reveal}
 
 ##### La fenêtre de contexte, c'est de la *RAM*
 
@@ -392,9 +389,9 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-6"}
+:::col{class="col-span-6" reveal}
 
-##### Ton dépôt, c'est le *disque*
+##### Le dépôt, c'est le *disque*
 
 <p class="text-[1.6rem]">Grand, lent, persistant. L'agent n'y lit que ce qu'on lui dit d'aller chercher, et il repart de zéro à chaque fois.</p>
 
@@ -402,20 +399,23 @@ speakernotes: |
 
 :::col{class="col-span-12"}
 
-<blockquote class="text-left">
+<div class="reveal text-center">
   <h5>Et dans la fenêtre, rien n'est garanti : être présent ne veut pas dire être retrouvé.</h5>
   <h5>Un prompt très long n'est pas une mémoire.</h5>
-</blockquote>
+</div>
 
 :::
 
-:::col{class="col-span-12"}
+:::col{class="col-span-12" reveal}
 
 #### Pas de mémoire persistante ? <em>Alors on l'écrit</em>.
 
 <p class="text-[1.6rem]"><strong>AGENTS.md</strong>, <strong>constitution.md</strong>, <strong>spec.md</strong>,
 <strong>plan.md</strong>, <strong>PRD.md</strong> : des fichiers durables et versionnés, relus à chaque
 session. </p>
+
+::: 
+:::col{class="col-span-12" reveal}
 
 <h3>On parle de <em>Context Engineering</em>, et c'est sur cela que s'appuie le <em>SDD</em>.</p>
 
@@ -426,7 +426,6 @@ session. </p>
 layout: default
 title: Les modes de défaillance du vibe coding
 sources:
-  - arxiv.org/abs/2609.00252
 speakernotes: |
   S8 - Concret, ils l'ont tous vécu. Raconter, ne pas lister.
   L'agent produit mille lignes qui ont l'air correctes et qu'on n'a pas
@@ -449,45 +448,40 @@ speakernotes: |
 
 :::col{class="col-span-12"}
 
-<blockquote class="text-left">
-  <h5>On demandait un petit fix. On récupère un refactor, trois fichiers en plus, une logique « améliorée », et des tests qui passent parce qu'ils ne testent rien.</h5>
-</blockquote>
+<div class="text-center">
+  <h5>On demandait un petit fix. </h5>
+  <h6>On récupère un refactor, trois fichiers en plus, une logique « améliorée », et des tests qui passent parce qu'ils ne testent rien.</h5>
+</div>
 
 :::
 
-:::col{class="col-span-4"}
+:::col{class="col-span-4" reveal}
 
-##### L'intention vit dans le chat
+##### <em>L'intention vit dans le chat</em>
 
 <p class="text-[1.6rem]">On ferme l'onglet, il ne reste que du code. Plus personne ne peut dire ce qui avait été demandé.</p>
 
-<h6>Contrat perdu : la transférabilité</h6>
-
 :::
 
-:::col{class="col-span-4"}
+:::col{class="col-span-4" reveal}
 
-##### L'agent dérive
+##### <em>L'agent dérive</em>
 
 <p class="text-[1.6rem]">Du code que personne n'a demandé, des décisions que personne n'a prises.</p>
 
-<h6>Contrat perdu : la responsabilité</h6>
-
 :::
 
-:::col{class="col-span-4"}
+:::col{class="col-span-4" reveal}
 
-##### Rien n'est vérifiable
+##### <em>Rien n'est vérifiable</em>
 
 <p class="text-[1.6rem]">Sans critères d'acceptation écrits avant, « ça a l'air bon » tient lieu de recette.</p>
 
-<h6>Contrat perdu : la vérifiabilité</h6>
-
 :::
 
-:::col{class="col-span-12"}
+:::col{class="col-span-12" reveal}
 
-#### Ces trois contrats perdus, ce sont les trois *réponses* du SDD.
+#### Ces trois problématiques, le SDD y réponds.
 
 :::
 :::
@@ -509,45 +503,33 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="col-span-7 text-left"}
 
-<ul class="text-[1.6rem]">
+:::col{class="col-span-12 text-center"}
+
+#### On a toujours écrit des specs. 
+#### Ce qui change : elles doivent être *relisibles par une machine*, et versionnées.
+
+:::
+
+:::col{class="col-span-12 text-center" reveal}
+
+<ul class="text-[1.6rem] reveal text-left">
   <li><strong>User story + critères d'acceptation</strong> : dire ce qu'on attend, avant de le construire.</li>
   <li><strong>Gherkin, BDD</strong> : la règle métier écrite dans une forme que la machine relit.</li>
   <li><strong>TDD</strong> : le critère d'abord, le code ensuite.</li>
-  <li><strong>Contract-first, OpenAPI</strong> : le contrat fait foi, l'implémentation suit.</li>
+  <li><strong>Contract-first, OpenAPI, AsyncAPI</strong> : le contrat fait foi, l'implémentation suit.</li>
   <li><strong>ADR</strong> : la décision et sa raison, versionnées avec le code.</li>
   <li><strong>DDD</strong> : les mots du métier, partagés par toute l'équipe.</li>
+  <li><strong>C4Model</strong> : la représentation de l'architecture.</li>
 </ul>
 
 :::
 
-:::col{class="col-span-5 text-left"}
-
-<article class="card">
-  <h6>Le vocabulaire de la suite</h6>
-  <ul class="text-[1.6rem]">
-    <li><strong>spec</strong> : le quoi et le pourquoi, avec les critères</li>
-    <li><strong>plan</strong> : le comment, les choix techniques</li>
-    <li><strong>task</strong> : une unité de travail vérifiable</li>
-    <li><strong>constitution</strong> : les règles valables pour tout le projet</li>
-    <li><strong>gate</strong> : le point où un humain valide avant la suite</li>
-    <li><strong>drift</strong> : l'écart qui se creuse entre la spec et le code</li>
-  </ul>
-</article>
-
-:::
-
-:::col{class="col-span-12 text-center"}
-
-#### On a toujours écrit des specs. Ce qui change : elles doivent être *relisibles par une machine*, et versionnées.
-
-:::
 :::
 
 ---
 layout: default
-title: "DDD : pourquoi il compte plus qu'avant"
+title: "DDD : pourquoi il contribue au SSD ?"
 sources:
   - threedots.tech/post/ddd-and-ai-coding
   - arxiv.org/abs/2605.01160
@@ -578,39 +560,37 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="col-span-4"}
+:::col{class="col-span-4" reveal}
 
-##### Langage ubiquitaire
+##### <em>Langage ubiquitaire</em>
 
 <p class="text-[1.6rem]">Un mot, un sens, partout. L'agent cherche les noms qu'on lui donne : deux concepts qui portent le même mot finissent fusionnés.</p>
 
 :::
 
-:::col{class="col-span-4"}
+:::col{class="col-span-4" reveal}
 
-##### Bounded contexts
+##### <em>Bounded contexts</em>
 
-<p class="text-[1.6rem]">Des frontières écrites. Elles disent à l'agent où s'arrête son périmètre, et elles découpent le travail en tranches parallélisables.</p>
-
-:::
-
-:::col{class="col-span-4"}
-
-##### Invariants
-
-<p class="text-[1.6rem]">Les règles que le domaine ne tolère pas de casser. Ce sont déjà des critères d'acceptation.</p>
+<p class="text-[1.6rem]">Des frontières écrites. Elles disent à l'agent où s'arrête son périmètre, et elles l'aident à découper son travail en tranches parallélisables.</p>
 
 :::
 
-:::col{class="col-span-12"}
+:::col{class="col-span-4" reveal}
 
-<blockquote class="text-left">
-  <h5>La valeur du modèle de domaine, c'est la compréhension partagée qu'il construit dans l'équipe, pas le fichier. Une spec générée que personne ne lit ne résout rien.</h5>
-</blockquote>
+##### <em>Invariants</em>
+
+<p class="text-[1.6rem]">Les règles que le domaine ne tolère pas de casser. Ce sont déjà des critères d'acceptation et de validations.</p>
 
 :::
 
 :::col{class="col-span-12"}
+
+<h5 class="reveal"">Une spec générée que personne ne lit et ne comprends, ne résoudra rien.</h5>
+
+:::
+
+:::col{class="col-span-12" reveal}
 
 #### Connaître son domaine vaut désormais plus que connaître un *framework*.
 
@@ -628,11 +608,9 @@ speakernotes: |
   honnêtement.
 ---
 
-<h6 class="numero">Partie 2</h6>
-
 <h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Le <em>spec-driven development</em></h1>
 
-<p class="text-fg-muted mt-6 text-3xl font-medium">Ce que c'est, pourquoi ça marche, et ce que ça coûte</p>
+<p class="text-fg-muted mt-6 text-3xl font-medium">Deep dive</p>
 
 ---
 layout: default
@@ -656,27 +634,27 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-6"}
+:::col{class="col-span-6" reveal}
 
-##### La documentation
+##### <em>La documentation</em>
 
 <p class="text-[1.6rem]">Elle décrit ce qu'on a fait. Elle est passive : rien ne se
 casse quand le code s'en éloigne, et personne ne s'en aperçoit.</p>
 
 :::
 
-:::col{class="col-span-6"}
+:::col{class="col-span-6" reveal}
 
-##### La spec
+##### <em>La spec</em>
 
 <p class="text-[1.6rem]">Elle dit ce qu'on attend. Elle est appliquée : la dérive
 se détecte par l'outillage, pas par la bonne volonté de chacun.</p>
 
 :::
 
-:::col{class="col-span-12"}
+:::col{class="col-span-12" reveal}
 
-#### *The spec is the prompt.*
+#### *La spec devient le prompt.*
 
 <p class="text-[1.6rem]">Ce qu'on écrit une fois sert trois fois : à demander,
 à revoir, à vérifier.</p>
@@ -685,7 +663,7 @@ se détecte par l'outillage, pas par la bonne volonté de chacun.</p>
 :::
 
 ---
-layout: content
+layout: default
 title: Les 3 niveaux d'ambition
 sources:
   - martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
@@ -720,23 +698,23 @@ speakernotes: |
       <th>Niveau</th>
       <th>Ce qui arrive à la spec</th>
       <th>Ce qu'on maintient</th>
-      <th>Où ça en est</th>
+      <th>Maturité</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr class="reveal">
       <td><strong>1. Spec-first</strong></td>
       <td>Écrite avant le code, elle pilote le premier passage de l'agent. Puis on la laisse tomber.</td>
       <td>Le code</td>
-      <td>Le point d'entrée. Là où sont la plupart des équipes qui démarrent.</td>
+      <td>Là où sont la plupart des équipes qui démarrent.</td>
     </tr>
-    <tr>
+    <tr class="reveal">
       <td><strong>2. Spec-anchored</strong></td>
       <td>Elle survit à la livraison : c'est le document vivant de la fonctionnalité, itération après itération.</td>
       <td>Le code <em>et</em> la spec</td>
-      <td>La cible réaliste pour 2026. C'est là qu'on joue aujourd'hui.</td>
+      <td>La cible réaliste pour 2026. C'est ce qui doit être fait aujourd'hui.</td>
     </tr>
-    <tr>
+    <tr class="reveal">
       <td><strong>3. Spec-as-source</strong></td>
       <td>Tout le code est généré, marqué comme généré, et jamais édité à la main.</td>
       <td>La spec, et rien d'autre</td>
@@ -745,7 +723,8 @@ speakernotes: |
   </tbody>
 </table>
 
-<p class="text-[1.6rem] text-center">Le niveau 3, c'est ce que les compilateurs
+
+<p class="text-[1.6rem] text-center reveal">Le niveau 3, c'est ce que les compilateurs
 ont fait à l'assembleur : un artefact que <em>plus personne n'édite à la
 main</em>.</p>
 
@@ -787,7 +766,7 @@ flowchart LR
 layout: default
 title: Anatomie d'une bonne spec
 sources:
-  - github.com/github/spec-kit
+
 speakernotes: |
   S14 - Le slide dont on se souviendra, à condition de le nourrir avec une
   spec réelle de mon propre code, en deux versions : floue vs complète, avec le
@@ -801,9 +780,9 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="col-span-7 text-left"}
+:::col{class="col-span-12 text-left"}
 
-<ul class="text-[1.6rem]">
+<ul class="text-[2rem]">
   <li><strong>Le résultat attendu</strong> : ce qui doit être vrai quand c'est fini.</li>
   <li><strong>Les limites du périmètre</strong> : ce qu'on ne touche pas, et qu'on ne veut pas voir bouger.</li>
   <li><strong>Les contraintes</strong> : performance, sécurité, compatibilité, budget.</li>
@@ -814,21 +793,11 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-5 text-left"}
 
-<article class="card">
-  <h6>Le test qui ne trompe pas</h6>
-  <p class="text-[1.6rem]">Donne ta spec à un collègue qui ne connaît pas le
-  sujet. S'il doit te poser une question avant de commencer, note-la : c'est
-  exactement le trou que l'agent, lui, ne signalera pas. Il choisira tout
-  seul, et il choisira vite.</p>
-</article>
 
-:::
+:::col{class="col-span-12 text-center" reveal}
 
-:::col{class="col-span-12 text-center"}
-
-#### Tout ce que tu n'écris pas, l'agent l'*invente*.
+#### Tout ce qui n'est pas écrit, l'agent l'*invente*.
 
 :::
 :::
@@ -890,75 +859,12 @@ speakernotes: |
 :::
 
 ---
-layout: content
-title: "SDD, TDD, BDD, cycle en V"
-sources:
-  - martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
-  - marmelab.com
-speakernotes: |
-  S16 - Tableau compact, puis traiter frontalement la critique.
-  Fowler soutient qu'une spécification utile dépend de l'apprentissage acquis
-  pendant le développement, et que la clé de l'usage plein de l'IA est
-  d'accélérer les boucles de feedback.
-  La nuance à porter : Beck s'oppose à l'écriture de la spécification complète
-  avant l'implémentation. Le niveau 2 traite la spec comme un document vivant
-  tout au long de l'implémentation. La critique vise surtout le niveau 3 et
-  tout workflow qui gèle les hypothèses.
-  Avec S12, ce slide forme l'autre moitié de la réponse à "c'est le cycle en V
-  déguisé ?". La question tombera : ne pas attendre les questions pour y
-  répondre, la traiter ici, frontalement.
-  Sources : Kent Beck et Martin Fowler ; François Zaninotto, Waterfall Strikes
-  Back (la critique à connaître pour tenir les questions).
----
-
-<table class="w-full border-collapse text-[1.6rem] [&_thead_th]:border-b [&_thead_th]:border-outline [&_tbody_tr:not(:last-child)_td]:border-b [&_tbody_tr:not(:last-child)_td]:border-outline">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Ce qu'on écrit avant</th>
-      <th>Pour qui</th>
-      <th>Ce qui se passe quand on apprend en chemin</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>TDD</strong></td>
-      <td>Un test qui échoue</td>
-      <td>La machine</td>
-      <td>On change le test. Toutes les deux minutes.</td>
-    </tr>
-    <tr>
-      <td><strong>BDD</strong></td>
-      <td>Un scénario en mots du métier</td>
-      <td>L'équipe, puis la machine</td>
-      <td>On réécrit le scénario avec le métier.</td>
-    </tr>
-    <tr>
-      <td><strong>Cycle en V</strong></td>
-      <td>La spécification complète</td>
-      <td>Le contrat</td>
-      <td>On ouvre un avenant. L'apprentissage coûte cher, donc on l'évite.</td>
-    </tr>
-    <tr>
-      <td><strong>SDD</strong></td>
-      <td>Le quoi, le pourquoi, les critères</td>
-      <td>L'agent, puis le reviewer</td>
-      <td>On met la spec à jour, et on relance. <em>C'est la manœuvre normale</em>, pas l'exception.</td>
-    </tr>
-  </tbody>
-</table>
-
-<blockquote class="text-left">
-  <h5>La critique, telle qu'elle se formule : une spec utile dépend de ce qu'on apprend en développant, et l'intérêt de l'IA est d'accélérer les boucles de feedback, pas de les geler.</h5>
-  <h5>Elle est juste. Elle vise le niveau 3, et tout workflow qui fige ses hypothèses. Au niveau 2, la spec <em>change pendant</em> l'implémentation.</h5>
-</blockquote>
-
----
 layout: default
-title: "Le coût, honnêtement"
+title: "Le (contre) coût du SSD ?"
 sources:
   - martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
   - dora.dev/ai/roi/report
+  - coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
 speakernotes: |
   S17 - Slide de crédibilité. Trois coûts : cérémonie mal dimensionnée,
   tokens, dérive spec/code.
@@ -988,7 +894,7 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="col-span-4"}
+:::col{class="col-span-6" reveal}
 
 <h3><em>4 stories, 16 critères</em></h3>
 
@@ -997,43 +903,26 @@ speakernotes: |
 <p class="text-[1.6rem]">La cérémonie ne se dimensionne pas toute seule. Pour un
 null check d'une ligne, on ne touche pas à la constitution.</p>
 
-<h6>Birgitta Böckeler, en lançant Kiro</h6>
+<h6><em>Birgitta Böckeler, en lançant Kiro</em></h6>
 
 :::
 
-:::col{class="col-span-4"}
+:::col{class="col-span-6" reveal}
 
-<h3><em>31 700</em></h3>
+<h3><em>1,7x</em></h3>
 
-<p class="text-[1.6rem]">tokens en moyenne<br/>par run de workflow</p>
-
-<p class="text-[1.6rem]">Sur de gros projets, ça fait <strong>800 à 2 000 $ par
-mois et par développeur</strong> de coûts d'API. La cérémonie se paie en
-tokens.</p>
-
-<h6>Runs BMAD</h6>
-
-:::
-
-:::col{class="col-span-4"}
-
-<h3><em>+30 à 41 %</em></h3>
-
-<p class="text-[1.6rem]">de dette technique<br/>avec l'adoption de l'IA</p>
-
-<p class="text-[1.6rem]">Et des PR générées par IA qui portent <strong>1,7 fois
-plus de problèmes</strong>. C'est ce que le SDD cherche à éviter, pas ce qu'il
+<p class="text-[1.6rem]">plus de bugs sur les PRs générées par IA. C'est ce que le SDD cherche à éviter, pas ce qu'il
 garantit d'éviter.</p>
 
-<h6>DORA 2026</h6>
+<h6><em>CodeRabbit</em></h6>
 
 :::
 
-:::col{class="col-span-12"}
+:::col{class="col-span-12" reveal}
 
 <blockquote class="text-left">
-  <h5>Le marteau-pilon pour un petit clou : le SDD passe mal à l'échelle vers le bas.</h5>
-  <h5>Et la dérive spec/code, personne ne l'a résolue. Aucun outil ne réconcilie tout seul : il faut le déclencher, et relire la sortie.</h5>
+  <h5>Le SDD est peu adapté pour de petite tâche.</h5>
+  <h5>La dérive spec/code est réélle. Aucun outil ne réconcilie cela tout seul : il faut le déclencher, et relire la sortie.</h5>
 </blockquote>
 
 :::
@@ -1051,21 +940,15 @@ speakernotes: |
   S19 à S23 en un seul tableau et récupérer 3 minutes pour les parties 1 et 2.
 ---
 
-<h6 class="numero">Partie 3</h6>
-
 <h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Le panorama des <em>frameworks</em></h1>
 
-<p class="text-fg-muted mt-6 text-3xl font-medium">Mode plan, Spec Kit, OpenSpec, Superpowers, BMAD, et ce qu'ils ont en commun</p>
+<p class="text-fg-muted mt-6 text-3xl font-medium">Plus de <strong>30 outils</strong> recensés début 2026.</p>
 
 ---
 layout: default
-title: "La carte par couches, et le niveau 0 : le mode plan"
+title: "La base : le mode plan"
 speakernotes: |
-  S18 - Deux choses sur un slide.
-  D'abord pourquoi c'est confus : les outils opèrent à des couches différentes
-  (définition des artefacts d'exigence, conversion en graphe de tâches,
-  exécution du code, intégration IDE). Une cartographie communautaire
-  recensait plus de 30 outils début 2026.
+  S18 - 
   Ensuite la baseline : le mode plan (Claude Code, Cursor). Plan éphémère,
   aucun artefact persisté, aucun gate, zéro installation. Excellent pour une
   tâche de 30 minutes, insuffisant dès qu'il y a plusieurs sessions, plusieurs
@@ -1076,39 +959,21 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="col-span-5 text-left"}
+:::col{class="col-span-12 text-left" reveal}
 
-<h6>Pourquoi c'est illisible : ils ne jouent pas au même étage</h6>
 
-<ul class="text-[1.6rem]">
-  <li><strong>Définir</strong> les artefacts d'exigence</li>
-  <li><strong>Convertir</strong> en graphe de tâches</li>
-  <li><strong>Exécuter</strong> le code</li>
-  <li><strong>S'intégrer</strong> à l'IDE</li>
-</ul>
-
-<p class="text-[1.6rem]">Plus de <strong>30 outils</strong> recensés début 2026.
-Deux d'entre eux ne font souvent pas le même métier.</p>
+  
+  <p class="text-[2rem]"><strong>Ce qu'il fait</strong> : l'agent écrit son
+  plan, on le lis, on le corrige, il exécute. Built-in dans les outils.</p>
+  <p class="text-[2rem]"><strong>Où il s'arrête</strong> : le plan est
+  éphémère. Rien n'est persisté, rien n'est versionné.</p>
 
 :::
 
-:::col{class="col-span-7 text-left"}
+:::col{class="col-span-12 text-center" reveal}
 
-<article class="card">
-  <h6>Niveau 0 : le mode plan (Claude Code, Cursor)</h6>
-  <p class="text-[1.6rem]"><strong>Ce qu'il fait</strong> : l'agent écrit son
-  plan, tu le lis, tu corriges, il exécute. Zéro installation.</p>
-  <p class="text-[1.6rem]"><strong>Où il s'arrête</strong> : le plan est
-  éphémère. Rien n'est persisté, rien n'est versionné, aucun gate n'est
-  imposé. Parfait pour une tâche de 30 minutes. Insuffisant dès qu'il y a
-  plusieurs sessions, plusieurs agents, ou une revue par un tiers.</p>
-</article>
-
-:::
-
-:::col{class="col-span-12 text-center"}
-
-#### Le mode plan est notre *témoin*. Les quatre outils qui suivent se lisent par rapport à lui.
+#### Parfait pour une tâche de 30 minutes.
+#### Insuffisant dès qu'il y a plusieurs sessions, plusieurs agents, ou une revue par un tiers.
 
 :::
 :::
@@ -1116,11 +981,10 @@ Deux d'entre eux ne font souvent pas le même métier.</p>
 ---
 layout: default
 title: GitHub Spec Kit
+github: github/spec-kit
 sources:
   - github.com/github/spec-kit
-  - github.github.com/spec-kit
   - ranthebuilder.cloud/blog/i-tested-three-spec-driven-ai-tools-here-s-my-honest-take
-  - reenbit.com/bmad-vs-spec-kit-vs-openspec-choosing-your-spec-driven-ai-framework
 speakernotes: |
   S19 - CLI Python, et des dizaines d'intégrations d'agents.
   ATTENTION - correction du brief : ne PAS annoncer de chiffre d'étoiles. Les
@@ -1151,9 +1015,9 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="col-span-7 text-left"}
+:::col{class="col-span-7 text-left" reveal}
 
-<h6>Ce qu'il ajoute au mode plan</h6>
+<h6><strong>Principe</strong></h6>
 
 <ul class="text-[1.6rem]">
   <li><strong>Trois commandes, trois fichiers qui restent</strong> :
@@ -1162,28 +1026,28 @@ speakernotes: |
   la découpe en unités testables.</li>
   <li><strong>Une constitution</strong> écrite une fois pour le projet, dont
   chaque spec hérite ensuite.</li>
-  <li><strong>Les inconnues sont marquées</strong>, pas devinées : les
+  <li><strong>Les inconnues sont mises en avant</strong> : les
   templates posent un <code>NEEDS CLARIFICATION</code> là où l'agent aurait
   choisi tout seul.</li>
 </ul>
 
 :::
 
-:::col{class="col-span-5 text-left"}
+:::col{class="col-span-5 text-left" reveal}
 
-<article class="card">
-  <h6>Ce qu'il demande en retour</h6>
+
+  <h6><strong>Tradeoff</strong></h6>
   <ul class="text-[1.6rem]">
     <li>Un CLI Python à installer, et beaucoup de texte à lire.</li>
     <li>Aucune étape de revue de code dans le workflow.</li>
     <li>Changer de direction, c'est relancer la commande : elle régénère tout
     son document.</li>
   </ul>
-</article>
+
 
 :::
 
-:::col{class="col-span-12 text-center"}
+:::col{class="col-span-12 text-center" reveal}
 
 #### Projet neuf, gates visibles, et on accepte la *verbosité*. C'est l'outil le plus distribué de la catégorie.
 
@@ -1192,11 +1056,11 @@ speakernotes: |
 
 ---
 layout: default
-title: "OpenSpec : l'anti-cérémonie"
+title: "OpenSpec"
+github: Fission-AI/OpenSpec/
 sources:
   - github.com/Fission-AI/OpenSpec
   - reenbit.com/bmad-vs-spec-kit-vs-openspec-choosing-your-spec-driven-ai-framework
-  - ranthebuilder.cloud/blog/i-tested-three-spec-driven-ai-tools-here-s-my-honest-take
 speakernotes: |
   S20 - L'empreinte la plus légère : on écrit des delta specs, uniquement ce
   qui change.
@@ -1218,9 +1082,9 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="col-span-7 text-left"}
+:::col{class="col-span-7 text-left" reveal}
 
-<h6>Ce qu'il ajoute au mode plan</h6>
+<h6><strong>Principe</strong></h6>
 
 <ul class="text-[1.6rem]">
   <li><strong>Des delta specs</strong> : on décrit ce qui change, pas le
@@ -1231,28 +1095,24 @@ speakernotes: |
   phase gate à repasser.</li>
 </ul>
 
-<p class="text-[1.6rem]">Installation en <strong>5 minutes</strong> au lieu de
-30, pas de Python, environ <strong>250 lignes</strong> produites au lieu de
-800.</p>
+::: 
 
-:::
+:::col{class="col-span-5 text-left" reveal}
 
-:::col{class="col-span-5 text-left"}
 
-<article class="card">
-  <h6>Ce qu'il demande en retour</h6>
+  <h6><strong>Tradeoff</strong></h6>
+
   <ul class="text-[1.6rem]">
-    <li>Aucun gate de revue entre les phases : la discipline reste chez
-    toi.</li>
-    <li>Un support communautaire limité.</li>
+    <li>Aucun gate de revue entre les phases : c'est à l'humain de contrôler.</li>
+    <li>Un support communautaire encore limité.</li>
   </ul>
-</article>
+
 
 :::
 
-:::col{class="col-span-12 text-center"}
+:::col{class="col-span-12 text-center" reveal}
 
-#### Le même travail que Spec Kit, avec *moins de cérémonie*. Et c'est lui qui est pensé pour du code qui existe déjà.
+#### Le même travail que Spec Kit, avec *moins de cérémonie*. Adapté pour du code qui existe déjà.
 
 :::
 :::
@@ -1260,34 +1120,13 @@ speakernotes: |
 ---
 layout: default
 title: "Superpowers : la méthode comme artefact"
+github: obra/superpowers
 sources:
   - claude.com/plugins/superpowers
   - github.com/obra/superpowers-marketplace
   - simonwillison.net/2025/Oct/10/superpowers
 speakernotes: |
-  S21 - Le cas le plus intéressant pédagogiquement. Ce n'est pas un dépôt de
-  specs, c'est une méthodologie livrée comme skills.
-  Plugin qui impose un workflow structuré avant qu'une seule ligne de code ne
-  soit écrite : brainstormer d'abord, isoler sa branche, écrire un plan
-  détaillé, exécuter. Chaque étape conditionne la suivante.
-  Le plan découpe le travail en tâches de 2 à 5 minutes avec chemins de
-  fichiers exacts et commandes exactes. Des subagents implémentent chaque
-  tâche, avec une revue intégrée.
-  Pratiques imposées : cycles TDD red-green-refactor où les tests doivent
-  échouer avant l'implémentation, méthodologie de debug en quatre phases
-  exigeant l'investigation de la cause racine avant tout correctif,
-  brainstorming socratique qui force l'humain à formuler ce qu'il veut
-  vraiment, pas ce qu'il croit vouloir.
-  Les deux formulations vérifiées qui portent le slide, à dire telles quelles :
-  le plugin traite les agents comme un manager expérimenté traite des juniors ;
-  et ses skills sont écrites pour contrer la tendance de l'agent à rationaliser
-  le fait de sauter les process structurés.
-  L'angle à souligner devant des devs : c'est une réponse directe au problème
-  de discipline. Le SDD est un problème de discipline avant d'être un problème
-  d'outil, et ce slide est le seul endroit du talk où on peut le dire aussi
-  directement. Quelqu'un écrit une bonne skill specify-plan-implement,
-  l'utilise une semaine, puis retourne discrètement au prompting non structuré
-  dès qu'une deadline approche.
+  S21 - Le cas le plus intéressant pédagogiquement. 
   Anecdote : Jesse Vincent, créateur de RT, contributeur de Perl 5, auteur du
   client mail K-9, a quasiment cessé de coder lui-même.
   Chiffres vérifiés le 11/09/2026, utilisables à l'oral : sorti en octobre
@@ -1299,9 +1138,9 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="col-span-7 text-left"}
+:::col{class="col-span-7 text-left" reveal}
 
-<h6>Ce qu'il ajoute au mode plan</h6>
+<h6><strong>Principe</strong></h6>
 
 <ul class="text-[1.6rem]">
   <li><strong>Un ordre imposé</strong>, avant la moindre ligne de code :
@@ -1317,23 +1156,23 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-5 text-left"}
+:::col{class="col-span-5 text-left" reveal}
 
-<article class="card">
-  <h6>Ce qu'il demande en retour</h6>
+
+  <h6><strong>Tradeoff</strong></h6>
+
   <ul class="text-[1.6rem]">
     <li>Le plugin traite les agents comme un manager expérimenté traite des
-    juniors. À toi de tenir le rôle du manager.</li>
-    <li>Ses skills sont écrites pour contrer la tendance de l'agent à
-    rationaliser le fait de sauter les étapes.</li>
+    juniors. L'humain tient le rôle du manager.</li>
+    <li>Peu de phases à actionner soi-meme.</li>
   </ul>
-</article>
+
 
 :::
 
-:::col{class="col-span-12 text-center"}
+:::col{class="col-span-12 text-center" reveal }
 
-#### Ce n'est pas un dépôt de specs, c'est une méthode livrée comme des skills. Le SDD est d'abord un problème de *discipline*.
+#### Ce n'est pas un dépôt de specs, c'est une méthode sur base de skills.
 
 :::
 :::
@@ -1341,6 +1180,7 @@ speakernotes: |
 ---
 layout: default
 title: "BMAD-METHOD : le poids lourd"
+github: bmad-code-org/bmad-method
 sources:
   - github.com/bmad-code-org/BMAD-METHOD
 speakernotes: |
@@ -1366,9 +1206,9 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="col-span-7 text-left"}
+:::col{class="col-span-7 text-left" reveal}
 
-<h6>Ce qu'il ajoute au mode plan</h6>
+<h6><strong>Principe</strong></h6>
 
 <ul class="text-[1.6rem]">
   <li><strong>12 agents aux rôles nommés</strong> : Analyst, PM, Architect, UX
@@ -1383,97 +1223,29 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-5 text-left"}
+:::col{class="col-span-5 text-left" reveal}
 
-<article class="card">
-  <h6>Ce qu'il demande en retour</h6>
+
+  <h6><strong>Tradeoff</strong></h6>
+
   <ul class="text-[1.6rem]">
     <li>Le rituel complet, même quand la tâche ne le justifie pas.</li>
-    <li>Du temps, et des tokens. Le chiffre est sur le slide suivant.</li>
+    <li>Du temps, et des tokens.</li>
   </ul>
-</article>
+
 
 :::
 
-:::col{class="col-span-12 text-center"}
+:::col{class="col-span-12 text-center" reveal}
 
-#### Toujours le même squelette que les deux précédents, avec la cérémonie poussée au *maximum*.
+#### La cérémonie est poussée au *maximum*.
 
 :::
 :::
-
----
-layout: content
-title: Le tableau de décision
-sources:
-  - reenbit.com/bmad-vs-spec-kit-vs-openspec-choosing-your-spec-driven-ai-framework
-  - ranthebuilder.cloud/blog/i-tested-three-spec-driven-ai-tools-here-s-my-honest-take
-speakernotes: |
-  S23 - Le chiffre qui fait rire la salle : sur un même build de dashboard CRM,
-  la même tâche a pris 12 minutes avec OpenSpec, 90 minutes avec Spec Kit et
-  5 h 30 avec BMAD.
-  Puis la grille : pour la plupart des équipes travaillant sur du code
-  existant, OpenSpec offre le meilleur équilibre vitesse/flexibilité ; pour les
-  nouveaux projets avec des rôles clairs, Spec Kit apporte structure et
-  documentation ; pour la complexité d'échelle entreprise, BMAD gère
-  l'orchestration multi-agents.
-  L'honnêteté qui fait la différence : BMAD est excellent, mais aussi coûteux
-  et disproportionné pour la plupart du travail hebdomadaire d'ingénierie.
-  Mentionner en une ligne, sans slide : Kiro, Tessl, cc-sdd, Antigravity, et la
-  convergence AGENTS.md / Agent Skills comme lingua franca émergente.
-  Le coût de BMAD, vérifié, bien plus parlant que "c'est cher" : environ
-  31 700 tokens par run de workflow, et 800 à 2 000 dollars par mois et par
-  développeur en coûts d'API sur de gros projets. Les 31 700 tokens sont déjà
-  passés à l'écran en S17, donc seul le chiffre en dollars est repris ici. Si
-  la question du coût revient, c'est le moment de rappeler les deux.
-  La ligne "mode plan" en tête de tableau n'est pas décorative : elle referme
-  la comparaison ouverte en S18 et empêche la partie de se lire comme un
-  catalogue.
-  Sources des durées et de la grille : reenbit.com/bmad-vs-spec-kit-vs-openspec
-  ; ranthebuilder.cloud, I Tested Three Spec-Driven AI Tools ; mesures de
-  consommation de tokens sur des runs BMAD. Vérifié le 11/09/2026.
----
-
-<table class="w-full border-collapse text-[1.6rem] [&_thead_th]:border-b [&_thead_th]:border-outline [&_tbody_tr:not(:last-child)_td]:border-b [&_tbody_tr:not(:last-child)_td]:border-outline">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Même tâche, même build de dashboard CRM</th>
-      <th>Quand c'est lui qu'il faut prendre</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Mode plan</strong></td>
-      <td>Rien à installer, rien à ranger</td>
-      <td>Une tâche, une session, un seul lecteur : toi.</td>
-    </tr>
-    <tr>
-      <td><strong>OpenSpec</strong></td>
-      <td>12 minutes</td>
-      <td>Du code qui existe déjà. Le meilleur équilibre vitesse / flexibilité pour la plupart des équipes.</td>
-    </tr>
-    <tr>
-      <td><strong>Spec Kit</strong></td>
-      <td>90 minutes</td>
-      <td>Un projet neuf avec des rôles clairs, quand on veut de la structure et de la documentation.</td>
-    </tr>
-    <tr>
-      <td><strong>BMAD</strong></td>
-      <td>5 h 30</td>
-      <td>La complexité d'échelle entreprise, quand l'orchestration multi-agents se justifie vraiment.</td>
-    </tr>
-  </tbody>
-</table>
-
-<blockquote class="text-left">
-  <h5>BMAD est excellent. Il est aussi coûteux, et disproportionné pour la plus grande partie du travail d'une semaine d'ingénierie : <strong>800 à 2 000 $ par mois et par développeur</strong> en API sur de gros projets.</h5>
-  <h5>Le bon réflexe n'est pas de choisir le plus complet. C'est de choisir la <em>plus petite dose de cérémonie</em> qui tient le problème.</h5>
-</blockquote>
 
 ---
 layout: default
-title: Ce sur quoi ils sont tous d'accord
+title: Pour résumer
 speakernotes: |
   S24 - Slide de sortie de partie. Quatre primitives universelles :
   règles/constitution, spec, plan, tasks, plus des gates humains.
@@ -1484,21 +1256,26 @@ speakernotes: |
   pas un prérequis.
 ---
 
-<div class="h-12"></div>
+:::col{class="col-span-12 text-center" reveal}
 
-### règles &rarr; spec &rarr; plan &rarr; tasks
+### <em>règles &rarr; spec &rarr; plan &rarr; tasks</em>
 
-##### Plus des gates humains. Les quatre outils écrivent les mêmes artefacts : ils ne diffèrent que par la dose de cérémonie.
+##### Les quatre outils écrivent les mêmes types d'artefacts : ils ne diffèrent que par la lourdeur de la cérémonie.
+:::
 
-<div class="h-12"></div>
+:::col{class="col-span-12 text-center" reveal}
 
 #### L'humain reste dans la boucle. Mais pas sur tout.
 
-<div class="h-8"></div>
+:::
 
-### Tu peux commencer demain avec *trois fichiers markdown* et un gate.
+:::col{class="col-span-12 text-center" reveal}
+
+### Vous pouvez commencer demain avec  *trois fichiers markdown*.
 
 ##### Le framework est une optimisation. Pas un prérequis.
+
+:::
 
 ---
 layout: bare
@@ -1511,14 +1288,12 @@ speakernotes: |
   avec leurs limites, là où ça n'accélère pas, et quoi mesurer.
 ---
 
-<h6 class="numero">Partie 4</h6>
-
 <h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Découpler, et <em>accélérer</em></h1>
 
-<p class="text-fg-muted mt-6 text-3xl font-medium">Ce que le SDD sépare, et ce que ça fait gagner, vraiment</p>
+<p class="text-fg-muted mt-6 text-3xl font-medium">Le SDD est il un game-changer ?</p>
 
 ---
-layout: content
+layout: default
 title: Les 5 découplages
 speakernotes: |
   S25 - 1. Le quoi / le comment : la spec devient l'interface entre jugement
@@ -1542,36 +1317,32 @@ speakernotes: |
   <thead>
     <tr>
       <th>Ce que le SDD sépare</th>
-      <th>Ce que ça débloque</th>
+      <th>Ce que ça permet</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr class="reveal">
       <td><strong>1. Le quoi et le comment</strong></td>
       <td>La spec devient l'interface entre le jugement humain et l'exécution machine.</td>
     </tr>
-    <tr>
+    <tr class="reveal">
       <td><strong>2. La conception et l'exécution</strong></td>
-      <td>Tu spécifies maintenant, les agents exécutent pendant que tu fais autre chose. Ton temps de clavier n'est plus le facteur limitant.</td>
+      <td>On spécifie maintenant, les agents exécutent pendant que l'on fait autre chose. Le temps de clavier n'est plus le facteur limitant.</td>
     </tr>
-    <tr>
+    <tr class="reveal">
       <td><strong>3. La revue et le code</strong></td>
       <td>On revoit <em>l'intention</em>, 200 lignes lisibles, au lieu d'un diff de 2 000 lignes qu'on n'a pas écrites.</td>
     </tr>
-    <tr>
+    <tr class="reveal">
       <td><strong>4. Les développeurs entre eux</strong></td>
       <td>Des specs comme contrats, des bounded contexts, et des agents en parallèle sur des tranches qui ne se percutent pas.</td>
     </tr>
-    <tr>
+    <tr class="reveal">
       <td><strong>5. L'humain et la session</strong></td>
       <td>Spec et plan tiennent lieu de mémoire durable : reprise après un crash, passage d'un agent à l'autre, onboarding.</td>
     </tr>
   </tbody>
 </table>
-
-<blockquote class="text-left">
-  <h5>Quatre de ces découplages font gagner du confort. Le troisième est le seul qui déplace vraiment le goulot, et c'est celui qu'on regarde maintenant.</h5>
-</blockquote>
 
 ---
 layout: default
@@ -1587,7 +1358,6 @@ speakernotes: |
   gagnée en développement se perd en validation.
   Le SDD attaque ce point précis en donnant au reviewer l'intention explicite
   contre laquelle juger.
-  Faire le lien avec le 4,6x de S4.
   Le rapport nomme le phénomène, et c'est le mot à poser à voix haute : la
   taxe de vérification (verification tax), c'est-à-dire la charge cognitive de
   relire et de valider du code généré par IA. L'effort économisé sur la frappe
@@ -1616,49 +1386,40 @@ relocalise en aval, sur la revue.</p>
 
 :::
 
-:::col{class="col-span-4 text-left"}
+:::col{class="col-span-4 text-left" reveal}
 
-<h6>La fréquence de déploiement ne monte pas</h6>
+<h5><em>La fréquence de déploiement n'augmente pas</em></h6>
 
 <p class="text-[1.6rem]">Le goulot s'est déplacé de l'écriture vers la revue. On
 produit plus, on ne livre pas plus souvent.</p>
 
 :::
 
-:::col{class="col-span-4 text-left"}
+:::col{class="col-span-4 text-left" reveal}
 
-<h6>Le lead time ne baisse pas</h6>
+<h5><em>Le lead time ne baisse pas</em></h6>
 
-<p class="text-[1.6rem]">Le code arrive plus vite à la PR. Et il y attend plus
+<p class="text-[1.6rem]">Le code arrive plus vite en PR. Et il y attend plus
 longtemps.</p>
 
 :::
 
-:::col{class="col-span-4 text-left"}
+:::col{class="col-span-4 text-left" reveal}
 
-<h6>Le temps de revue, lui, augmente</h6>
+<h5><em>Le temps de revue, lui, augmente</em></h6>
 
 <p class="text-[1.6rem]">Souvent même quand le lead time total diminue : les
 relecteurs encaissent un volume croissant de code qu'ils n'ont pas écrit.</p>
 
 :::
 
-:::col{class="col-span-12"}
-
-<blockquote class="text-left">
-  <h5>C'est le 4,6&times; d'attente et les +91 % de temps de revue du début du talk, expliqués en un mot.</h5>
-  <h5>Le SDD ne supprime pas cette taxe. Il donne au relecteur l'intention écrite contre laquelle juger.</h5>
-</blockquote>
-
-:::
 :::
 
 ---
 layout: default
-title: "Les chiffres d'accélération, et leurs limites"
+title: "Quelques chiffres d'accélération"
 sources:
   - github.com/ianhxu/agentic-engineering-field-study
-  - engineering.mercari.com
   - github.com/github/spec-kit
 speakernotes: |
   S27 - Le meilleur point de données à l'échelle d'une équipe : Mercari, place
@@ -1684,36 +1445,21 @@ speakernotes: |
   Spec Kit ; AWS, cas clients Kiro. Vérifié le 11/09/2026.
 ---
 
-:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
+:::grid{class="grid grid-cols-12 gap-4 text-center"}
 
-:::col{class="col-span-4"}
 
-<h3><em>+150 %</em></h3>
+:::col{class="col-span-4" reveal}
 
-<p class="text-[1.6rem]">de vitesse<br/>sur la baseline traditionnelle</p>
-
-<p class="text-[1.6rem]">Et <strong>+80 %</strong> sur du prompting IA en format
-libre. Méthodologie interne publiée, six mois de recul.</p>
-
-<h6>Mercari, place de marché japonaise, 22 millions d'utilisateurs par mois</h6>
-
-:::
-
-:::col{class="col-span-4"}
-
-<h3><em>1 ordre de grandeur</em></h3>
-
-<p class="text-[1.6rem]">de régénérations<br/><strong>from scratch</strong> en
-moins</p>
+<h3><em>Mythe ou réalité ?</em></h3>
 
 <p class="text-[1.6rem]">Les équipes qui travaillent avec Spec Kit recommencent
 bien moins souvent à zéro qu'avec du prompting ad hoc.</p>
 
-<h6>GitHub, retours d'usage de Spec Kit</h6>
+<h6><em>GitHub, retours d'usage de Spec Kit</em></h6>
 
 :::
 
-:::col{class="col-span-4"}
+:::col{class="col-span-4" reveal}
 
 <h3><em>40 h &rarr; 8 h</em></h3>
 
@@ -1722,79 +1468,27 @@ bien moins souvent à zéro qu'avec du prompting ad hoc.</p>
 <p class="text-[1.6rem]">Des fonctionnalités estimées à 40 heures, livrées en
 moins de 8, quand elles sont d'abord rédigées comme specs.</p>
 
-<h6>AWS, cas clients Kiro</h6>
+<h6><em>AWS, cas clients Kiro</em></h6>
 
 :::
 
-:::col{class="col-span-12"}
 
-<blockquote class="text-left">
-  <h5>Trois chiffres auto-rapportés, sur un seul contexte d'équipe chacun, publiés par des gens qui ont intérêt au résultat. Aucun n'est un essai contrôlé.</h5>
-  <h5>Je les donne quand même, parce qu'ils sont ce qu'on a de mieux aujourd'hui. Pas parce qu'ils prouvent quoi que ce soit.</h5>
-</blockquote>
+:::col{class="col-span-4" reveal}
 
-:::
-:::
+<h3><em>25%</em></h3>
 
----
-layout: default
-title: Où le SDD n'accélère pas
-sources:
-  - dora.dev/ai/roi/report
-speakernotes: |
-  S28 - Indispensable pour la crédibilité, et c'est le slide qui fait gagner la
-  salle.
-  DORA 2026 mesure environ 35 à 40 % de gains sur des tâches simples en
-  greenfield, mais 10 % ou moins pour des développeurs expérimentés sur du
-  brownfield complexe. C'est le même écart que le talk décrit depuis le début :
-  plus le contexte existant est lourd, moins la génération de code seule aide.
-  Donc : petits changements, spikes exploratoires, domaine encore flou, legacy
-  sans tests.
-  Message : le SDD est un investissement dont le retour dépend de la taille du
-  changement, et il passe mal à l'échelle vers le bas. Renvoyer explicitement à
-  l'anecdote Kiro de S17 : quatre user stories et seize critères d'acceptation
-  pour une correction de bug, c'est exactement ce cas-là.
-  Source : DORA 2026, The ROI of AI-assisted Software Development (Google).
----
+<p class="text-[1.6rem]">de jours gagnés sur un développement AI Driven.</p>
 
-:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
+<p class="text-[1.6rem]">Nous avons sorti un projet estimé à 660 jours en 400.</p>
 
-:::col{class="col-span-6"}
-
-<h3><em>+35 à 40 %</em></h3>
-
-<p class="text-[1.6rem]">sur des tâches simples,<br/>en <strong>greenfield</strong></p>
-
-:::
-
-:::col{class="col-span-6"}
-
-<h3><em>10 % ou moins</em></h3>
-
-<p class="text-[1.6rem]">pour des développeurs expérimentés,<br/>sur du
-<strong>brownfield complexe</strong></p>
-
-:::
-
-:::col{class="col-span-12"}
-
-<h6>DORA 2026</h6>
-
-<p class="text-[1.6rem]">Petit changement, spike exploratoire, domaine encore
-flou, legacy sans tests : la cérémonie coûte alors plus cher qu'elle ne
-rapporte.</p>
-
-<blockquote class="text-left">
-  <h5>Le SDD est un investissement, et son retour dépend de la taille du changement.</h5>
-  <h5>Il passe mal à l'échelle vers le bas : seize critères d'acceptation pour un bug d'une ligne, on l'a déjà vu tout à l'heure.</h5>
-</blockquote>
+<h6><em>Caisse Libre Service, Boulangeer</em></h6>
 
 :::
 :::
 
 ---
 layout: default
-title: Quoi mesurer
+title: Quoi mesurer ?
 sources:
   - dora.dev/ai/roi/report
 speakernotes: |
@@ -1815,42 +1509,24 @@ speakernotes: |
   Source : DORA 2026, The ROI of AI-assisted Software Development (Google).
 ---
 
-:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
+:::grid{class="grid grid-cols-12 gap-4"}
 
-:::col{class="col-span-7 text-left"}
+:::col{class="col-span-12 text-left"}
 
-<h6>Ce qu'on regarde, à la place des lignes de code</h6>
+<h3>Ce qu'on doit regarder, à la place des lignes de code</h6>
 
-<ul class="text-[1.6rem]">
-  <li><strong>Le lead time jusqu'à la prod</strong>, pas jusqu'à la PR.</li>
-  <li><strong>Le temps de revue</strong>, compté à part : c'est là que la taxe
-  se paie.</li>
-  <li><strong>Le change failure rate</strong>, pour voir si la vitesse se prend
-  sur la qualité.</li>
-  <li><strong>Le taux de rework</strong>, et surtout la part due à une
+<ul class="text-[2rem]">
+  <li class="reveal"><strong>Le lead time jusqu'à la prod</strong>, pas jusqu'à la PR.</li>
+  <li class="reveal"><strong>Le temps de revue</strong>.</li>
+  <li class="reveal"><strong>Le change failure rate</strong>, pour voir si la vitesse de delivery dégrade la qualité.</li>
+  <li class="reveal"><strong>Le taux de rework</strong>, et surtout la part due à une
   <em>intention mal comprise</em>. C'est la seule métrique que le SDD prétend
   améliorer directement.</li>
 </ul>
 
 :::
 
-:::col{class="col-span-5 text-left"}
-
-<article class="card">
-  <h6>Le repère qui manque à presque tout le monde</h6>
-  <ul class="text-[1.6rem]">
-    <li><strong>7,3 %</strong> des équipes seulement ont un taux de rework sous
-    2 %.</li>
-    <li>Sous <strong>10 %</strong>, c'est la performance élite.</li>
-    <li>Une organisation d'ingénierie typique se situe entre <strong>20 et
-    30 %</strong>.</li>
-  </ul>
-  <h6>DORA 2026</h6>
-</article>
-
-:::
-
-:::col{class="col-span-12 text-center"}
+:::col{class="col-span-12 text-center" reveal}
 
 #### Le rework est une taxe cachée sur la productivité. Générer plus de code peut très vite l'*aggraver*.
 
@@ -1867,13 +1543,11 @@ speakernotes: |
   Ne rien ajouter à l'oral ici. Afficher, respirer, passer.
 ---
 
-<h6 class="numero">Partie 5</h6>
-
-<h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Retour au <em>product engineer</em></h1>
+<h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Revenons au <em>product engineer</em></h1>
 
 ---
 layout: default
-title: "Boucle fermée : l'artefact du product engineer"
+title: "L'artefact du product engineer"
 class: slide-main slide-narrow slide-prose flex flex-col justify-center
 speakernotes: |
   S30 - La résolution de S5. Même layout, même phrase, même mise en forme :
@@ -1890,9 +1564,9 @@ speakernotes: |
 
 <div class="h-12"></div>
 
-### Le product engineer avait besoin d'un artefact pour porter l'intention.
+### Le product engineer avait besoin d'un <em>artefact</em> pour porter l'intention.
 
-#### On vient de passer 35 minutes à décrire cet artefact, et son outillage.
+#### On vient de passer plusieurs minutes à décrire cet artefact, et son outillage.
 
 <div class="h-12"></div>
 
@@ -1901,20 +1575,9 @@ speakernotes: |
   <h5>Il a besoin d'un artefact pour porter l'intention jusqu'à la machine. Cet artefact, c'est la <em>spec</em>.</h5>
 </blockquote>
 
-<div class="h-12"></div>
-
-<div class="grid grid-cols-12 gap-4 text-center">
-  <div class="col-span-2"><h6>Cadrer un problème</h6></div>
-  <div class="col-span-3"><h6>Modéliser un domaine</h6></div>
-  <div class="col-span-3"><h6>Écrire des critères vérifiables</h6></div>
-  <div class="col-span-2"><h6>Arbitrer</h6></div>
-  <div class="col-span-2"><h6>Concevoir la vérification</h6></div>
-  <div class="col-span-12"><h5><em>La vitesse de frappe compte moins.</em></h5></div>
-</div>
-
 ---
 layout: default
-title: "Les risques, honnêtement"
+title: "Un bon Product Engineer ?"
 sources:
   - cio.com/article/4190086
   - letalentclub.substack.com
@@ -1954,61 +1617,46 @@ speakernotes: |
   Engineer Manifesto.
 ---
 
-:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
+:::grid{class="grid grid-cols-12 gap-2 h-stage-large text-center"}
 
 :::col{class="col-span-12"}
 
-<h3>Un bon product engineer a besoin d'un <em>cadre solide autour de lui</em>.</h3>
+<h3>Un bon product engineer <em>doit être polyvalent</em>.</h3>
 
-<p class="text-[1.6rem]">Des releases disciplinées, des frontières de
-responsabilité claires, une infra de test fiable, un leadership technique
-expérimenté. Sans ça, le rôle ne tient pas.</p>
 
-:::
+<div class="h-12"></div>
 
-:::col{class="col-span-4 text-left"}
-
-<h6>Tout le monde ne peut pas l'être</h6>
-
-<p class="text-[1.6rem]">Profondeur technique, intuition produit, communication,
-conscience business, forte autogestion. Ça fait beaucoup pour une seule
-personne, et ce n'est pas une question de bonne volonté.</p>
-
-:::
-
-:::col{class="col-span-4 text-left"}
-
-<h6>Le risque générationnel</h6>
-
-<p class="text-[1.6rem]">Les plus exposés sont les profils mi-carrière, ceux qui
-portent la connaissance institutionnelle. Et moins d'embauches juniors, c'est
-le transfert de compétences qui casse.</p>
+<div class="grid grid-cols-12 gap-4 text-center">
+  <div class="col-span-2 reveal"><h6>Cadrer un besoin</h6></div>
+  <div class="col-span-3 reveal"><h6>Modéliser un domaine</h6></div>
+  <div class="col-span-3 reveal"><h6>Écrire des critères vérifiables</h6></div>
+  <div class="col-span-2 reveal"><h6>Arbitrer</h6></div>
+  <div class="col-span-2 reveal"><h6>Concevoir la vérification</h6></div>
+  <div class="col-span-3 reveal"><h6>Orienter la stack technique</h6></div>
+  <div class="col-span-3 reveal"><h6>Dompter l'écosystème agentique</h6></div>
+  <div class="col-span-3 reveal"><h6>Maitriser l'ingénierie agentique</h6></div>
+  <div class="col-span-3 reveal"><h6>Déployer</h6></div>
+</div>
 
 :::
 
-:::col{class="col-span-4 text-left"}
+:::col{class="col-span-12 text-left" reveal}
 
-<h6>L'erreur la plus coûteuse</h6>
-
-<p class="text-[1.6rem]">Déléguer l'autorité produit trop tôt, sans supervision
-suffisante ni maturité organisationnelle. Le titre arrive avant le cadre, et
-c'est l'équipe qui paie.</p>
+##### Profondeur technique, intuition produit, communication, conscience business, forte autogestion. 
 
 :::
 
-:::col{class="col-span-12"}
+:::col{class="col-span-12 text-left" reveal}
 
-<blockquote class="text-left">
-  <h5>« Beaucoup de gens qui veulent faire du produit veulent faire de la stratégie et prendre des décisions. Au quotidien, c'est surtout de la <em>delivery</em>. »</h5>
-  <h5>Ne devenez pas product engineer pour faire de la stratégie.</h5>
-</blockquote>
+##### Ça fait beaucoup pour une seule personne, et ce n'est pas une question de bonne volonté.</p>
 
 :::
+
 :::
 
 ---
 layout: content
-title: Lundi matin
+title: Vous voulez vous lancer ?
 speakernotes: |
   S32 - Cinq actions par coût croissant.
   1. Écrire un AGENTS.md / constitution.md pour un repo.
@@ -2029,7 +1677,7 @@ speakernotes: |
 <table class="w-full border-collapse text-[1.6rem] [&_thead_th]:border-b [&_thead_th]:border-outline [&_tbody_tr:not(:last-child)_td]:border-b [&_tbody_tr:not(:last-child)_td]:border-outline">
   <thead>
     <tr>
-      <th>Ce que tu peux faire lundi</th>
+      <th>Ce que vous pouvez faire, dès lundi</th>
       <th>Ce que ça coûte</th>
     </tr>
   </thead>
@@ -2044,7 +1692,7 @@ speakernotes: |
     </tr>
     <tr>
       <td><strong>3.</strong> Faire une vraie fonctionnalité avec OpenSpec.</td>
-      <td>Une demi-journée, sur quelque chose qui compte.</td>
+      <td>Une demi-journée, sur une feature adaptée.</td>
     </tr>
     <tr>
       <td><strong>4.</strong> Versionner les specs dans git, à côté du code.</td>
@@ -2057,69 +1705,3 @@ speakernotes: |
   </tbody>
 </table>
 
-<p class="text-[1.6rem] text-center">Aucune de ces cinq actions ne demande
-d'installer un framework. Elles sont rangées par coût croissant : <em>commence
-par la première</em>.</p>
-
----
-layout: default
-title: La suite de la demi-journée
-sources:
-  - medium.com/@damien.gouron
-speakernotes: |
-  S33 - Ce qui sera fait en atelier cet après-midi, et les 3 questions laissées
-  ouvertes.
-  Rappeler que la démo n'est pas dans ce talk : elle est dans l'atelier.
-  Ressource à partager après le talk (FR) : medium.com/@damien.gouron,
-  Spec-Driven Development, le guide pratique.
-  Puis les coordonnées et les questions.
-  À COMPLÉTER par le speaker : le contenu exact de l'atelier n'est pas décrit
-  ici, la colonne de gauche reste volontairement générique. Y mettre le repo de
-  départ, le format et ce que la salle repart avec.
-  Les trois questions ouvertes affichées sont reprises du talk lui-même, pas
-  ajoutées : la dérive spec/code laissée sans solution en S17, le niveau 3 de
-  Böckeler encore expérimental en S12, et le transfert de compétences abordé en
-  S31. Si ce ne sont pas les trois retenues, les remplacer, mais garder des
-  questions déjà posées dans le talk : la salle doit les reconnaître.
-  Terminer là-dessus, sans revenir sur le plan du talk.
----
-
-:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
-
-:::col{class="col-span-6 text-left"}
-
-<h6>Cet après-midi, l'atelier</h6>
-
-<p class="text-[1.6rem]">La démo n'est pas dans ce talk, elle est là-bas. On
-passe du support à du vrai code, et on écrit des specs pour de bon.</p>
-
-<h6>À lire ensuite, en français</h6>
-
-<p class="text-[1.6rem]">Damien Gouron, <em>Spec-Driven Development : le guide
-pratique</em>, sur Medium.</p>
-
-:::
-
-:::col{class="col-span-6 text-left"}
-
-<h6>Trois questions que je laisse ouvertes</h6>
-
-<ul class="text-[1.6rem]">
-  <li>La dérive spec/code : aucun outil ne réconcilie tout seul. Qui tient les
-  specs à jour dans six mois ?</li>
-  <li>Le niveau 3 : est-ce qu'on ira vraiment vers la spec comme seule source,
-  ou est-ce que ça restera une vision ?</li>
-  <li>Si les juniors écrivent moins de code, où apprennent-ils à juger celui
-  des agents ?</li>
-</ul>
-
-:::
-
-:::col{class="col-span-12 text-center"}
-
-### Merci. Et maintenant, vos questions.
-
-##### @ldussart &middot; ldussart.bsky.social &middot; Ludovic Dussart sur LinkedIn &middot; blog.zatsit.fr
-
-:::
-:::
