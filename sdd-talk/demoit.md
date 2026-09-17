@@ -1,6 +1,5 @@
 ---
 layout: cover
-class: responsive max center-align title
 speakernotes: |
   S1 - Titre + toi. Qui je suis, pourquoi je parle de ça, la promesse de la
   demi-journée.
@@ -9,49 +8,42 @@ speakernotes: |
   goulot s'est déplacé en amont (l'intention) et en aval (la vérification).
 ---
 
-<h1 class="medium no-padding center-align top-align" style="color: white">Le développeur Product Engineer</h1>
-<h3 style="color: white">Le développement piloté par les spécifications</h3>
-<h5 style="color: white">Ludovic Dussart, Zatsit</h5>
+<!-- Corps volontairement vide : le titre, le sous-titre et le logo viennent de
+     talk.yml, et le layout cover les rend lui-même. -->
 
 ---
 layout: default
 title: Je suis **Ludovic Dussart**
-class: main responsive xlarge-height center-align
+class: slide-main slide-narrow slide-prose flex flex-col justify-center text-center
 ---
-<div class="grid large-space">
-  <div class="m6 s6 l6">
-    <div class="round extra">
-      <img style="block-size: 15rem; " src="/images/me.jpg">
+<div class="grid grid-cols-12 items-center gap-4">
+  <div class="col-span-6">
+    <div>
+      <img class="rounded-card" style="block-size: 15rem; " src="/images/me.jpg">
     </div>
   </div>
-  <div class="m6 s6 l6">
-    <div class="center-align middle">
+  <div class="col-span-6">
+    <div class="text-center">
       <h4>Solutions architect <em>@zatsit</em></h4>
       <h4><em>AsyncAPI</em> maintainer</h4>
       <h4>Open Source <em>fanatic</em></h4>
     </div>
   </div>
-  <div class="s12"><h2 class="left-align"><em>Où me trouver ?</em></h2></div>
-  <div class="s1"><img class="circle " src="/images/twitter.jpg"/></div>
-  <div class="s3 left-align"><h5>@ldussart</h5></div>
-  <div class="s1"><img class="circle " src="/images/bsky.png"/></div>
-  <div class="s3 left-align"><h5>ldussart.bsky.social</h5></div>
-  <div class="s1"><img class="circle " src="/images/linkedin.png"/></div>
-  <div class="s3 left-align"><h5>Ludovic Dussart</h5></div>
-  <div class="s1"></div>
-  <div class="s3"></div>
-  <div class="s12"><h2 class="left-align"><em>Où nous trouver ?</em></h2></div>
-  <div class="s1"><img class="circle " src="/images/web.png"/></div>
-  <div class="s3 left-align"><h5>https://zatsit.fr</h5></div>
-  <div class="s1"><img class="circle " src="/images/bsky.png"/></div>
-  <div class="s3 left-align"><h5>zatsit.bsky.social</h5></div>
-  <div class="s1"><img class="circle " src="/images/blog.png"/></div>
-  <div class="s3 left-align"><h5>https://blog.zatsit.fr</h5></div>
+  <div class="col-span-12"><h2 class="text-left"><em>Où me trouver ?</em></h2></div>
+  <!-- contact-row porte la colonne (span 4), la ligne flex et l'avatar rond :
+       c'est la paire s1 + s3 left-align d'avant, en une seule classe. -->
+  <div class="contact-row"><img src="/images/twitter.jpg"/><h5>@ldussart</h5></div>
+  <div class="contact-row"><img src="/images/bsky.png"/><h5>ldussart.bsky.social</h5></div>
+  <div class="contact-row"><img src="/images/linkedin.png"/><h5>Ludovic Dussart</h5></div>
+  <div class="col-span-12"><h2 class="text-left"><em>Où nous trouver ?</em></h2></div>
+  <div class="contact-row"><img src="/images/web.png"/><h5>https://zatsit.fr</h5></div>
+  <div class="contact-row"><img src="/images/bsky.png"/><h5>zatsit.bsky.social</h5></div>
+  <div class="contact-row"><img src="/images/blog.png"/><h5>https://blog.zatsit.fr</h5></div>
 </div>
-<div class="medium-space"></div>
-<div class="s12">
-  <h6>« Engager notre <em>expertise numérique</em> au service de <em>l'impact des entreprises</em>, en créant un écosystème <em>durable</em>, <em>partenarial</em> et <em>positif</em> »</h6>
-</div>
+<div class="h-10"></div>
+<blockquote class="quote">
+  <h6>Engager notre <em>expertise numérique</em> au service de <em>l'impact des entreprises</em>, en créant un écosystème <em>durable</em>, <em>partenarial</em> et <em>positif</em></h6>
+</blockquote>
 
 
 ---
@@ -59,12 +51,12 @@ layout: default
 title: Disclamer
 ---
 
-<blockquote class="charniere">
-  <h4>L'écosystème IA évolue bien trop vite pour que l'humain puisse le maitriser.</h4>
+<blockquote class="quote charniere">
+  <h4>L'écosystème IA évolue bien trop vite pour que l'humain puisse suivre et tout maitriser.</h4>
 </blockquote>
 ---
 layout: bare
-class: transition
+class: slide-main slide-hero flex flex-col items-center justify-center text-center
 speakernotes: |
   Transition partie 0 - Un nouveau métier, et son problème. 7 minutes, S2 à S5.
   Enchaîner vite, 5 secondes à l'écran : la transition sert de repère à la
@@ -73,13 +65,14 @@ speakernotes: |
   son problème, et le problème débouche sur le SDD en S5.
 ---
 
-<h2>Le <b>Product Engineer<b></h2>
-<h3>Nouveau métier ou évolution d'un métier existant ?</h3>
+<h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Le <em>Product Engineer</em></h1>
+
+<p class="text-fg-muted mt-6 text-3xl font-medium">Nouveau métier, ou évolution d'un métier existant ?</p>
 
 ---
 layout: default
 title: "Product Engineer : le métier que le marché a inventé deux fois"
-class: main responsive large-height
+class: slide-main slide-narrow slide-prose flex flex-col justify-center
 sources:
   - posthog.com/product-engineer
   - posthog.com/handbook/company/small-teams
@@ -94,13 +87,13 @@ speakernotes: |
   Product Engineer Manifesto (productengineer.org) ; Le Talent Club.
 ---
 
-##### *2018 &ndash; 2024* &nbsp;&middot;&nbsp;
+### *2018 &ndash; 2024*
 
-<p class="xlarge-text">Né dans des scale-ups produit, pour une raison
+<p class="text-[1.6rem]">Né dans des scale-ups produit, pour une raison
 d'organisation : le <em>coût des relais</em> dépasse leur bénéfice quand
 l'équipe est petite et que la boucle de feedback doit rester courte.</p>
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li><strong>PostHog</strong>: un développeur directement responsable de l'amélioration du produit, ayant un avis sur la roadmap, capable de prendre seul des décisions de design, faisant du support utilisateur directement, moins attaché aux fonctionnalités qu'il a ajoutées par le passé, conscient de la place de son travail dans la stratégie, et motivé avant tout par l'impact et les résultats. 187 personnes pour 47 équipes (4,2 personnes en moyenne)</li>
   <li><strong>incident.io</strong> : des devs attachés au résultat et à l'impact, pas à l'implémentation</li>
   <li><strong>JM. Lemieux</strong>, ex-VP Eng Shopify : des ingénieurs qui ont soif d'utiliser la technologie pour court-circuiter les problèmes humains et utilisateurs.</li>
@@ -110,7 +103,7 @@ l'équipe est petite et que la boucle de feedback doit rester courte.</p>
 ---
 layout: default
 title: "Product Engineer : le métier que le marché a inventé deux fois"
-class: main responsive large-height
+class: slide-main slide-narrow slide-prose flex flex-col justify-center
 sources:
   - sfeir.com/concepts/product-engineer
   - turingcollege.com/blog/rise-of-the-ai-product-engineer
@@ -121,22 +114,22 @@ speakernotes: |
     - **L'argument économique (le plus solide)** : la ressource rare n'est plus l'exécution, c'est le jugement : savoir quoi construire, et savoir si ce qu'on a construit est bon. La rémunération monte pour ceux qui construisent concrètement et baisse pour ceux qui ne font que coordonner. Le rôle se situe à l'intersection de quatre disciplines : ingénierie logicielle/IA, product management, UX/UI et jugement sur la donnée.
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s12 center-align"} 
+:::col{class="col-span-12 text-center"} 
 :::
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 #### Ce rôle n'a pas été créé par l'IA. Il a été *révélé* par elle.
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-##### *2025 &ndash; 2026*
+### *2025 &ndash; 2026*
 
-<p class="xlarge-text">Le même rôle passe de
+<p class="text-[1.6rem]">Le même rôle passe de
 <em>niche culturelle</em> à <em>norme</em>, parce que l'IA crée des goulots en amont des phases de production de codes, et plus seulement dans les petites équipes.</p>
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li>SFEIR positionne le product engineer comme le rôle central <em>de l'ère 10x</em>, qui ne se définit plus par une spécialité technique unique mais par sa capacité à coordonner toute la chaîne de production logicielle augmentée par l'IA.</li>
  
 </ul>
@@ -144,6 +137,21 @@ speakernotes: |
 
 
 :::
+
+---
+layout: default
+title: "Product Engineer : la définition de Sfeir"
+class: slide-main slide-narrow slide-prose flex flex-col justify-center
+sources:
+  - sfeir.com/concepts/product-engineer
+speakernotes: |
+---
+
+<div class="text-center">
+  <a href="https://sfeir.com/concepts/product-engineer" target="_blank">
+    <img src="/images/sfeir_product_engineer.png" alt="Product Engineer" />
+  </a>
+</div>
 
 ---
 layout: default
@@ -169,135 +177,49 @@ speakernotes: |
   concept Product Engineer ; itjobswatch.co.uk (Product Engineer, England).
 ---
 
-:::grid{class="grid large-height center-align"}
-:::col{class="s4"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
+:::col{class="col-span-4 panel"}
 
-##### La spécialisation était une réponse à la *complexité*.
+##### La cause
 
-:::
-
-:::col{class="s4"}
-
-##### L'IA absorbe une partie de la complexité d'*exécution*.
+<p class="text-[1.6rem]">La spécialisation était une réponse à la <em>complexité</em>.</p>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4 panel"}
 
-##### Donc la *division du travail* perd sa raison d'être.
+##### Le changement
+
+<p class="text-[1.6rem]">L'IA absorbe une partie de la complexité d'<em>exécution</em>.</p>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-4 panel"}
 
-<div class="small-space"></div>
+##### La conséquence
 
-<blockquote class="left-align">
-  <h5>Avant : un ingénieur livre, un PM va voir les utilisateurs, la boucle continue.</h5>
-  <h5>Maintenant : <em>une seule personne</em> livre, itère, collecte le feedback, et itère de nouveau.</h5>
+<p class="text-[1.6rem]">Donc la <em>division du travail</em> perd sa raison d'être.</p>
+
+:::
+
+:::col{class="col-span-12"}
+
+<div class="h-8"></div>
+
+<blockquote class="text-left">
+  <h5><em>Aujourd'hui (Pizza Team)</em> : les <em>PO/PM</em> écrivent les besoins, <em>un ingénieur</em> produit le code et livre, un <em>PO/PM</em> va voir les utilisateurs, la boucle continue.</h5>
+  <h5><em>Demain (Sandwich Team)</em>: <em>une seule personne</em> livre, itère, collecte le feedback, et itère de nouveau.</h5>
 </blockquote>
 
 :::
 
-:::col{class="s12"}
-
-#### La ressource rare n'est plus l'exécution. C'est le *jugement*.
-
-:::
 :::
 
----
-layout: default
-title: Le paradoxe de productivité
-sources:
-  - faros.ai/blog/lab-vs-reality-ai-productivity-study-findings
-  - linearb.io/resources/engineering-benchmarks
-  - metr.org/blog/2026-02-24-uplift-update
-  - dora.dev/ai/roi/report
-speakernotes: |
-  S4 - Le personnage est posé, on montre son problème. Trois colonnes, trois
-  sources indépendantes qui disent la même chose, puis la conclusion.
-  Faros AI, télémétrie sur plus de 10 000 développeurs et 1 255 équipes : à
-  l'échelle individuelle +21 % de tâches complétées et +98 % de PR mergées,
-  mais aussi +91 % de temps de revue, +154 % de taille de PR, +9 % de bugs -
-  et au niveau de l'organisation, des métriques DORA (fréquence de déploiement,
-  lead time, change failure rate) sans amélioration mesurable.
-  LinearB, 8,1 millions de PR sur 4 800 équipes : le code généré par IA attend
-  4,6 fois plus longtemps sa première revue ; 67,3 % de ces PR échouent à la
-  première revue contre 15,6 % pour le code humain. Nuance honnête, à dire si
-  on me la sort : une fois prise en main, la revue est 2 fois plus rapide. Le
-  problème est la file d'attente, pas la lecture.
-  METR, 16 développeurs expérimentés sur 246 issues réelles de leurs propres
-  dépôts : 19 % de RALENTISSEMENT mesuré, alors qu'ils s'attendaient à 24 % de
-  gain et croyaient encore après coup avoir gagné 20 %. C'est ce gap
-  perception/mesure qui est le vrai résultat, et c'est lui qui parle à la
-  salle.
-  ATTENTION - correction du brief : le suivi METR de 2026 n'a PAS inversé le
-  résultat en accélération de 18 %. Le point estimé reste à environ 18 % de
-  ralentissement, et METR a annoncé revoir le design de l'étude à cause
-  d'effets de sélection. Ne pas raconter de "courbe en J" : c'est faux, et
-  quelqu'un dans la salle l'aura lu.
-  Conclusion : l'IA ne répare pas une équipe, elle amplifie ce qui est déjà là.
-  Sources : Faros AI (télémétrie 10 000+ devs) ; LinearB, benchmarks 2026 ;
-  METR (metr.org, étude 2025 + mise à jour 2026-02-24) ; DORA 2026, The ROI of
-  AI-assisted Software Development (Google) ; arXiv 2609.00252 pour le cadrage
-  académique du paradoxe.
----
-
-:::grid{class="grid large-height center-align"}
-:::col{class="s4"}
-
-<h3><em>+21 %</em></h3>
-
-<p class="xlarge-text">de tâches complétées<br/>et <em>+98 %</em> de PR mergées</p>
-
-<p class="xlarge-text">&hellip; mais <strong>+91 %</strong> de temps de revue,
-et des métriques de delivery <strong>plates</strong> au niveau de
-l'organisation.</p>
-
-<h6>Faros AI : 10 000+ devs, 1 255 équipes</h6>
-
-:::
-
-:::col{class="s4"}
-
-<h3><em>4,6&times;</em></h3>
-
-<p class="xlarge-text">plus d'attente<br/>avant la première revue</p>
-
-<p class="xlarge-text"><strong>67 %</strong> des PR générées par IA échouent à
-la première revue, contre <strong>16 %</strong> du code humain.</p>
-
-<h6>LinearB : 8,1 millions de PR</h6>
-
-:::
-
-:::col{class="s4"}
-
-<h3><em>&minus;19 %</em></h3>
-
-<p class="xlarge-text">de vitesse <strong>mesurée</strong><br/>sur des devs
-expérimentés</p>
-
-<p class="xlarge-text">Les mêmes devs se croyaient <strong>20 % plus
-rapides</strong>. L'écart entre le ressenti et la mesure est le vrai
-résultat.</p>
-
-<h6>METR : 16 devs, 246 issues réelles</h6>
-
-:::
-
-:::col{class="s12"}
-
-#### L'IA ne répare pas une équipe. Elle *amplifie* ce qui est déjà là.
-
-:::
-:::
 
 ---
 layout: default
 title: Le vrai goulot n'est pas le code
-class: main responsive large-height
+class: slide-main slide-narrow slide-prose flex flex-col justify-center
 sources:
   - dora.dev/ai/roi/report
   - hitechnology.io
@@ -321,26 +243,26 @@ speakernotes: |
   (étude 100+ leaders) ; DORA 2026 (Google).
 ---
 
-<div class="large-space"></div>
+<div class="h-12"></div>
 
 ### Le temps de développement est rarement le vrai frein.
 
-##### Les goulots sont en amont : des exigences floues, des décisions produit faibles.
+##### Les goulots sont en amont : des exigences floues, des décisions produit faibles, des expressions vagues.
 
-<div class="small-space"></div>
+<div class="h-8"></div>
 
 #### Une IA qui rend le code moins cher ne répare rien de ça. Elle l'*expose*.
 
-<div class="large-space"></div>
+<div class="h-12"></div>
 
-<blockquote class="charniere">
-  <h4>Sans SDD, un product engineer n'est qu'un dev surchargé à qui on a retiré son PM.</h4>
-  <h5>Il a besoin d'un artefact pour porter l'intention jusqu'à la machine. Cet artefact, c'est la <em>spec</em>.</h5>
+<blockquote class="quote charniere">
+  <h4>Sans SDD, un product engineer n'est qu'un dev augmenté à qui on a retiré son PM.</h4>
+  <h5>Il a besoin d'un artefact pour porter l'intention. Cet artefact, c'est la <em>spec</em>.</h5>
 </blockquote>
 
 ---
 layout: bare
-class: transition
+class: slide-main slide-hero flex flex-col items-center justify-center text-center
 speakernotes: |
   Transition partie 1 - Les prérequis. 8 minutes, S6 à S10.
   Elle arrive juste après la charnière S5 : laisser retomber la phrase avant
@@ -350,11 +272,9 @@ speakernotes: |
   pourquoi le vibe coding casse, et pourquoi le DDD revient.
 ---
 
-<h6 class="numero">Partie 1</h6>
+<h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Avant le <em>SDD</em></h1>
 
-<h2>Avant le SDD</h2>
-
-<h5>Ce qu'il faut avoir en tête pour que la suite <em>tienne</em></h5>
+<p class="text-fg-muted mt-6 text-3xl font-medium">Faisons le point</p>
 
 ---
 layout: default
@@ -378,62 +298,64 @@ speakernotes: |
   Engineering: Harnessing Human-Agent Teamwork.
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s3"}
+:::col{class="col-span-3 panel text-center"}
 
 ##### 1. Autocomplétion
 
-<p class="xlarge-text">Tu écris, l'outil finit la ligne.</p>
+<p class="text-[1.6rem]">Tu écris, l'outil finit la ligne.</p>
 
 <h6>Tu délègues la frappe.</h6>
 
 :::
 
-:::col{class="s3"}
+:::col{class="col-span-3 panel text-center"}
 
 ##### 2. Chat
 
-<p class="xlarge-text">Tu décris une fonction, tu relis, tu colles.</p>
+<p class="text-[1.6rem]">Tu décris une fonction, tu relis, tu colles.</p>
 
 <h6>Tu délègues un bout de code.</h6>
 
 :::
 
-:::col{class="s3"}
+:::col{class="col-span-3 panel text-center"}
 
 ##### 3. Agent
 
-<p class="xlarge-text">Tu donnes une tâche. Il lit le dépôt, édite, lance les tests.</p>
+<p class="text-[1.6rem]">Tu donnes une tâche. Il lit le dépôt, édite, lance les tests.</p>
 
 <h6>Tu délègues une tâche.</h6>
 
 :::
 
-:::col{class="s3"}
+:::col{class="col-span-3 panel text-center"}
 
 ##### 4. Agent autonome
 
-<p class="xlarge-text">Tu donnes un objectif. Il découpe le travail lui-même.</p>
+<p class="text-[1.6rem]">Tu donnes un objectif. Il découpe le travail lui-même.</p>
 
 <h6>Tu délègues l'intention.</h6>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-<div class="small-space"></div>
+<div class="h-8"></div>
 
-#### Plus on monte, moins l'intention tient dans ta tête. Il faut l'*écrire*.
+<h4> Plus on monte, moins l'intention tient dans ta tête. Il faut l'<em>écrire</em>.</h4>
 
-<h5>Vous êtes où, aujourd'hui ?</h5>
+
+
+<h5 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Vous êtes où, aujourd'hui ?</h1>
 
 :::
 :::
 
 ---
 layout: default
-title: Comment marche vraiment un agent
+title: Comment fonctionne un agent
 sources:
   - arxiv.org/abs/2604.08224
   - arxiv.org/abs/2605.01160
@@ -460,40 +382,42 @@ speakernotes: |
   amplificateur du paradoxe de productivité.
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s6"}
+:::col{class="col-span-6"}
 
 ##### La fenêtre de contexte, c'est de la *RAM*
 
-<p class="xlarge-text">Petite, rapide, et vidée à la fin de la session. Tout ce que l'agent sait de ton projet tient là-dedans, et seulement là.</p>
+<p class="text-[1.6rem]">Petite, rapide, et vidée à la fin de la session. Tout ce que l'agent sait de ton projet tient là-dedans, et seulement là.</p>
 
 :::
 
-:::col{class="s6"}
+:::col{class="col-span-6"}
 
 ##### Ton dépôt, c'est le *disque*
 
-<p class="xlarge-text">Grand, lent, persistant. L'agent n'y lit que ce qu'on lui dit d'aller chercher, et il repart de zéro à chaque fois.</p>
+<p class="text-[1.6rem]">Grand, lent, persistant. L'agent n'y lit que ce qu'on lui dit d'aller chercher, et il repart de zéro à chaque fois.</p>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>Et dans la fenêtre, rien n'est garanti : être présent ne veut pas dire être retrouvé.</h5>
   <h5>Un prompt très long n'est pas une mémoire.</h5>
 </blockquote>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-#### Pas de mémoire persistante ? Alors on l'écrit.
+#### Pas de mémoire persistante ? <em>Alors on l'écrit</em>.
 
-<p class="xlarge-text"><strong>constitution.md</strong>, <strong>spec.md</strong>,
-<strong>plan.md</strong> : des fichiers durables et versionnés, relus à chaque
-session. C'est tout le context engineering, et c'est de là que sort le SDD.</p>
+<p class="text-[1.6rem]"><strong>AGENTS.md</strong>, <strong>constitution.md</strong>, <strong>spec.md</strong>,
+<strong>plan.md</strong>, <strong>PRD.md</strong> : des fichiers durables et versionnés, relus à chaque
+session. </p>
+
+<h3>On parle de <em>Context Engineering</em>, et c'est sur cela que s'appuie le <em>SDD</em>.</p>
 
 :::
 :::
@@ -521,47 +445,47 @@ speakernotes: |
   Engineering (conclusion).
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>On demandait un petit fix. On récupère un refactor, trois fichiers en plus, une logique « améliorée », et des tests qui passent parce qu'ils ne testent rien.</h5>
 </blockquote>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 ##### L'intention vit dans le chat
 
-<p class="xlarge-text">On ferme l'onglet, il ne reste que du code. Plus personne ne peut dire ce qui avait été demandé.</p>
+<p class="text-[1.6rem]">On ferme l'onglet, il ne reste que du code. Plus personne ne peut dire ce qui avait été demandé.</p>
 
 <h6>Contrat perdu : la transférabilité</h6>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 ##### L'agent dérive
 
-<p class="xlarge-text">Du code que personne n'a demandé, des décisions que personne n'a prises.</p>
+<p class="text-[1.6rem]">Du code que personne n'a demandé, des décisions que personne n'a prises.</p>
 
 <h6>Contrat perdu : la responsabilité</h6>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 ##### Rien n'est vérifiable
 
-<p class="xlarge-text">Sans critères d'acceptation écrits avant, « ça a l'air bon » tient lieu de recette.</p>
+<p class="text-[1.6rem]">Sans critères d'acceptation écrits avant, « ça a l'air bon » tient lieu de recette.</p>
 
 <h6>Contrat perdu : la vérifiabilité</h6>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
 #### Ces trois contrats perdus, ce sont les trois *réponses* du SDD.
 
@@ -583,11 +507,11 @@ speakernotes: |
   (Superpowers). Le dire à l'oral ici en une phrase, ou ne pas le dire du tout.
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s7 left-align"}
+:::col{class="col-span-7 text-left"}
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li><strong>User story + critères d'acceptation</strong> : dire ce qu'on attend, avant de le construire.</li>
   <li><strong>Gherkin, BDD</strong> : la règle métier écrite dans une forme que la machine relit.</li>
   <li><strong>TDD</strong> : le critère d'abord, le code ensuite.</li>
@@ -598,11 +522,11 @@ speakernotes: |
 
 :::
 
-:::col{class="s5 left-align"}
+:::col{class="col-span-5 text-left"}
 
-<article class="round border">
+<article class="card">
   <h6>Le vocabulaire de la suite</h6>
-  <ul class="xlarge-text">
+  <ul class="text-[1.6rem]">
     <li><strong>spec</strong> : le quoi et le pourquoi, avec les critères</li>
     <li><strong>plan</strong> : le comment, les choix techniques</li>
     <li><strong>task</strong> : une unité de travail vérifiable</li>
@@ -614,7 +538,7 @@ speakernotes: |
 
 :::
 
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 
 #### On a toujours écrit des specs. Ce qui change : elles doivent être *relisibles par une machine*, et versionnées.
 
@@ -652,41 +576,41 @@ speakernotes: |
   talk gitnation From Prompt Spaghetti to Bounded Contexts.
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 ##### Langage ubiquitaire
 
-<p class="xlarge-text">Un mot, un sens, partout. L'agent cherche les noms qu'on lui donne : deux concepts qui portent le même mot finissent fusionnés.</p>
+<p class="text-[1.6rem]">Un mot, un sens, partout. L'agent cherche les noms qu'on lui donne : deux concepts qui portent le même mot finissent fusionnés.</p>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 ##### Bounded contexts
 
-<p class="xlarge-text">Des frontières écrites. Elles disent à l'agent où s'arrête son périmètre, et elles découpent le travail en tranches parallélisables.</p>
+<p class="text-[1.6rem]">Des frontières écrites. Elles disent à l'agent où s'arrête son périmètre, et elles découpent le travail en tranches parallélisables.</p>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 ##### Invariants
 
-<p class="xlarge-text">Les règles que le domaine ne tolère pas de casser. Ce sont déjà des critères d'acceptation.</p>
+<p class="text-[1.6rem]">Les règles que le domaine ne tolère pas de casser. Ce sont déjà des critères d'acceptation.</p>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>La valeur du modèle de domaine, c'est la compréhension partagée qu'il construit dans l'équipe, pas le fichier. Une spec générée que personne ne lit ne résout rien.</h5>
 </blockquote>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
 #### Connaître son domaine vaut désormais plus que connaître un *framework*.
 
@@ -695,7 +619,7 @@ speakernotes: |
 
 ---
 layout: bare
-class: transition
+class: slide-main slide-hero flex flex-col items-center justify-center text-center
 speakernotes: |
   Transition partie 2 - Le SDD et son intérêt. 10 minutes, S11 à S17. C'est le
   cœur du talk.
@@ -706,9 +630,9 @@ speakernotes: |
 
 <h6 class="numero">Partie 2</h6>
 
-<h2>Le spec-driven development</h2>
+<h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Le <em>spec-driven development</em></h1>
 
-<h5>Ce que c'est, pourquoi ça marche, et ce que ça <em>coûte</em></h5>
+<p class="text-fg-muted mt-6 text-3xl font-medium">Ce que c'est, pourquoi ça marche, et ce que ça coûte</p>
 
 ---
 layout: default
@@ -724,37 +648,37 @@ speakernotes: |
   (martinfowler.com) ; podcast Thoughtworks What is spec-driven development.
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
 ### La spec devient un *contrat exécutable*, dont les agents dérivent le code.
 
 :::
 
-:::col{class="s6"}
+:::col{class="col-span-6"}
 
 ##### La documentation
 
-<p class="xlarge-text">Elle décrit ce qu'on a fait. Elle est passive : rien ne se
+<p class="text-[1.6rem]">Elle décrit ce qu'on a fait. Elle est passive : rien ne se
 casse quand le code s'en éloigne, et personne ne s'en aperçoit.</p>
 
 :::
 
-:::col{class="s6"}
+:::col{class="col-span-6"}
 
 ##### La spec
 
-<p class="xlarge-text">Elle dit ce qu'on attend. Elle est appliquée : la dérive
+<p class="text-[1.6rem]">Elle dit ce qu'on attend. Elle est appliquée : la dérive
 se détecte par l'outillage, pas par la bonne volonté de chacun.</p>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
 #### *The spec is the prompt.*
 
-<p class="xlarge-text">Ce qu'on écrit une fois sert trois fois : à demander,
+<p class="text-[1.6rem]">Ce qu'on écrit une fois sert trois fois : à demander,
 à revoir, à vérifier.</p>
 
 :::
@@ -785,7 +709,12 @@ speakernotes: |
   Source : Böckeler, martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
 ---
 
-<table class="border xlarge-text">
+<!-- Le gabarit des cinq tableaux du deck. beercss donnait inline-size:100%,
+     border-spacing:0 et 0.5rem de padding de cellule : le chassis les porte
+     maintenant. Restent le corps de 1.6rem (xlarge-text) et le filet sous
+     chaque ligne sauf la dernière (table.border), redessiné par les variantes
+     [&_...] ci-dessous. -->
+<table class="w-full border-collapse text-[1.6rem] [&_thead_th]:border-b [&_thead_th]:border-outline [&_tbody_tr:not(:last-child)_td]:border-b [&_tbody_tr:not(:last-child)_td]:border-outline">
   <thead>
     <tr>
       <th>Niveau</th>
@@ -816,7 +745,7 @@ speakernotes: |
   </tbody>
 </table>
 
-<p class="xlarge-text center-align">Le niveau 3, c'est ce que les compilateurs
+<p class="text-[1.6rem] text-center">Le niveau 3, c'est ce que les compilateurs
 ont fait à l'assembleur : un artefact que <em>plus personne n'édite à la
 main</em>.</p>
 
@@ -870,11 +799,11 @@ speakernotes: |
   Source : github/spec-kit (lire les templates, pas le README).
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s7 left-align"}
+:::col{class="col-span-7 text-left"}
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li><strong>Le résultat attendu</strong> : ce qui doit être vrai quand c'est fini.</li>
   <li><strong>Les limites du périmètre</strong> : ce qu'on ne touche pas, et qu'on ne veut pas voir bouger.</li>
   <li><strong>Les contraintes</strong> : performance, sécurité, compatibilité, budget.</li>
@@ -885,11 +814,11 @@ speakernotes: |
 
 :::
 
-:::col{class="s5 left-align"}
+:::col{class="col-span-5 text-left"}
 
-<article class="round border">
+<article class="card">
   <h6>Le test qui ne trompe pas</h6>
-  <p class="xlarge-text">Donne ta spec à un collègue qui ne connaît pas le
+  <p class="text-[1.6rem]">Donne ta spec à un collègue qui ne connaît pas le
   sujet. S'il doit te poser une question avant de commencer, note-la : c'est
   exactement le trou que l'agent, lui, ne signalera pas. Il choisira tout
   seul, et il choisira vite.</p>
@@ -897,7 +826,7 @@ speakernotes: |
 
 :::
 
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 
 #### Tout ce que tu n'écris pas, l'agent l'*invente*.
 
@@ -921,39 +850,39 @@ speakernotes: |
   qui vérifie.
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s6"}
+:::col{class="col-span-6"}
 
 ##### En amont : l'*intention*
 
-<ul class="xlarge-text left-align">
+<ul class="text-[1.6rem] text-left">
   <li>La spec porte l'état que le modèle n'a pas. Le travail redevient reprenable d'une session à l'autre, et transférable d'un agent à l'autre.</li>
   <li>Des contrats écrits et des périmètres séparés : plusieurs agents avancent en même temps sans se marcher dessus.</li>
 </ul>
 
 :::
 
-:::col{class="s6"}
+:::col{class="col-span-6"}
 
 ##### En aval : la *vérification*
 
-<ul class="xlarge-text left-align">
+<ul class="text-[1.6rem] text-left">
   <li>Les critères sont écrits avant, donc la sortie se juge au lieu de se deviner. Et celui qui vérifie n'est plus celui qui implémente.</li>
   <li>Violation d'architecture, contrat d'API qui glisse : un test unitaire ne peut structurellement pas les voir. Une spec, si.</li>
 </ul>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>La revue remonte d'un cran : 200 lignes de markdown qu'on a écrites, au lieu de 2 000 lignes de diff qu'on n'a pas écrites.</h5>
 </blockquote>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
 #### Aucun de ces gains ne vient du modèle. Ils viennent du fait d'avoir écrit.
 
@@ -982,7 +911,7 @@ speakernotes: |
   Back (la critique à connaître pour tenir les questions).
 ---
 
-<table class="border xlarge-text">
+<table class="w-full border-collapse text-[1.6rem] [&_thead_th]:border-b [&_thead_th]:border-outline [&_tbody_tr:not(:last-child)_td]:border-b [&_tbody_tr:not(:last-child)_td]:border-outline">
   <thead>
     <tr>
       <th></th>
@@ -1019,7 +948,7 @@ speakernotes: |
   </tbody>
 </table>
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>La critique, telle qu'elle se formule : une spec utile dépend de ce qu'on apprend en développant, et l'intérêt de l'IA est d'accélérer les boucles de feedback, pas de les geler.</h5>
   <h5>Elle est juste. Elle vise le niveau 3, et tout workflow qui fige ses hypothèses. Au niveau 2, la spec <em>change pendant</em> l'implémentation.</h5>
 </blockquote>
@@ -1057,28 +986,28 @@ speakernotes: |
   runs BMAD.
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 <h3><em>4 stories, 16 critères</em></h3>
 
-<p class="xlarge-text">pour <strong>un seul petit bug</strong></p>
+<p class="text-[1.6rem]">pour <strong>un seul petit bug</strong></p>
 
-<p class="xlarge-text">La cérémonie ne se dimensionne pas toute seule. Pour un
+<p class="text-[1.6rem]">La cérémonie ne se dimensionne pas toute seule. Pour un
 null check d'une ligne, on ne touche pas à la constitution.</p>
 
 <h6>Birgitta Böckeler, en lançant Kiro</h6>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 <h3><em>31 700</em></h3>
 
-<p class="xlarge-text">tokens en moyenne<br/>par run de workflow</p>
+<p class="text-[1.6rem]">tokens en moyenne<br/>par run de workflow</p>
 
-<p class="xlarge-text">Sur de gros projets, ça fait <strong>800 à 2 000 $ par
+<p class="text-[1.6rem]">Sur de gros projets, ça fait <strong>800 à 2 000 $ par
 mois et par développeur</strong> de coûts d'API. La cérémonie se paie en
 tokens.</p>
 
@@ -1086,13 +1015,13 @@ tokens.</p>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 <h3><em>+30 à 41 %</em></h3>
 
-<p class="xlarge-text">de dette technique<br/>avec l'adoption de l'IA</p>
+<p class="text-[1.6rem]">de dette technique<br/>avec l'adoption de l'IA</p>
 
-<p class="xlarge-text">Et des PR générées par IA qui portent <strong>1,7 fois
+<p class="text-[1.6rem]">Et des PR générées par IA qui portent <strong>1,7 fois
 plus de problèmes</strong>. C'est ce que le SDD cherche à éviter, pas ce qu'il
 garantit d'éviter.</p>
 
@@ -1100,9 +1029,9 @@ garantit d'éviter.</p>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>Le marteau-pilon pour un petit clou : le SDD passe mal à l'échelle vers le bas.</h5>
   <h5>Et la dérive spec/code, personne ne l'a résolue. Aucun outil ne réconcilie tout seul : il faut le déclencher, et relire la sortie.</h5>
 </blockquote>
@@ -1112,7 +1041,7 @@ garantit d'éviter.</p>
 
 ---
 layout: bare
-class: transition
+class: slide-main slide-hero flex flex-col items-center justify-center text-center
 speakernotes: |
   Transition partie 3 - Le panorama des frameworks. 10 minutes, S18 à S24.
   Le piège n°1 du talk est ici : le catalogue d'outils. Le dire à voix haute en
@@ -1124,9 +1053,9 @@ speakernotes: |
 
 <h6 class="numero">Partie 3</h6>
 
-<h2>Le panorama des frameworks</h2>
+<h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Le panorama des <em>frameworks</em></h1>
 
-<h5>Mode plan, Spec Kit, OpenSpec, Superpowers, BMAD, et ce qu'ils ont <em>en commun</em></h5>
+<p class="text-fg-muted mt-6 text-3xl font-medium">Mode plan, Spec Kit, OpenSpec, Superpowers, BMAD, et ce qu'ils ont en commun</p>
 
 ---
 layout: default
@@ -1145,31 +1074,31 @@ speakernotes: |
   explicitement, sinon le panorama devient un catalogue.
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s5 left-align"}
+:::col{class="col-span-5 text-left"}
 
 <h6>Pourquoi c'est illisible : ils ne jouent pas au même étage</h6>
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li><strong>Définir</strong> les artefacts d'exigence</li>
   <li><strong>Convertir</strong> en graphe de tâches</li>
   <li><strong>Exécuter</strong> le code</li>
   <li><strong>S'intégrer</strong> à l'IDE</li>
 </ul>
 
-<p class="xlarge-text">Plus de <strong>30 outils</strong> recensés début 2026.
+<p class="text-[1.6rem]">Plus de <strong>30 outils</strong> recensés début 2026.
 Deux d'entre eux ne font souvent pas le même métier.</p>
 
 :::
 
-:::col{class="s7 left-align"}
+:::col{class="col-span-7 text-left"}
 
-<article class="round border">
+<article class="card">
   <h6>Niveau 0 : le mode plan (Claude Code, Cursor)</h6>
-  <p class="xlarge-text"><strong>Ce qu'il fait</strong> : l'agent écrit son
+  <p class="text-[1.6rem]"><strong>Ce qu'il fait</strong> : l'agent écrit son
   plan, tu le lis, tu corriges, il exécute. Zéro installation.</p>
-  <p class="xlarge-text"><strong>Où il s'arrête</strong> : le plan est
+  <p class="text-[1.6rem]"><strong>Où il s'arrête</strong> : le plan est
   éphémère. Rien n'est persisté, rien n'est versionné, aucun gate n'est
   imposé. Parfait pour une tâche de 30 minutes. Insuffisant dès qu'il y a
   plusieurs sessions, plusieurs agents, ou une revue par un tiers.</p>
@@ -1177,7 +1106,7 @@ Deux d'entre eux ne font souvent pas le même métier.</p>
 
 :::
 
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 
 #### Le mode plan est notre *témoin*. Les quatre outils qui suivent se lisent par rapport à lui.
 
@@ -1220,13 +1149,13 @@ speakernotes: |
   les chiffres de popularité ne le sont pas.
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s7 left-align"}
+:::col{class="col-span-7 text-left"}
 
 <h6>Ce qu'il ajoute au mode plan</h6>
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li><strong>Trois commandes, trois fichiers qui restent</strong> :
   <code>specify</code> pour le métier et les critères de succès,
   <code>plan</code> pour les décisions d'architecture, <code>tasks</code> pour
@@ -1240,11 +1169,11 @@ speakernotes: |
 
 :::
 
-:::col{class="s5 left-align"}
+:::col{class="col-span-5 text-left"}
 
-<article class="round border">
+<article class="card">
   <h6>Ce qu'il demande en retour</h6>
-  <ul class="xlarge-text">
+  <ul class="text-[1.6rem]">
     <li>Un CLI Python à installer, et beaucoup de texte à lire.</li>
     <li>Aucune étape de revue de code dans le workflow.</li>
     <li>Changer de direction, c'est relancer la commande : elle régénère tout
@@ -1254,7 +1183,7 @@ speakernotes: |
 
 :::
 
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 
 #### Projet neuf, gates visibles, et on accepte la *verbosité*. C'est l'outil le plus distribué de la catégorie.
 
@@ -1287,13 +1216,13 @@ speakernotes: |
   ranthebuilder.cloud pour les chiffres de comparaison. Vérifié le 11/09/2026.
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s7 left-align"}
+:::col{class="col-span-7 text-left"}
 
 <h6>Ce qu'il ajoute au mode plan</h6>
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li><strong>Des delta specs</strong> : on décrit ce qui change, pas le
   système entier. Chaque document reste court et relisable.</li>
   <li><strong>Cinq étapes, trois commandes</strong> : explore, propose, apply,
@@ -1302,17 +1231,17 @@ speakernotes: |
   phase gate à repasser.</li>
 </ul>
 
-<p class="xlarge-text">Installation en <strong>5 minutes</strong> au lieu de
+<p class="text-[1.6rem]">Installation en <strong>5 minutes</strong> au lieu de
 30, pas de Python, environ <strong>250 lignes</strong> produites au lieu de
 800.</p>
 
 :::
 
-:::col{class="s5 left-align"}
+:::col{class="col-span-5 text-left"}
 
-<article class="round border">
+<article class="card">
   <h6>Ce qu'il demande en retour</h6>
-  <ul class="xlarge-text">
+  <ul class="text-[1.6rem]">
     <li>Aucun gate de revue entre les phases : la discipline reste chez
     toi.</li>
     <li>Un support communautaire limité.</li>
@@ -1321,7 +1250,7 @@ speakernotes: |
 
 :::
 
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 
 #### Le même travail que Spec Kit, avec *moins de cérémonie*. Et c'est lui qui est pensé pour du code qui existe déjà.
 
@@ -1368,13 +1297,13 @@ speakernotes: |
   blog de Jesse Vincent sur la genèse du plugin.
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s7 left-align"}
+:::col{class="col-span-7 text-left"}
 
 <h6>Ce qu'il ajoute au mode plan</h6>
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li><strong>Un ordre imposé</strong>, avant la moindre ligne de code :
   brainstormer, isoler sa branche, écrire le plan, exécuter. Chaque étape
   conditionne la suivante.</li>
@@ -1388,11 +1317,11 @@ speakernotes: |
 
 :::
 
-:::col{class="s5 left-align"}
+:::col{class="col-span-5 text-left"}
 
-<article class="round border">
+<article class="card">
   <h6>Ce qu'il demande en retour</h6>
-  <ul class="xlarge-text">
+  <ul class="text-[1.6rem]">
     <li>Le plugin traite les agents comme un manager expérimenté traite des
     juniors. À toi de tenir le rôle du manager.</li>
     <li>Ses skills sont écrites pour contrer la tendance de l'agent à
@@ -1402,7 +1331,7 @@ speakernotes: |
 
 :::
 
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 
 #### Ce n'est pas un dépôt de specs, c'est une méthode livrée comme des skills. Le SDD est d'abord un problème de *discipline*.
 
@@ -1435,13 +1364,13 @@ speakernotes: |
   Vérifié le 11/09/2026.
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s7 left-align"}
+:::col{class="col-span-7 text-left"}
 
 <h6>Ce qu'il ajoute au mode plan</h6>
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li><strong>12 agents aux rôles nommés</strong> : Analyst, PM, Architect, UX
   Designer, Scrum Master, Developer, QA, Tech Writer. Chacun reçoit un contexte
   étroit et rend un artefact versionné.</li>
@@ -1454,11 +1383,11 @@ speakernotes: |
 
 :::
 
-:::col{class="s5 left-align"}
+:::col{class="col-span-5 text-left"}
 
-<article class="round border">
+<article class="card">
   <h6>Ce qu'il demande en retour</h6>
-  <ul class="xlarge-text">
+  <ul class="text-[1.6rem]">
     <li>Le rituel complet, même quand la tâche ne le justifie pas.</li>
     <li>Du temps, et des tokens. Le chiffre est sur le slide suivant.</li>
   </ul>
@@ -1466,7 +1395,7 @@ speakernotes: |
 
 :::
 
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 
 #### Toujours le même squelette que les deux précédents, avec la cérémonie poussée au *maximum*.
 
@@ -1505,7 +1434,7 @@ speakernotes: |
   consommation de tokens sur des runs BMAD. Vérifié le 11/09/2026.
 ---
 
-<table class="border xlarge-text">
+<table class="w-full border-collapse text-[1.6rem] [&_thead_th]:border-b [&_thead_th]:border-outline [&_tbody_tr:not(:last-child)_td]:border-b [&_tbody_tr:not(:last-child)_td]:border-outline">
   <thead>
     <tr>
       <th></th>
@@ -1537,7 +1466,7 @@ speakernotes: |
   </tbody>
 </table>
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>BMAD est excellent. Il est aussi coûteux, et disproportionné pour la plus grande partie du travail d'une semaine d'ingénierie : <strong>800 à 2 000 $ par mois et par développeur</strong> en API sur de gros projets.</h5>
   <h5>Le bon réflexe n'est pas de choisir le plus complet. C'est de choisir la <em>plus petite dose de cérémonie</em> qui tient le problème.</h5>
 </blockquote>
@@ -1555,17 +1484,17 @@ speakernotes: |
   pas un prérequis.
 ---
 
-<div class="large-space"></div>
+<div class="h-12"></div>
 
 ### règles &rarr; spec &rarr; plan &rarr; tasks
 
 ##### Plus des gates humains. Les quatre outils écrivent les mêmes artefacts : ils ne diffèrent que par la dose de cérémonie.
 
-<div class="large-space"></div>
+<div class="h-12"></div>
 
 #### L'humain reste dans la boucle. Mais pas sur tout.
 
-<div class="small-space"></div>
+<div class="h-8"></div>
 
 ### Tu peux commencer demain avec *trois fichiers markdown* et un gate.
 
@@ -1573,7 +1502,7 @@ speakernotes: |
 
 ---
 layout: bare
-class: transition
+class: slide-main slide-hero flex flex-col items-center justify-center text-center
 speakernotes: |
   Transition partie 4 - Découpler et accélérer. 7 minutes, S25 à S29.
   C'est la partie qui répond à la cinquième question du brief : en quoi le SDD
@@ -1584,9 +1513,9 @@ speakernotes: |
 
 <h6 class="numero">Partie 4</h6>
 
-<h2>Découpler, et accélérer</h2>
+<h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Découpler, et <em>accélérer</em></h1>
 
-<h5>Ce que le SDD sépare, et ce que ça fait gagner, <em>vraiment</em></h5>
+<p class="text-fg-muted mt-6 text-3xl font-medium">Ce que le SDD sépare, et ce que ça fait gagner, vraiment</p>
 
 ---
 layout: content
@@ -1609,7 +1538,7 @@ speakernotes: |
   s'arrêter sur la ligne 3, et enchaîner sur S26.
 ---
 
-<table class="border xlarge-text">
+<table class="w-full border-collapse text-[1.6rem] [&_thead_th]:border-b [&_thead_th]:border-outline [&_tbody_tr:not(:last-child)_td]:border-b [&_tbody_tr:not(:last-child)_td]:border-outline">
   <thead>
     <tr>
       <th>Ce que le SDD sépare</th>
@@ -1640,7 +1569,7 @@ speakernotes: |
   </tbody>
 </table>
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>Quatre de ces découplages font gagner du confort. Le troisième est le seul qui déplace vraiment le goulot, et c'est celui qu'on regarde maintenant.</h5>
 </blockquote>
 
@@ -1676,47 +1605,47 @@ speakernotes: |
   Source : DORA 2026, The ROI of AI-assisted Software Development (Google).
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
 <h3>DORA 2026 lui a donné un nom : la <em>taxe de vérification</em>.</h3>
 
-<p class="xlarge-text">L'effort économisé sur la frappe ne disparaît pas. Il se
+<p class="text-[1.6rem]">L'effort économisé sur la frappe ne disparaît pas. Il se
 relocalise en aval, sur la revue.</p>
 
 :::
 
-:::col{class="s4 left-align"}
+:::col{class="col-span-4 text-left"}
 
 <h6>La fréquence de déploiement ne monte pas</h6>
 
-<p class="xlarge-text">Le goulot s'est déplacé de l'écriture vers la revue. On
+<p class="text-[1.6rem]">Le goulot s'est déplacé de l'écriture vers la revue. On
 produit plus, on ne livre pas plus souvent.</p>
 
 :::
 
-:::col{class="s4 left-align"}
+:::col{class="col-span-4 text-left"}
 
 <h6>Le lead time ne baisse pas</h6>
 
-<p class="xlarge-text">Le code arrive plus vite à la PR. Et il y attend plus
+<p class="text-[1.6rem]">Le code arrive plus vite à la PR. Et il y attend plus
 longtemps.</p>
 
 :::
 
-:::col{class="s4 left-align"}
+:::col{class="col-span-4 text-left"}
 
 <h6>Le temps de revue, lui, augmente</h6>
 
-<p class="xlarge-text">Souvent même quand le lead time total diminue : les
+<p class="text-[1.6rem]">Souvent même quand le lead time total diminue : les
 relecteurs encaissent un volume croissant de code qu'ils n'ont pas écrit.</p>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>C'est le 4,6&times; d'attente et les +91 % de temps de revue du début du talk, expliqués en un mot.</h5>
   <h5>Le SDD ne supprime pas cette taxe. Il donne au relecteur l'intention écrite contre laquelle juger.</h5>
 </blockquote>
@@ -1755,51 +1684,51 @@ speakernotes: |
   Spec Kit ; AWS, cas clients Kiro. Vérifié le 11/09/2026.
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 <h3><em>+150 %</em></h3>
 
-<p class="xlarge-text">de vitesse<br/>sur la baseline traditionnelle</p>
+<p class="text-[1.6rem]">de vitesse<br/>sur la baseline traditionnelle</p>
 
-<p class="xlarge-text">Et <strong>+80 %</strong> sur du prompting IA en format
+<p class="text-[1.6rem]">Et <strong>+80 %</strong> sur du prompting IA en format
 libre. Méthodologie interne publiée, six mois de recul.</p>
 
 <h6>Mercari, place de marché japonaise, 22 millions d'utilisateurs par mois</h6>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 <h3><em>1 ordre de grandeur</em></h3>
 
-<p class="xlarge-text">de régénérations<br/><strong>from scratch</strong> en
+<p class="text-[1.6rem]">de régénérations<br/><strong>from scratch</strong> en
 moins</p>
 
-<p class="xlarge-text">Les équipes qui travaillent avec Spec Kit recommencent
+<p class="text-[1.6rem]">Les équipes qui travaillent avec Spec Kit recommencent
 bien moins souvent à zéro qu'avec du prompting ad hoc.</p>
 
 <h6>GitHub, retours d'usage de Spec Kit</h6>
 
 :::
 
-:::col{class="s4"}
+:::col{class="col-span-4"}
 
 <h3><em>40 h &rarr; 8 h</em></h3>
 
-<p class="xlarge-text">de temps humain<br/>sur la même fonctionnalité</p>
+<p class="text-[1.6rem]">de temps humain<br/>sur la même fonctionnalité</p>
 
-<p class="xlarge-text">Des fonctionnalités estimées à 40 heures, livrées en
+<p class="text-[1.6rem]">Des fonctionnalités estimées à 40 heures, livrées en
 moins de 8, quand elles sont d'abord rédigées comme specs.</p>
 
 <h6>AWS, cas clients Kiro</h6>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>Trois chiffres auto-rapportés, sur un seul contexte d'équipe chacun, publiés par des gens qui ont intérêt au résultat. Aucun n'est un essai contrôlé.</h5>
   <h5>Je les donne quand même, parce qu'ils sont ce qu'on a de mieux aujourd'hui. Pas parce qu'ils prouvent quoi que ce soit.</h5>
 </blockquote>
@@ -1828,34 +1757,34 @@ speakernotes: |
   Source : DORA 2026, The ROI of AI-assisted Software Development (Google).
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s6"}
+:::col{class="col-span-6"}
 
 <h3><em>+35 à 40 %</em></h3>
 
-<p class="xlarge-text">sur des tâches simples,<br/>en <strong>greenfield</strong></p>
+<p class="text-[1.6rem]">sur des tâches simples,<br/>en <strong>greenfield</strong></p>
 
 :::
 
-:::col{class="s6"}
+:::col{class="col-span-6"}
 
 <h3><em>10 % ou moins</em></h3>
 
-<p class="xlarge-text">pour des développeurs expérimentés,<br/>sur du
+<p class="text-[1.6rem]">pour des développeurs expérimentés,<br/>sur du
 <strong>brownfield complexe</strong></p>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
 <h6>DORA 2026</h6>
 
-<p class="xlarge-text">Petit changement, spike exploratoire, domaine encore
+<p class="text-[1.6rem]">Petit changement, spike exploratoire, domaine encore
 flou, legacy sans tests : la cérémonie coûte alors plus cher qu'elle ne
 rapporte.</p>
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>Le SDD est un investissement, et son retour dépend de la taille du changement.</h5>
   <h5>Il passe mal à l'échelle vers le bas : seize critères d'acceptation pour un bug d'une ligne, on l'a déjà vu tout à l'heure.</h5>
 </blockquote>
@@ -1886,13 +1815,13 @@ speakernotes: |
   Source : DORA 2026, The ROI of AI-assisted Software Development (Google).
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s7 left-align"}
+:::col{class="col-span-7 text-left"}
 
 <h6>Ce qu'on regarde, à la place des lignes de code</h6>
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li><strong>Le lead time jusqu'à la prod</strong>, pas jusqu'à la PR.</li>
   <li><strong>Le temps de revue</strong>, compté à part : c'est là que la taxe
   se paie.</li>
@@ -1905,11 +1834,11 @@ speakernotes: |
 
 :::
 
-:::col{class="s5 left-align"}
+:::col{class="col-span-5 text-left"}
 
-<article class="round border">
+<article class="card">
   <h6>Le repère qui manque à presque tout le monde</h6>
-  <ul class="xlarge-text">
+  <ul class="text-[1.6rem]">
     <li><strong>7,3 %</strong> des équipes seulement ont un taux de rework sous
     2 %.</li>
     <li>Sous <strong>10 %</strong>, c'est la performance élite.</li>
@@ -1921,7 +1850,7 @@ speakernotes: |
 
 :::
 
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 
 #### Le rework est une taxe cachée sur la productivité. Générer plus de code peut très vite l'*aggraver*.
 
@@ -1930,7 +1859,7 @@ speakernotes: |
 
 ---
 layout: bare
-class: transition
+class: slide-main slide-hero flex flex-col items-center justify-center text-center
 speakernotes: |
   Transition partie 5 - Retour au product engineer. 3 minutes, S30 à S33.
   Volontairement la plus courte du deck : deux lignes, et on enchaîne. Elle
@@ -1940,12 +1869,12 @@ speakernotes: |
 
 <h6 class="numero">Partie 5</h6>
 
-<h2>Retour au product engineer</h2>
+<h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Retour au <em>product engineer</em></h1>
 
 ---
 layout: default
 title: "Boucle fermée : l'artefact du product engineer"
-class: main responsive large-height
+class: slide-main slide-narrow slide-prose flex flex-col justify-center
 speakernotes: |
   S30 - La résolution de S5. Même layout, même phrase, même mise en forme :
   la salle doit voir la boucle se fermer sans qu'on l'explique.
@@ -1959,28 +1888,28 @@ speakernotes: |
   Ne pas résumer le talk ici : les slides 31 à 33 portent la sortie.
 ---
 
-<div class="large-space"></div>
+<div class="h-12"></div>
 
 ### Le product engineer avait besoin d'un artefact pour porter l'intention.
 
 #### On vient de passer 35 minutes à décrire cet artefact, et son outillage.
 
-<div class="large-space"></div>
+<div class="h-12"></div>
 
-<blockquote class="charniere">
+<blockquote class="quote charniere">
   <h4>Sans SDD, un product engineer n'est qu'un dev surchargé à qui on a retiré son PM.</h4>
   <h5>Il a besoin d'un artefact pour porter l'intention jusqu'à la machine. Cet artefact, c'est la <em>spec</em>.</h5>
 </blockquote>
 
-<div class="large-space"></div>
+<div class="h-12"></div>
 
-<div class="grid center-align">
-  <div class="s2"><h6>Cadrer un problème</h6></div>
-  <div class="s3"><h6>Modéliser un domaine</h6></div>
-  <div class="s3"><h6>Écrire des critères vérifiables</h6></div>
-  <div class="s2"><h6>Arbitrer</h6></div>
-  <div class="s2"><h6>Concevoir la vérification</h6></div>
-  <div class="s12"><h5><em>La vitesse de frappe compte moins.</em></h5></div>
+<div class="grid grid-cols-12 gap-4 text-center">
+  <div class="col-span-2"><h6>Cadrer un problème</h6></div>
+  <div class="col-span-3"><h6>Modéliser un domaine</h6></div>
+  <div class="col-span-3"><h6>Écrire des critères vérifiables</h6></div>
+  <div class="col-span-2"><h6>Arbitrer</h6></div>
+  <div class="col-span-2"><h6>Concevoir la vérification</h6></div>
+  <div class="col-span-12"><h5><em>La vitesse de frappe compte moins.</em></h5></div>
 </div>
 
 ---
@@ -2025,51 +1954,51 @@ speakernotes: |
   Engineer Manifesto.
 ---
 
-:::grid{class="grid large-height center-align"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
 <h3>Un bon product engineer a besoin d'un <em>cadre solide autour de lui</em>.</h3>
 
-<p class="xlarge-text">Des releases disciplinées, des frontières de
+<p class="text-[1.6rem]">Des releases disciplinées, des frontières de
 responsabilité claires, une infra de test fiable, un leadership technique
 expérimenté. Sans ça, le rôle ne tient pas.</p>
 
 :::
 
-:::col{class="s4 left-align"}
+:::col{class="col-span-4 text-left"}
 
 <h6>Tout le monde ne peut pas l'être</h6>
 
-<p class="xlarge-text">Profondeur technique, intuition produit, communication,
+<p class="text-[1.6rem]">Profondeur technique, intuition produit, communication,
 conscience business, forte autogestion. Ça fait beaucoup pour une seule
 personne, et ce n'est pas une question de bonne volonté.</p>
 
 :::
 
-:::col{class="s4 left-align"}
+:::col{class="col-span-4 text-left"}
 
 <h6>Le risque générationnel</h6>
 
-<p class="xlarge-text">Les plus exposés sont les profils mi-carrière, ceux qui
+<p class="text-[1.6rem]">Les plus exposés sont les profils mi-carrière, ceux qui
 portent la connaissance institutionnelle. Et moins d'embauches juniors, c'est
 le transfert de compétences qui casse.</p>
 
 :::
 
-:::col{class="s4 left-align"}
+:::col{class="col-span-4 text-left"}
 
 <h6>L'erreur la plus coûteuse</h6>
 
-<p class="xlarge-text">Déléguer l'autorité produit trop tôt, sans supervision
+<p class="text-[1.6rem]">Déléguer l'autorité produit trop tôt, sans supervision
 suffisante ni maturité organisationnelle. Le titre arrive avant le cadre, et
 c'est l'équipe qui paie.</p>
 
 :::
 
-:::col{class="s12"}
+:::col{class="col-span-12"}
 
-<blockquote class="left-align">
+<blockquote class="text-left">
   <h5>« Beaucoup de gens qui veulent faire du produit veulent faire de la stratégie et prendre des décisions. Au quotidien, c'est surtout de la <em>delivery</em>. »</h5>
   <h5>Ne devenez pas product engineer pour faire de la stratégie.</h5>
 </blockquote>
@@ -2097,7 +2026,7 @@ speakernotes: |
   d'installer un framework. C'est le même message qu'en S24.
 ---
 
-<table class="border xlarge-text">
+<table class="w-full border-collapse text-[1.6rem] [&_thead_th]:border-b [&_thead_th]:border-outline [&_tbody_tr:not(:last-child)_td]:border-b [&_tbody_tr:not(:last-child)_td]:border-outline">
   <thead>
     <tr>
       <th>Ce que tu peux faire lundi</th>
@@ -2128,7 +2057,7 @@ speakernotes: |
   </tbody>
 </table>
 
-<p class="xlarge-text center-align">Aucune de ces cinq actions ne demande
+<p class="text-[1.6rem] text-center">Aucune de ces cinq actions ne demande
 d'installer un framework. Elles sont rangées par coût croissant : <em>commence
 par la première</em>.</p>
 
@@ -2155,27 +2084,27 @@ speakernotes: |
   Terminer là-dessus, sans revenir sur le plan du talk.
 ---
 
-:::grid{class="grid large-height"}
+:::grid{class="grid grid-cols-12 gap-4 h-stage-large"}
 
-:::col{class="s6 left-align"}
+:::col{class="col-span-6 text-left"}
 
 <h6>Cet après-midi, l'atelier</h6>
 
-<p class="xlarge-text">La démo n'est pas dans ce talk, elle est là-bas. On
+<p class="text-[1.6rem]">La démo n'est pas dans ce talk, elle est là-bas. On
 passe du support à du vrai code, et on écrit des specs pour de bon.</p>
 
 <h6>À lire ensuite, en français</h6>
 
-<p class="xlarge-text">Damien Gouron, <em>Spec-Driven Development : le guide
+<p class="text-[1.6rem]">Damien Gouron, <em>Spec-Driven Development : le guide
 pratique</em>, sur Medium.</p>
 
 :::
 
-:::col{class="s6 left-align"}
+:::col{class="col-span-6 text-left"}
 
 <h6>Trois questions que je laisse ouvertes</h6>
 
-<ul class="xlarge-text">
+<ul class="text-[1.6rem]">
   <li>La dérive spec/code : aucun outil ne réconcilie tout seul. Qui tient les
   specs à jour dans six mois ?</li>
   <li>Le niveau 3 : est-ce qu'on ira vraiment vers la spec comme seule source,
@@ -2186,7 +2115,7 @@ pratique</em>, sur Medium.</p>
 
 :::
 
-:::col{class="s12 center-align"}
+:::col{class="col-span-12 text-center"}
 
 ### Merci. Et maintenant, vos questions.
 
