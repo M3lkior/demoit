@@ -29,9 +29,24 @@
 {{/* `if` rather than `with` throughout: `with` rebinds the dot to the string
      it tests, and `$` is the root Slide, not the logo -- so the pair would
      have no way left to name the other half of itself. */}}
+{{/* Sized the way coverLogos is, and for the same reason: a fixed height, a
+     free width, and object-contain. The square `size-12 object-cover` this
+     replaces was beercss's round avatar carried over, and it *cropped* rather
+     than fitted -- which a speaker's own logo survives, since those are square
+     (zatsit is 451x455), but no event logo does. La Cite de l'IA is 277x178
+     and impact-framework's is a 16:9 PNG: both lost their right-hand side, one
+     visibly, the other quietly on a white plate.
+
+     rounded-lg, not rounded-full: on a wide logo a full round is an ellipse,
+     and it eats exactly the edges we just stopped cropping. The soft corner
+     still reads on a logo with an opaque ground, and is invisible on a
+     transparent SVG, which is what it was already worth there.
+
+     max-w-40 caps a very wide logo so it cannot push the title out of its own
+     header. */}}
 {{ define "logos" }}<div class="flex items-center gap-4">
-    {{ range .Talk.Logos }}{{ if .White }}<img class="size-12 rounded-full object-cover{{ if .Dark }} dark:hidden{{ end }}" src="{{ .White }}">
-    {{ end }}{{ if .Dark }}<img class="size-12 rounded-full object-cover hidden dark:block" src="{{ .Dark }}">
+    {{ range .Talk.Logos }}{{ if .White }}<img class="h-12 w-auto max-w-40 rounded-lg object-contain{{ if .Dark }} dark:hidden{{ end }}" src="{{ .White }}">
+    {{ end }}{{ if .Dark }}<img class="h-12 w-auto max-w-40 rounded-lg object-contain hidden dark:block" src="{{ .Dark }}">
     {{ end }}{{ end }}
 </div>{{ end }}
 
@@ -44,8 +59,34 @@
     {{ end }}{{ end }}
 </div>{{ end }}
 
+{{/* The star button of a slide's `github:` key, between the title and the
+     logos.
+
+     Markup from buttons.github.io, whose script turns this <a> into a live
+     counter. It stays an ordinary link to the repository until then, which is
+     what makes it safe on a stage with no network: the count is missing, the
+     slide is not broken.
+
+     data-size=large because the deck's own body text is 1.6rem, and the
+     default button is half that on a 1920px stage. */}}
+{{ define "stars" }}{{ with .Github }}<a class="github-button" href="https://github.com/{{ . }}" data-size="large" data-show-count="true" aria-label="Star {{ . }} on GitHub">Star</a>
+{{ end }}{{ end }}
+
+{{/* The title and its star button are one group, and it is the group that
+     takes flex-1 rather than the title. With flex-1 on the <h2> the title
+     stretched the whole width and shoved the button across the header, against
+     the logos, which reads as a third logo rather than as something the title
+     is about.
+
+     items-center rather than baseline: the button is an iframe the script
+     swaps in, and an iframe has no baseline to share with the heading -- it
+     would sit on the heading's descenders. shrink-0 keeps it whole under a
+     long title, which would otherwise squeeze it to nothing. */}}
 {{ define "header" }}<header class="slide-header">
-    <h2 class="flex-1 m-0 text-left">{{ .Title }}</h2>
+    <div class="flex flex-1 items-center gap-4 min-w-0">
+        <h2 class="m-0 text-left">{{ .Title }}</h2>
+        <span class="shrink-0 leading-none">{{ template "stars" . }}</span>
+    </div>
     {{ template "logos" . }}
 </header>
 {{ end }}
