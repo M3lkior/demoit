@@ -224,6 +224,13 @@ func readAttributes(reader text.Reader) (map[string]string, bool) {
 
 // scanAttributes reads `key=value` pairs up to the closing brace and returns
 // the index just past that brace.
+// boolFlags are the attribute names that may be written without a value. Every
+// other key still needs its `=`, so a forgotten value stays the slide error it
+// has always been.
+var boolFlags = map[string]bool{
+	"reveal": true,
+}
+
 func scanAttributes(body []byte, attrs map[string]string) (int, bool) {
 	for i := 0; i < len(body); {
 		i += leadingSpaces(body[i:])
@@ -234,9 +241,30 @@ func scanAttributes(body []byte, attrs map[string]string) (int, bool) {
 			return i + 1, true
 		}
 
-		key, next, ok := scanAttributeKey(body, i)
+		key, next, hasValue, ok := scanAttributeKey(body, i)
 		if !ok {
 			return 0, false
+		}
+
+		// A bare key is a flag: `reveal` rather than `reveal=true`. It is
+		// stored with an empty value, so a renderer tests for the key being
+		// present rather than for what it holds.
+		//
+		// Only the names in boolFlags may be written bare. Letting any key
+		// through would be less code, but it would spend something worth more
+		// than the saving: `::term{path}` is a typo, and it has always been
+		// reported as one. Accepting it as a flag would instead render a
+		// <web-term> with no path, and a blank terminal on stage says nothing
+		// about why.
+		if !hasValue {
+			if !boolFlags[key] {
+				return 0, false
+			}
+
+			attrs[key] = ""
+			i = next
+
+			continue
 		}
 
 		value, next, ok := scanAttributeValue(body, next)
@@ -251,18 +279,26 @@ func scanAttributes(body []byte, attrs map[string]string) (int, bool) {
 	return 0, false
 }
 
-// scanAttributeKey reads a key starting at i and returns it with the index
-// just past the `=` that must follow it.
-func scanAttributeKey(body []byte, i int) (string, int, bool) {
+// scanAttributeKey reads a key starting at i. It returns the key, the index to
+// carry on from, and whether an `=` followed — a key without one is a flag,
+// and the caller records its presence instead of reading a value.
+//
+// The index differs between the two: past the `=` when there is a value to
+// read next, and on the space or brace that ended the key when there is not.
+func scanAttributeKey(body []byte, i int) (string, int, bool, bool) {
 	end := i
 	for end < len(body) && isNameByte(body[end]) {
 		end++
 	}
-	if end == i || end >= len(body) || body[end] != '=' {
-		return "", 0, false
+	if end == i || end >= len(body) {
+		return "", 0, false, false
 	}
 
-	return string(body[i:end]), end + 1, true
+	if body[end] != '=' {
+		return string(body[i:end]), end, false, true
+	}
+
+	return string(body[i:end]), end + 1, true, true
 }
 
 // scanAttributeValue reads one value starting at i and returns it with the

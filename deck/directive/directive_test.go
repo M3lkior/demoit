@@ -216,3 +216,81 @@ func TestAttributeValuesAreHTMLEscaped(t *testing.T) {
 		t.Fatalf("got %q, want the value escaped as &lt;b&gt;", got)
 	}
 }
+
+func TestABareFlagIsOnlyAllowedForKnownFlags(t *testing.T) {
+	t.Parallel()
+
+	// `reveal` is a flag and needs no value.
+	t.Run("known flag", func(t *testing.T) {
+		t.Parallel()
+
+		got, errs := render(t, ":::col{reveal}\nDu texte.\n:::\n")
+		if len(errs) != 0 {
+			t.Fatalf("got errors %v, want none", errs)
+		}
+		if want := `<div class="reveal">`; !strings.Contains(got, want) {
+			t.Errorf("got %q, want it to contain %q", got, want)
+		}
+	})
+
+	// `path` is not, so a forgotten value stays what it has always been: a
+	// reported mistake, rather than a <web-term> pointing nowhere and a blank
+	// terminal on stage saying nothing about why.
+	t.Run("forgotten value", func(t *testing.T) {
+		t.Parallel()
+
+		got, errs := render(t, "::term{path}\n")
+		if len(errs) == 0 && strings.Contains(got, "<web-term") {
+			t.Errorf("got %q with no error, want a bare key that is not a flag to be reported", got)
+		}
+	})
+}
+
+func TestStarsRendersAGitHubButton(t *testing.T) {
+	t.Parallel()
+
+	got, errs := render(t, "::stars{repo=github/spec-kit}\n")
+	if len(errs) != 0 {
+		t.Fatalf("got errors %v, want none", errs)
+	}
+	// The label matters as much as the attributes: buttons.github.io reads the
+	// text of the <a>, so an empty element renders no button at all.
+	for _, want := range []string{
+		`class="github-button"`,
+		`href="https://github.com/github/spec-kit"`,
+		`data-show-count="true"`,
+		`>Star</a>`,
+	} {
+		if !strings.Contains(got, want) {
+			t.Errorf("got %q, want it to contain %q", got, want)
+		}
+	}
+}
+
+func TestStarsRejectsAnythingButARepoPath(t *testing.T) {
+	t.Parallel()
+
+	// The value lands in an href, so a typo has to stay a reported mistake
+	// rather than a link that quietly goes somewhere else.
+	for _, repo := range []string{
+		"",
+		"spec-kit",
+		"https://github.com/github/spec-kit",
+		"github/spec-kit/tree/main",
+		"../../etc",
+	} {
+		t.Run(repo, func(t *testing.T) {
+			t.Parallel()
+
+			markdown := "::stars{repo=" + repo + "}\n"
+			if repo == "" {
+				markdown = "::stars{repo=\"\"}\n"
+			}
+
+			got, errs := render(t, markdown)
+			if len(errs) == 0 && strings.Contains(got, "github-button") {
+				t.Errorf("got %q with no error, want %q rejected", got, repo)
+			}
+		})
+	}
+}

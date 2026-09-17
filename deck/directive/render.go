@@ -18,6 +18,7 @@ limitations under the License.
 package directive
 
 import (
+	"errors"
 	"fmt"
 	"html"
 	"strings"
@@ -36,6 +37,10 @@ type spec struct {
 	container bool
 	// attributes renders the element's attributes, leading space included.
 	attributes func(attrs map[string]string) (string, error)
+	// content is the text written between the tags of a non-container. Only
+	// ::stars needs it: buttons.github.io reads the label of its <a>, so the
+	// element cannot be written empty the way every custom element here is.
+	content string
 }
 
 // specs is the catalogue of directives, keyed by the name written in Markdown.
@@ -49,6 +54,7 @@ var specs = map[string]spec{
 	"code":         {tag: "source-code", attributes: codeAttributes},
 	"grid":         {tag: "div", container: true, attributes: gridAttributes},
 	"col":          {tag: "div", container: true, attributes: gridAttributes},
+	"stars":        {tag: "a", attributes: starsAttributes, content: "Star"},
 }
 
 // nodeRenderer renders directive nodes as demoit custom elements. It carries
@@ -93,7 +99,7 @@ func (r *nodeRenderer) render(w util.BufWriter, _ []byte, node ast.Node, enterin
 
 	_, _ = w.WriteString("<" + element.tag + attributes + ">")
 	if !element.container {
-		_, _ = w.WriteString("</" + element.tag + ">\n")
+		_, _ = w.WriteString(element.content + "</" + element.tag + ">\n")
 	}
 
 	return ast.WalkContinue, nil
@@ -144,9 +150,68 @@ func stageHeightClass(height string) string {
 // above: a " in a hand-written class ends the attribute early and turns the
 // rest of the line into markup.
 func gridAttributes(attrs map[string]string) (string, error) {
-	if class := strings.TrimSpace(attrs["class"]); class != "" {
+	class := strings.TrimSpace(attrs["class"])
+
+	// `reveal` marks the whole block as one step of a progressive reveal. It
+	// is a flag, written bare, and rendered as a class rather than as its own
+	// attribute so that the stylesheet and demoit.js have a single thing to
+	// look for, whether the author marked a directive or wrote the class on a
+	// plain HTML tag themselves.
+	//
+	// Only a column or a grid takes it here, and that is the point of putting
+	// it on this function alone: those are the wrappers an author reaches for
+	// when a step is more than one element. Anything else is a tag the author
+	// writes, and a tag takes class="reveal" directly.
+	if _, marked := attrs["reveal"]; marked {
+		class = strings.TrimSpace(class + " reveal")
+	}
+
+	if class != "" {
 		return fmt.Sprintf(` class="%s"`, html.EscapeString(class)), nil
 	}
 
 	return "", nil
+}
+
+// starsAttributes renders a GitHub star button for `::stars{repo=owner/repo}`.
+//
+// The repo is the whole input, and it is checked rather than escaped into a
+// URL and hoped for: it is interpolated into an href, so anything but the
+// owner/repo shape it claims to be is a slide error. That keeps a typo on the
+// slide, where the author sees it, instead of in a link that goes somewhere
+// unintended.
+func starsAttributes(attrs map[string]string) (string, error) {
+	repo := strings.TrimSpace(attrs["repo"])
+	if repo == "" {
+		return "", errors.New("stars: repo is required, as repo=owner/name")
+	}
+	if !isRepoPath(repo) {
+		return "", fmt.Errorf("stars: %q is not an owner/name repository path", repo)
+	}
+
+	return fmt.Sprintf(` class="github-button" href="https://github.com/%s" data-size="large" data-show-count="true" aria-label="Star %s on GitHub"`,
+		html.EscapeString(repo), html.EscapeString(repo)), nil
+}
+
+// isRepoPath reports whether path is a bare `owner/name`, with the characters
+// GitHub allows in each half and nothing else -- no scheme, no host, no extra
+// segment, no traversal.
+func isRepoPath(path string) bool {
+	owner, name, found := strings.Cut(path, "/")
+	if !found || owner == "" || name == "" {
+		return false
+	}
+
+	for _, half := range []string{owner, name} {
+		for _, c := range half {
+			switch {
+			case c >= 'a' && c <= 'z', c >= 'A' && c <= 'Z', c >= '0' && c <= '9':
+			case c == '-', c == '_', c == '.':
+			default:
+				return false
+			}
+		}
+	}
+
+	return true
 }

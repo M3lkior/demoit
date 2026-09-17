@@ -35,7 +35,7 @@ should not have to re-emit the chassis from its own sheet, and an @utility is
 otherwise emitted only where it is seen -- so reordering a layout could silently
 drop one.
 */
-@source inline("slide-main slide-narrow slide-header slide-footer slide-prose contact-row card slide-hero");
+@source inline("slide-main slide-narrow slide-header slide-footer slide-prose contact-row card slide-hero quote panel slide-wide");
 
 /*
 deck/directive builds these class names in Go (transform.go toGrid, render.go
@@ -405,4 +405,63 @@ iframe down and bring it back empty, losing whatever the speaker had typed.
     border-radius: 0 3px 3px 0;
     background-color: var(--color-fg);
     opacity: var(--rule-opacity);
+}
+
+/*
+Progressive reveal.
+
+Anything carrying the `reveal` class starts hidden and is shown one step at a
+time by demoit.js -- whether the author wrote the class on a tag or put the
+bare `reveal` flag on a :::col, which renders to the same class. There is no
+key to set on the slide: marking an element is what turns its slide into a
+stepped one, because a key that had to be repeated on every such slide was one
+more thing to forget.
+
+visibility:hidden alongside opacity so a hidden step cannot be read by a screen
+reader or tabbed into, and so it keeps its space in the layout -- the grid must
+not reflow as steps appear, or every panel would jump sideways as its
+neighbours arrive.
+
+The transform is small and upward, and the transition is on the two properties
+only, never on `all`: a panel carries a box-shadow glow, and animating that per
+frame is the kind of thing that turns a smooth deck into a stuttering one.
+*/
+.reveal {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(1rem);
+    transition:
+        opacity 0.3s ease-out,
+        transform 0.3s ease-out;
+}
+
+.reveal.is-revealed {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+/*
+Without scripting there is no one to walk the steps, so showing them all beats
+an empty slide. It covers a browser with JS off; it cannot cover a talk whose
+own demoit.js predates the feature, which is a thing to know rather than a
+thing CSS can test.
+*/
+@media (scripting: none) {
+    .reveal {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+}
+
+/*
+Honour the system setting. The step still appears and disappears -- that is the
+content, not the decoration -- it just stops moving and fading.
+*/
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        transform: none;
+        transition: none;
+    }
 }
