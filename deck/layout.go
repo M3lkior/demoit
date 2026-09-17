@@ -61,6 +61,11 @@ type Slide struct {
 	Class string
 	// Height is the height class of the split layout's column container.
 	Height string
+	// Github is the owner/repo of the star button the header shows beside the
+	// title, empty when the slide names none. It is interpolated into a URL by
+	// the header partial, so it travels as the bare "owner/repo" it was
+	// written as.
+	Github string
 	// Layout is the name of the layout the slide is rendered with.
 	Layout string
 	// Content is the slide's rendered Markdown body.

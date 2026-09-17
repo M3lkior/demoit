@@ -21,7 +21,7 @@ import "gopkg.in/yaml.v3"
 
 // knownKeys are the frontmatter keys the engine acts on. Every other key is
 // handed to the layout through Slide.Meta.
-var knownKeys = []string{"layout", "title", "source", "sources", "class", "height", "speakernotes"}
+var knownKeys = []string{"layout", "title", "source", "sources", "class", "height", "github", "speakernotes"}
 
 // MaxSources is how many entries a slide's sources: list may carry. The cap is
 // a readability one, not a technical one: the list renders on a single line at
@@ -39,10 +39,12 @@ type frontmatter struct {
 	Source string `yaml:"source"`
 	// Sources is the list form, rendered as a bullet list at the foot of the
 	// slide. A slide may carry both; the layout renders both.
-	Sources      []string `yaml:"sources"`
-	Class        string   `yaml:"class"`
-	Height       string   `yaml:"height"`
-	Speakernotes string   `yaml:"speakernotes"`
+	Sources []string `yaml:"sources"`
+	Class   string   `yaml:"class"`
+	Height  string   `yaml:"height"`
+	// Github is an owner/repo whose star button shows beside the slide title.
+	Github       string `yaml:"github"`
+	Speakernotes string `yaml:"speakernotes"`
 }
 
 // parseFrontmatter reads a slide's YAML block into the keys the engine knows
