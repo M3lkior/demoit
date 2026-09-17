@@ -50,7 +50,10 @@ func TestLoadRendersAMarkdownDeck(t *testing.T) {
 		t.Errorf("got %q, want the cover to show the talk's logo", slides[0])
 	}
 	for _, want := range []string{
-		`<h2 class="flex-1 m-0 text-left">Les chiffres</h2>`,
+		// The title, not the classes around it: those are a styling detail of
+		// the header partial, and pinning them here made a change of look fail a
+		// test about rendering a title.
+		`>Les chiffres</h2>`,
 		"<strong>2,5%</strong>",
 		"Source: https://arcep.fr",
 		"<speaker-notes>",
@@ -77,7 +80,7 @@ func TestLoadRendersTheTitleAsMarkdown(t *testing.T) {
 	// title (goldmark would otherwise have produced
 	// `<h2 ...><p>L'IA et le <strong>carbone</strong></p>\n</h2>`) and that the
 	// apostrophe is bare rather than HTML-entity-escaped as `&#39;`.
-	if want := `<h2 class="flex-1 m-0 text-left">L'IA et le <strong>carbone</strong></h2>`; !strings.Contains(string(slides[0]), want) {
+	if want := `>L'IA et le <strong>carbone</strong></h2>`; !strings.Contains(string(slides[0]), want) {
 		t.Errorf("got %q, want it to contain %q", slides[0], want)
 	}
 }
@@ -290,5 +293,52 @@ func TestLoadReportsTooManySources(t *testing.T) {
 	}
 	if strings.Contains(string(slides[0]), `<ul class="sources">`) {
 		t.Errorf("got %q, want no sources list on a slide reported as an error", slides[0])
+	}
+}
+
+func TestLoadMarksTheStepsOfAProgressiveReveal(t *testing.T) {
+	t.Parallel()
+
+	// No key on the slide: marking an element is the whole opt-in. The bare
+	// `reveal` flag on a directive and class="reveal" on a tag have to land on
+	// the same class, since the stylesheet and demoit.js only look for one.
+	folder := writeDeck(t, map[string]string{
+		".demoit/talk.yml": "layout: default\n",
+		"demoit.md": "---\ntitle: Pas à pas\n---\n" +
+			":::col{class=\"col-span-6\" reveal}\nUn pan entier.\n:::\n\n" +
+			"<p class=\"reveal\">Une balise marquée à la main.</p>\n",
+	})
+
+	slides, err := deck.Load(folder, "")
+	if err != nil {
+		t.Fatalf("got error %v, want none", err)
+	}
+
+	got := string(slides[0])
+	if !strings.Contains(got, `<div class="col-span-6 reveal">`) {
+		t.Errorf("got %q, want the column marked with the reveal class", got)
+	}
+	if !strings.Contains(got, `<p class="reveal">`) {
+		t.Errorf("got %q, want the hand-written class left alone", got)
+	}
+}
+
+func TestLoadTakesABareDirectiveFlag(t *testing.T) {
+	t.Parallel()
+
+	// A flag with no `=` used to be a parse error, which is what made
+	// `reveal=true` necessary. A bare key now records its presence.
+	folder := writeDeck(t, map[string]string{
+		".demoit/talk.yml": "layout: default\n",
+		"demoit.md":        "---\ntitle: Drapeau\n---\n:::col{reveal}\nDu texte.\n:::\n",
+	})
+
+	slides, err := deck.Load(folder, "")
+	if err != nil {
+		t.Fatalf("got error %v, want none", err)
+	}
+
+	if !strings.Contains(string(slides[0]), `<div class="reveal">`) {
+		t.Errorf("got %q, want a bare flag to mark the column", slides[0])
 	}
 }
