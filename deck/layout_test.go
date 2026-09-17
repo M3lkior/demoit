@@ -3,6 +3,7 @@ package deck_test
 import (
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"testing"
 
@@ -29,7 +30,7 @@ func TestLayoutsRenderTheEmbeddedDefault(t *testing.T) {
 	}
 
 	for _, want := range []string{
-		`<h2 class="flex-1 m-0 text-left">L'impact du numérique</h2>`,
+		`>L'impact du numérique</h2>`,
 		`src="/images/a.svg"`,
 		`src="/images/b.jpg"`,
 		"<h2>2,5%</h2>",
@@ -106,8 +107,16 @@ func TestHeaderPairsTheVariantsPerLogo(t *testing.T) {
 		t.Fatalf("got error %v, want none", err)
 	}
 
-	if !strings.Contains(string(got), `<img class="size-12 rounded-full object-cover" src="/images/event.jpg">`) {
-		t.Errorf("got %q, want the event logo emitted with no theme class", got)
+	// The point is the absence of a theme class on a logo that declares only
+	// `white`, not the sizing classes beside it: those are a styling detail
+	// the partial is free to change, and pinning the exact list here made a
+	// change of look fail a test about theming.
+	event := regexp.MustCompile(`<img class="([^"]*)" src="/images/event\.jpg">`).FindStringSubmatch(string(got))
+	if event == nil {
+		t.Fatalf("got %q, want the event logo emitted", got)
+	}
+	if strings.Contains(event[1], "dark:") {
+		t.Errorf("got class %q on the event logo, want no theme class: it declares no dark variant, so it shows in both themes", event[1])
 	}
 	if !strings.Contains(string(got), `src="/images/me-dark.svg"`) {
 		t.Errorf("got %q, want the speaker's dark variant", got)
