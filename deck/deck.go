@@ -141,6 +141,7 @@ func renderSlide(raw RawSlide, talk Talk, layouts *Layouts, file string) templat
 		Sources:   known.Sources,
 		Class:     known.Class,
 		Height:    known.Height,
+		Github:    known.Github,
 		Layout:    known.Layout,
 		Meta:      meta,
 		StartLine: raw.StartLine,

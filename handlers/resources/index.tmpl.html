@@ -40,6 +40,21 @@
 				document.documentElement.dataset.display = display || 'screen';
 			})();
 		</script>{{ end }}
+		{{/* buttons.github.io, which turns the <a class="github-button"> a
+		     `github:` key or a ::stars directive writes into a live star
+		     counter.
+
+		     async defer, and that is the whole safety of it: the slide renders
+		     without waiting for it, and when there is no network -- a
+		     conference room being the likeliest place for that -- the button
+		     stays the plain link to the repository it already is. A count is
+		     live data by nature; this is the one thing in the deck that cannot
+		     be vendored, and it fails to a link rather than to a hole.
+
+		     Loaded for every talk rather than only for the slides that use it:
+		     the tag costs one cached request, and making it conditional would
+		     mean the page template knowing what the slide body contains. */}}
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
 	</head>
 	<body>
 		<div id="app" class="{{ if .Stage }}stage{{ else }}no-stage{{ end }}">
