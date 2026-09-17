@@ -24,6 +24,11 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"os"
+	"os/exec"
+	"os/signal"
+	"path/filepath"
+	"syscall"
 
 	"github.com/dgageot/demoit/files"
 	"github.com/dgageot/demoit/flags"
@@ -76,6 +81,8 @@ func main() {
 
 	// Live Reload Server
 	if *flags.DevMode {
+		watchCSS(files.Root)
+
 		lr := livereload.New(*flags.WebServerPort)
 		lr.RegisterHandlers(r)
 
@@ -104,6 +111,65 @@ func main() {
 	addr := flags.WebServerAddress()
 	fmt.Println("Welcome to DemoIt. Please, open http://" + addr)
 	log.Fatal(http.ListenAndServe(addr, r))
+}
+
+// watchCSS starts `hack/css.sh <talk> --watch` beside the server, so that a
+// Tailwind class written in a slide exists by the time live reload shows the
+// page again. Without it the two halves of a change land at different times:
+// the slide reloads immediately, the class it uses does not exist yet, and
+// nothing on screen says why -- the browser simply applies a rule it does not
+// have, which looks like the class having no effect.
+//
+// Dev mode only, and only when both halves are actually there. A binary put
+// somewhere by `go install` has no repository around it, and a folder outside
+// this tree has no tailwind.src.css to build; both are silent no-ops, because
+// serving a deck has never required any of this and a warning on every start
+// would be noise.
+//
+// A Ctrl+C at the terminal already reaches the child, which shares demoit's
+// process group -- but only that. A `kill` on the server alone, or any other
+// signal, would leave a watcher behind rebuilding a stylesheet for a talk
+// nobody is showing, and the next run would start a second one. Hence the
+// explicit handler: it is the difference between a watcher that stops the way
+// the server does and one that accumulates.
+func watchCSS(folder string) {
+	const script = "hack/css.sh"
+
+	if _, err := os.Stat(script); err != nil {
+		return
+	}
+	if _, err := os.Stat(filepath.Join(folder, ".demoit", "tailwind.src.css")); err != nil {
+		return
+	}
+
+	cmd := exec.Command(script, folder, "--watch")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	if err := cmd.Start(); err != nil {
+		// Not fatal: a deck still renders with the stylesheet as it was
+		// committed, which is exactly what a non-dev run gets.
+		fmt.Println("Unable to watch the Tailwind stylesheet:", err)
+
+		return
+	}
+
+	stopping := make(chan os.Signal, 1)
+	signal.Notify(stopping, os.Interrupt, syscall.SIGTERM)
+
+	go func() {
+		sig := <-stopping
+		_ = cmd.Process.Kill()
+
+		// Re-raise on the default handler so demoit exits the way it would
+		// have without us: installing a handler is what suppressed that.
+		signal.Stop(stopping)
+		if p, err := os.FindProcess(os.Getpid()); err == nil {
+			_ = p.Signal(sig)
+		}
+	}()
+
+	fmt.Println("Watching " + folder + "'s Tailwind stylesheet for new classes.")
 }
 
 func mustParseURL(rawURL string) *url.URL {
