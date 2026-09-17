@@ -53,6 +53,26 @@ Here the wide case is the default and the cap is the class you add.
     margin-inline: auto;
 }
 
+/*
+The cap a slide of panels, columns or tables wants: wide enough that a row of
+four does not strangle its content, narrow enough that the slide still reads as
+a composed page rather than as edge-to-edge text.
+
+100rem is 1600px of the 1920px stage, so 160px of margin on either side. The
+numbers matter here: slide-narrow's 75rem left 360px a side, which was a third
+of the stage given away and four panels under 190px each; no cap at all left
+16px, and a heading then ran the full width of the room.
+
+Kept apart from slide-narrow rather than replacing it, because the two answer
+different questions. slide-narrow is a *measure* -- how long a line of prose may
+run before it is tiring to read -- and the slides that declare it want exactly
+that. This one is a *frame*, and the layouts reach for it as their default.
+*/
+@utility slide-wide {
+    max-inline-size: 100rem;
+    margin-inline: auto;
+}
+
 @utility slide-header {
     display: flex;
     align-items: center;
@@ -123,4 +143,120 @@ absolutely position something against its own main area.
 */
 @utility slide-hero {
     position: relative;
+}
+
+/*
+A quote block: a pull quote, an epigraph, a line a slide wants to set apart.
+
+The shape is the one deck/layouts/quote.html already drew by hand -- a rule in
+--color-main down the leading edge, text kept left even on a centred slide --
+promoted to a name so a slide can use it without taking the whole quote layout,
+and given the two things that markup lacked: a raised ground so the block reads
+as a block, and the card radius so it belongs to the same family as `card`.
+
+border-inline-start rather than border-left: the rule follows the writing
+direction, like every other logical property in this sheet.
+
+--color-surface-raised is white's neighbour in light and a lifted grey in dark,
+so a quote sits *on* the slide in both themes without either being restated
+here. That is the whole reason the ground is a token and not a hex.
+*/
+@utility quote {
+    border-inline-start: 0.5rem solid var(--color-main);
+    border-radius: var(--radius-card);
+    padding: 1.2rem 2rem;
+    margin: 0;
+    background-color: var(--color-surface-raised);
+    text-align: start;
+}
+
+/*
+The service card of zatsit.fr, for a slide that lays its content out in
+columns.
+
+Ported from `.service-card` in the site's global.css, and the port is nearly a
+copy because the two vocabularies already agree: the site's --card-bg is
+#f8fafc in light and rgba(255,255,255,.05) in dark, which is exactly what
+--color-surface-raised holds here, and its --radius-lg is our --radius-card.
+Only the names changed.
+
+What is deliberately *not* ported is the :hover treatment -- a lift, a 2deg
+rotateX and a glow. Nobody hovers a projected slide, and the transform would
+cost a repaint on every pane the stage already scales.
+
+No padding-block on the card and no height: a card in a `grid` row stretches to
+the row, so a short card beside a tall one lines up on its own.
+*/
+@utility service-card {
+    padding: 1.5rem;
+    border: 1px solid var(--color-outline);
+    border-radius: var(--radius-card);
+    background-color: var(--color-surface-raised);
+}
+
+/*
+The icon or the label that tops a service card, in the accent colour, the way
+the site puts its lucide icon above the title.
+*/
+@utility service-card-label {
+    color: var(--color-main);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+/*
+The bordered, glowing card of zatsit.fr's service grid, reduced to what a slide
+needs: the outline, and room for a heading and some prose. The site's icon, its
+pills and its hashtags are deliberately not ported -- on a slide they would be
+decoration competing with the sentence the card exists to carry.
+
+A heading is optional. Nothing here assumes one, and the spacing is written as
+`* + *` rather than as a margin under the title, so a panel that opens straight
+on its body starts flush against its own padding.
+
+The margin is what keeps the halo whole. slide-main clips its overflow on the x
+axis and offers 1rem of padding, so a shadow reaching further than that is cut
+off at the edge of the slide -- which is exactly what a glow must not do. 0.5rem
+of margin plus that 1rem is the 1.5rem the shadow spreads, so the card carries
+the room it needs rather than asking every slide to remember it.
+
+The glow is a box-shadow rather than a filter: a filter on a grid child creates
+a containing block, which would trap any absolutely positioned thing a slide
+puts inside a panel.
+
+Every colour is a token, so the card follows the theme without a single dark:
+variant -- and in dark mode --color-main resolves to the gold, which the border
+and the halo then become.
+
+height: 100% so a row of panels squares off against the tallest of them instead
+of each shrinking to its own text.
+*/
+@utility panel {
+    height: 100%;
+    margin: 0.5rem;
+    border: 2px solid var(--color-main);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    background-color: var(--color-surface);
+    box-shadow: 0 0 1.5rem color-mix(in srgb, var(--color-main) 30%, transparent);
+    text-align: start;
+
+    & > * {
+        margin: 0;
+    }
+
+    & > * + * {
+        margin-block-start: 0.75rem;
+    }
+
+    & > :is(h1, h2, h3, h4, h5, h6) {
+        color: var(--color-fg);
+        font-weight: 700;
+        line-height: 1.15;
+    }
+
+    & > p {
+        color: var(--color-fg-muted);
+        line-height: 1.4;
+    }
 }

@@ -1,4 +1,20 @@
-{{ template "header" . }}<main class="{{ if .Class }}{{ .Class }}{{ else }}slide-main slide-narrow slide-prose flex flex-col justify-center text-center{{ end }}">
+{{/* No slide-narrow in the fallback, and that is a deliberate reversal.
+
+     It was there because beercss's `responsive` capped a slide at 75rem, and
+     the migration kept what that class did. But `responsive` measured the
+     window, while the stage is a fixed 1920px -- so the same 75rem went from
+     "most of a laptop screen" to 62% of the slide, with 360px of dead margin
+     on either side. A deck of grids paid for it: four panels in 1200px leaves
+     each of them under 190px of usable width, and their headings wrapped or
+     clipped.
+
+     The cap is a measure, and a measure is for prose. A slide that is one
+     column of text still wants it and writes it: `class: slide-main
+     slide-narrow slide-prose flex flex-col justify-center text-center`. A
+     slide of panels, columns or tables does not, and now gets the stage it
+     was drawn for. impact-framework spells its own class out on every default
+     slide, so nothing there changes. */}}
+{{ template "header" . }}<main class="{{ if .Class }}{{ .Class }}{{ else }}slide-main slide-wide slide-prose flex flex-col justify-center text-center{{ end }}">
 {{ .Content }}
 </main>
 {{ template "source" . }}{{ template "notes" . }}
