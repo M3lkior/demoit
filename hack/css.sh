@@ -53,9 +53,14 @@ ensure_cli() {
 target=$1
 shift
 
+# --watch=always rather than --watch: the CLI stops watching when stdin is
+# closed, which is what it sees whenever it is not started by hand -- from
+# `demoit --dev`, from a background job, from anything holding no terminal. It
+# would print "building ...", exit, and leave a watch that silently never
+# rebuilt. `always` is the flag Tailwind ships for exactly that case.
 watch=""
 if [ "${1:-}" = "--watch" ]; then
-    watch="--watch"
+    watch="--watch=always"
     shift
 fi
 [ $# -eq 0 ] || usage
