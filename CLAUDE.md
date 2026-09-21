@@ -227,6 +227,7 @@ The counter-scale goes on the `.mermaid` container, never on `.stage`: a transfo
 - Dependencies are **vendored** (`vendor/`); after touching `go.mod` run `go mod vendor`.
 - Adding a talk = new top-level folder with `demoit.md` (or `demoit.html`) + `.demoit/` (copy an existing `.demoit/js/demoit.js` and `style.css` as the starting point). Localized decks are `demoit-<locale>.md`/`demoit-<locale>.html` side by side.
 - Palette and per-talk theming live in `<folder>/.demoit/style.css` via `--color-main` / `--primary` custom properties.
+- **A structural fix or behavior change to the shared chassis (`demoit.js`'s custom elements, the stage/scale mechanics, the reveal walk, the theme switcher, …) is not done until it is applied to every talk that carries a copy of it.** `.demoit/js/demoit.js` is per-talk (`sample/`, `impact-framework/`, `sdd-talk/`, and any future one), not shared code — fixing the bug in the copy you were looking at and stopping there leaves the same bug live in the others. Check every `*/.demoit/js/demoit.js` for the pattern being fixed before calling the change complete; a talk missing the feature entirely (e.g. no reveal walk) is out of scope for that part, but a shared mechanism it does carry (keyboard navigation, the stage fit, …) is not.
 
 ## Writing slides
 
