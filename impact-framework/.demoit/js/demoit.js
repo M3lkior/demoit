@@ -780,10 +780,17 @@ class NavArrows extends BaseHTMLElement {
                 case 'ArrowRight':
                 case 'PageDown':
                 case ' ':
+                    // Without this, the browser's own arrow-key scroll fires
+                    // alongside the navigation -- harmless on a page with no
+                    // overflow, but a silent trap the moment one appears (the
+                    // stage's own layout width always exceeds a narrower
+                    // window, scale or no scale).
+                    event.preventDefault();
                     window.location.href = this.next;
                     break;
                 case 'ArrowLeft':
                 case 'PageUp':
+                    event.preventDefault();
                     window.location.href = this.previous;
                     break;
                 default:
