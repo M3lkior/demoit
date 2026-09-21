@@ -786,11 +786,21 @@ class NavArrows extends BaseHTMLElement {
                 case 'ArrowRight':
                 case 'PageDown':
                 case ' ':
+                    // The stage's own layout width (1920px) always exceeds a
+                    // window narrower than that, no matter the fit scale --
+                    // it's how zooming past 100% stays reachable by scroll.
+                    // Left unprevented, that permanent overflow lets the
+                    // browser's native arrow-key scroll fire alongside the
+                    // reveal, drifting the stage right one keypress at a
+                    // time -- invisible on a slide with one reveal step,
+                    // glaring on one with several (S10's delegation ladder).
+                    event.preventDefault();
                     if (reveal.forward()) return;
                     window.location.href = this.next;
                     break;
                 case 'ArrowLeft':
                 case 'PageUp':
+                    event.preventDefault();
                     if (reveal.back()) return;
                     window.location.href = this.previous;
                     break;
