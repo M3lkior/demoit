@@ -47,7 +47,7 @@ class: slide-main slide-wide slide-prose flex flex-col justify-center text-cente
 
 ---
 layout: quote
-title: Disclamer
+title: Disclaimer
 ---
 
 
@@ -93,9 +93,9 @@ d'organisation : le <em>coût des relais</em> dépasse leur bénéfice quand
 l'équipe est petite et que la boucle de feedback doit rester courte.</p>
 
 <ul class="text-[1.6rem]">
-  <li><strong>PostHog</strong>: un développeur directement responsable de l'amélioration du produit, ayant un avis sur la roadmap, capable de prendre seul des décisions de design, faisant du support utilisateur directement, moins attaché aux fonctionnalités qu'il a ajoutées par le passé, conscient de la place de son travail dans la stratégie, et motivé avant tout par l'impact et les résultats. 187 personnes pour 47 équipes (4,2 personnes en moyenne)</li>
+  <li><strong>PostHog</strong> : un développeur directement responsable de l'amélioration du produit, ayant un avis sur la roadmap, capable de prendre seul des décisions de design, faisant du support utilisateur directement, moins attaché aux fonctionnalités qu'il a ajoutées par le passé, conscient de la place de son travail dans la stratégie, et motivé avant tout par l'impact et les résultats. 187 personnes pour 47 équipes (4,2 personnes en moyenne)</li>
   <li><strong>incident.io</strong> : des devs attachés au résultat et à l'impact, pas à l'implémentation</li>
-  <li><strong>JM. Lemieux</strong>, ex-VP Eng Shopify : des ingénieurs qui ont soif d'utiliser la technologie pour court-circuiter les problèmes humains et utilisateurs.</li>
+  <li><strong>J.-M. Lemieux</strong>, ex-VP Eng Shopify : des ingénieurs qui ont soif d'utiliser la technologie pour court-circuiter les problèmes humains et utilisateurs.</li>
   <li><strong>Product Engineer Manifesto</strong>, 2024 : c'est la responsabilité des builders de chercher d'abord à <em>comprendre le problème</em> avant de plonger dans les solutions, <em>et de s'occuper des domaines design, technique et business en prenant une part active dans chacun.</em></li>
 </ul>
 
@@ -126,7 +126,7 @@ speakernotes: |
 ### *2025 &ndash; 2026*
 
 <p class="text-[1.6rem]">Le même rôle passe de
-<em>niche culturelle</em> à <em>norme</em>, parce que l'IA crée des goulots en amont des phases de production de codes, et plus seulement dans les petites équipes.</p>
+<em>niche culturelle</em> à <em>norme</em>, parce que l'IA crée des goulots en amont des phases de production de code, et plus seulement dans les petites équipes.</p>
 
 <ul class="text-[1.6rem]">
   <li>SFEIR positionne le product engineer comme le rôle central <em>de l'ère 10x</em>, qui ne se définit plus par une spécialité technique unique mais par sa capacité à coordonner toute la chaîne de production logicielle augmentée par l'IA.</li>
@@ -207,7 +207,7 @@ speakernotes: |
 
 <blockquote class="text-left">
   <h5 class="reveal"><em>Aujourd'hui (Pizza Team)</em> : les <em>PO/PM</em> écrivent les besoins, <em>un ingénieur</em> produit le code et livre, un <em>PO/PM</em> va voir les utilisateurs, la boucle continue.</h5>
-  <h5 class="reveal"><em>Demain (Sandwich Team)</em>: <em>une seule personne</em> livre, itère, collecte le feedback, et itère de nouveau.</h5>
+  <h5 class="reveal"><em>Demain (Sandwich Team)</em> : <em>une seule personne</em> livre, itère, collecte le feedback, et itère de nouveau.</h5>
 </blockquote>
 
 :::
@@ -311,7 +311,7 @@ speakernotes: |
 
 ##### 2. Chat
 
-<p class="text-[1.6rem]">On décrit une fonction, on la relis, on la colle.</p>
+<p class="text-[1.6rem]">On décrit une fonction, on la relit, on la colle.</p>
 
 <h6>On délègue un bout de code.</h6>
 
@@ -345,7 +345,7 @@ speakernotes: |
 
 
 
-<h5 class="mb-0 text-6xl leading-tight font-bold tracking-tight reveal">Vous êtes où, aujourd'hui ?</h1>
+<h5 class="mb-0 text-6xl leading-tight font-bold tracking-tight reveal">Vous êtes où, aujourd'hui ?</h5>
 
 :::
 :::
@@ -416,7 +416,7 @@ session. </p>
 ::: 
 :::col{class="col-span-12" reveal}
 
-<h3>On parle de <em>Context Engineering</em>, et c'est sur cela que s'appuie le <em>SDD</em>.</p>
+<h3>On parle de <em>Context Engineering</em>, et c'est sur cela que s'appuie le <em>SDD</em>.</h3>
 
 :::
 :::
@@ -449,7 +449,7 @@ speakernotes: |
 
 <div class="text-center">
   <h5>On demandait un petit fix. </h5>
-  <h6>On récupère un refactor, trois fichiers en plus, une logique « améliorée », et des tests qui passent parce qu'ils ne testent rien.</h5>
+  <h6>On récupère un refactor, trois fichiers en plus, une logique « améliorée », et des tests qui passent parce qu'ils ne testent rien.</h6>
 </div>
 
 :::
@@ -480,7 +480,7 @@ speakernotes: |
 
 :::col{class="col-span-12" reveal}
 
-#### Ces trois problématiques, le SDD y réponds.
+#### Ces trois problématiques, le SDD y répond.
 
 :::
 :::
@@ -506,7 +506,7 @@ speakernotes: |
 :::col{class="col-span-12 text-center"}
 
 #### On a toujours écrit des specs. 
-#### Ce qui change : elles doivent être *relisibles par une machine*, et versionnées.
+#### Ce qui change : elles doivent être *lisibles par une machine*, et versionnées.
 
 :::
 
@@ -528,7 +528,7 @@ speakernotes: |
 
 ---
 layout: default
-title: "DDD : pourquoi il contribue au SSD ?"
+title: "DDD : pourquoi il contribue au SDD ?"
 sources:
   - threedots.tech/post/ddd-and-ai-coding
   - arxiv.org/abs/2605.01160
@@ -579,13 +579,13 @@ speakernotes: |
 
 ##### <em>Invariants</em>
 
-<p class="text-[1.6rem]">Les règles que le domaine ne tolère pas de casser. Ce sont déjà des critères d'acceptation et de validations.</p>
+<p class="text-[1.6rem]">Les règles que le domaine ne tolère pas de casser. Ce sont déjà des critères d'acceptation et de validation.</p>
 
 :::
 
 :::col{class="col-span-12"}
 
-<h5 class="reveal"">Une spec générée que personne ne lit et ne comprends, ne résoudra rien.</h5>
+<h5 class="reveal">Une spec générée que personne ne lit ni ne comprend ne résoudra rien.</h5>
 
 :::
 
@@ -687,7 +687,7 @@ speakernotes: |
 ---
 
 <!-- Le gabarit des cinq tableaux du deck. beercss donnait inline-size:100%,
-     border-spacing:0 et 0.5rem de padding de cellule : le chassis les porte
+     border-spacing:0 et 0.5rem de padding de cellule : le châssis les porte
      maintenant. Restent le corps de 1.6rem (xlarge-text) et le filet sous
      chaque ligne sauf la dernière (table.border), redessiné par les variantes
      [&_...] ci-dessous. -->
@@ -859,7 +859,7 @@ speakernotes: |
 
 ---
 layout: default
-title: "Le (contre) coût du SSD ?"
+title: "Le contrecoût du SDD ?"
 sources:
   - martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
   - dora.dev/ai/roi/report
@@ -910,7 +910,7 @@ null check d'une ligne, on ne touche pas à la constitution.</p>
 
 <h3><em>1,7x</em></h3>
 
-<p class="text-[1.6rem]">plus de bugs sur les PRs générées par IA. C'est ce que le SDD cherche à éviter, pas ce qu'il
+<p class="text-[1.6rem]">plus de bugs sur les PR générées par IA. C'est ce que le SDD cherche à éviter, pas ce qu'il
 garantit d'éviter.</p>
 
 <h6><em>CodeRabbit</em></h6>
@@ -920,8 +920,8 @@ garantit d'éviter.</p>
 :::col{class="col-span-12" reveal}
 
 <blockquote class="text-left">
-  <h5>Le SDD est <em>peu adapté pour de petite tâche</em>.</h5>
-  <h5>La <em>dérive spec/code est réélle</em>. Aucun outil ne réconcilie cela tout seul : il faut le déclencher, et relire la sortie.</h5>
+  <h5>Le SDD est <em>peu adapté aux petites tâches</em>.</h5>
+  <h5>La <em>dérive spec/code est réelle</em>. Aucun outil ne réconcilie cela tout seul : il faut le déclencher, et relire la sortie.</h5>
 </blockquote>
 
 :::
@@ -963,7 +963,7 @@ speakernotes: |
 
   
   <p class="text-[2rem]"><strong>Ce qu'il fait</strong> : l'agent écrit son
-  plan, on le lis, on le corrige, il exécute. Built-in dans les outils.</p>
+  plan, on le lit, on le corrige, il exécute. Built-in dans les outils.</p>
   <p class="text-[2rem]"><strong>Où il s'arrête</strong> : le plan est
   éphémère. Rien n'est persisté, rien n'est versionné.</p>
 
@@ -1004,7 +1004,7 @@ speakernotes: |
   Profil : greenfield, gates forts, verbeux.
   Gabarit commun aux quatre slides d'outils : à gauche ce qu'il ajoute au mode
   plan, à droite ce qu'il demande en retour, en bas une phrase de profil. La
-  salle compare d'un coup d'oeil au lieu de relire.
+  salle compare d'un coup d'œil au lieu de relire.
   Sources : github/spec-kit (lire les templates, pas le README) ;
   ranthebuilder.cloud, I Tested Three Spec-Driven AI Tools ;
   reenbit.com/bmad-vs-spec-kit-vs-openspec. Vérifié le 11/09/2026 : les
@@ -1124,7 +1124,7 @@ speakernotes: |
 
 :::col{class="col-span-12 text-center" reveal}
 
-#### Le même travail que Spec Kit, avec *moins de cérémonie*. Adapté pour du code qui existe déjà.
+#### Le même travail que Spec Kit, avec *moins de cérémonie*. Adapté à du code qui existe déjà.
 
 :::
 :::
@@ -1188,7 +1188,7 @@ speakernotes: |
   <ul class="text-[1.6rem]">
     <li>Le plugin traite les agents comme un manager expérimenté traite des
     juniors. L'humain tient le rôle du manager.</li>
-    <li>Peu de phases à actionner soi-meme.</li>
+    <li>Peu de phases à actionner soi-même.</li>
   </ul>
 
 
@@ -1196,7 +1196,7 @@ speakernotes: |
 
 :::col{class="col-span-12 text-center" reveal }
 
-#### Ce n'est pas un dépôt de specs, c'est une méthode sur base de skills.
+#### Ce n'est pas un dépôt de specs, c'est une méthode fondée sur des skills.
 
 
 <div class="text-center">
@@ -1314,7 +1314,7 @@ speakernotes: |
 
 :::col{class="col-span-12 text-center" reveal}
 
-### Vous pouvez commencer demain avec  *trois fichiers markdown*.
+### Vous pouvez commencer demain avec *trois fichiers markdown*.
 
 ##### Le framework est une optimisation. Pas un prérequis.
 
@@ -1333,7 +1333,7 @@ speakernotes: |
 
 <h1 class="mb-0 text-6xl leading-tight font-bold tracking-tight">Découpler, et <em>accélérer</em></h1>
 
-<p class="text-fg-muted mt-6 text-3xl font-medium">Le SDD est il un game-changer ?</p>
+<p class="text-fg-muted mt-6 text-3xl font-medium">Le SDD est-il un game-changer ?</p>
 
 ---
 layout: default
@@ -1431,7 +1431,7 @@ relocalise en aval, sur la revue.</p>
 
 :::col{class="col-span-4 text-left" reveal}
 
-<h5><em>La fréquence de déploiement n'augmente pas</em></h6>
+<h5><em>La fréquence de déploiement n'augmente pas</em></h5>
 
 <p class="text-[1.6rem]">Le goulot s'est déplacé de l'écriture vers la revue. On
 produit plus, on ne livre pas plus souvent.</p>
@@ -1440,7 +1440,7 @@ produit plus, on ne livre pas plus souvent.</p>
 
 :::col{class="col-span-4 text-left" reveal}
 
-<h5><em>Le lead time ne baisse pas</em></h6>
+<h5><em>Le lead time ne baisse pas</em></h5>
 
 <p class="text-[1.6rem]">Le code arrive plus vite en PR. Et il y attend plus
 longtemps.</p>
@@ -1449,7 +1449,7 @@ longtemps.</p>
 
 :::col{class="col-span-4 text-left" reveal}
 
-<h5><em>Le temps de revue, lui, augmente</em></h6>
+<h5><em>Le temps de revue, lui, augmente</em></h5>
 
 <p class="text-[1.6rem]">Souvent même quand le lead time total diminue : les
 relecteurs encaissent un volume croissant de code qu'ils n'ont pas écrit.</p>
@@ -1518,13 +1518,13 @@ moins de 8, quand elles sont d'abord rédigées comme specs.</p>
 
 :::col{class="col-span-4" reveal}
 
-<h3><em>40% (1,7x)</em></h3>
+<h3><em>40 % (1,7x)</em></h3>
 
 <p class="text-[1.6rem]">de jours gagnés (productivité) sur un développement AI Driven.</p>
 
 <p class="text-[1.6rem]">Nous avons sorti un projet estimé à 660 jours en 400.</p>
 
-<h6><em>Caisse Libre Service, Boulangeer</em></h6>
+<h6><em>Caisse Libre Service, Boulanger</em></h6>
 
 :::
 :::
@@ -1556,7 +1556,7 @@ speakernotes: |
 
 :::col{class="col-span-12 text-left"}
 
-<h3>Ce qu'on doit regarder, à la place des lignes de code</h6>
+<h3>Ce qu'on doit regarder, à la place des lignes de code</h3>
 
 <ul class="text-[2rem]">
   <li class="reveal"><strong>Le lead time jusqu'à la prod</strong>, pas jusqu'à la PR.</li>
@@ -1697,7 +1697,7 @@ speakernotes: |
 
 :::col{class="col-span-12 text-left" reveal}
 
-##### <em>Ça fait beaucoup pour une seule personne</em>, et ce n'est pas une question de bonne volonté.</p>
+##### <em>Ça fait beaucoup pour une seule personne</em>, et ce n'est pas une question de bonne volonté.
 
 :::
 
