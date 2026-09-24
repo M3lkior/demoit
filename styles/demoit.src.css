@@ -35,7 +35,7 @@ should not have to re-emit the chassis from its own sheet, and an @utility is
 otherwise emitted only where it is seen -- so reordering a layout could silently
 drop one.
 */
-@source inline("slide-main slide-narrow slide-header slide-footer slide-prose contact-row card slide-hero quote panel slide-wide");
+@source inline("slide-main slide-narrow slide-header slide-footer slide-prose contact-row card slide-hero quote panel slide-wide slide-closing contact-icons content-center p-0");
 
 /*
 deck/directive builds these class names in Go (transform.go toGrid, render.go
@@ -143,6 +143,20 @@ geometry value, so a profile cannot break a layout.
     and would never work. Read by the `em` treatment of slide-hero.
     */
     --color-text-gradient: linear-gradient(to bottom, #0f15fd 0%, #020466 100%);
+
+    /*
+    The three stops of the logo gradient, declared here and not only in
+    tokens.css. They are in a @theme block there, and Tailwind emits a @theme
+    variable only where a scanned file uses one -- none of the engine's do, so
+    the light values never reached the stylesheet while .dark below redefined
+    them in plain CSS. The result was a token that existed in dark mode and
+    nowhere else: any rule reading it without a fallback painted nothing at
+    all in light, which is how a slide ended up blank rather than blue. The
+    cover survives only because it spells its fallbacks out.
+    */
+    --logo-gradient-start: #0f15fd;
+    --logo-gradient-mid: #0a0ecc;
+    --logo-gradient-end: #020466;
 
     /*
     Opacity of the two decor layers of the stage, one token each rather than

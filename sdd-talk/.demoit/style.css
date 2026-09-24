@@ -274,27 +274,6 @@ outline gives the card its edge without taking width away.
     color: var(--color-surface);
 }
 
-/*
-Le numéro de partie des slides de transition, au-dessus du titre.
-
-Ces slides sont des `slide-hero`, comme la cover : le décor vient du stage, et
-l'accent de leur titre passe par le traitement en dégradé que `.slide-hero em`
-donne plus haut. Il ne reste donc ici que cette ligne d'étiquette.
-
-Elles portaient avant un fond bleu plein posé par une classe `.transition`,
-supprimée pour deux raisons. Son dégradé ne s'affichait pas en thème clair :
---logo-gradient-start et --logo-gradient-end ne sont définis que dans le bloc
-.dark de demoit.css, et un linear-gradient() aux variables absentes est une
-déclaration invalide, donc aucun fond -- la slide rendait blanche. Et
-`transition` est le nom d'une utility Tailwind (transition-property), que le
-build générait en double sous notre dos.
-*/
-.numero {
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--color-fg-muted);
-    font-weight: 500;
-}
 
 /*
 Liste de sources en pied de slide, alimentée par la clé `sources:` du
