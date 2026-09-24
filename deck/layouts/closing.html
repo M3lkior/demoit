@@ -1,0 +1,25 @@
+{{/* The closing card: the talk's logo filling the left half, whatever the
+     slide writes on the right, on a full-bleed ground.
+
+     No header and no source line, on purpose. This is the slide that stays up
+     while the room asks its questions, so it carries an identity and a way to
+     reach it and nothing else -- a title bar and a rule would only divide it.
+
+     Everything it shows comes from what the talk already declares: the logo
+     from talk.yml through the shared partial, the contacts from the slide's
+     own body. Nothing here is specific to one talk, which is the whole reason
+     it belongs to the engine rather than to a .demoit/layouts of its own. A
+     talk that wants another composition drops a closing.html beside its
+     slides and this file stops being read, like every other layout. */}}
+<main class="{{ if .Class }}{{ .Class }}{{ else }}slide-main slide-closing grid grid-cols-12 items-center content-center gap-16 p-0{{ end }}">
+
+    <div class="col-span-5 flex items-center justify-center py-12 pl-12">
+        {{ template "closingLogo" . }}
+    </div>
+
+    <div class="col-span-7 flex flex-col justify-center py-12 pr-12 text-left">
+{{ .Content }}
+    </div>
+
+</main>
+{{ template "notes" . }}

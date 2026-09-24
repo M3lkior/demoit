@@ -14,7 +14,7 @@ speakernotes: |
 ---
 layout: default
 title: Je suis **Ludovic Dussart**
-class: slide-main slide-narrow slide-prose flex flex-col justify-center text-center
+class: slide-main slide-wide slide-prose flex flex-col justify-center text-center
 ---
 <div class="grid grid-cols-12 items-center gap-4">
   <div class="col-span-6">
@@ -32,7 +32,6 @@ class: slide-main slide-narrow slide-prose flex flex-col justify-center text-cen
   <div class="col-span-12"><h2 class="text-left"><em>Où me trouver ?</em></h2></div>
   <!-- contact-row porte la colonne (span 4), la ligne flex et l'avatar rond :
        c'est la paire s1 + s3 left-align d'avant, en une seule classe. -->
-  <div class="contact-row"><img src="/images/twitter.jpg"/><h5>@ldussart</h5></div>
   <div class="contact-row"><img src="/images/bsky.png"/><h5>ldussart.bsky.social</h5></div>
   <div class="contact-row"><img src="/images/linkedin.png"/><h5>Ludovic Dussart</h5></div>
   <div class="col-span-12"><h2 class="text-left"><em>Où nous trouver ?</em></h2></div>
@@ -72,7 +71,7 @@ speakernotes: |
 ---
 layout: default
 title: "Product Engineer : le métier que le marché a inventé deux fois"
-class: slide-main slide-narrow slide-prose flex flex-col justify-center
+class: slide-main slide-wide slide-prose flex flex-col justify-center
 sources:
   - posthog.com/product-engineer
   - posthog.com/handbook/company/small-teams
@@ -103,7 +102,7 @@ l'équipe est petite et que la boucle de feedback doit rester courte.</p>
 ---
 layout: default
 title: "Product Engineer : le métier que le marché a inventé deux fois"
-class: slide-main slide-narrow slide-prose flex flex-col justify-center
+class: slide-main slide-wide slide-prose flex flex-col justify-center
 sources:
   - sfeir.com/concepts/product-engineer
   - turingcollege.com/blog/rise-of-the-ai-product-engineer
@@ -141,7 +140,7 @@ speakernotes: |
 ---
 layout: default
 title: "Product Engineer : la définition de Sfeir"
-class: slide-main slide-narrow slide-prose flex flex-col justify-center
+class: slide-main slide-wide slide-prose flex flex-col justify-center
 sources:
   - sfeir.com/concepts/product-engineer
 speakernotes: |
@@ -302,9 +301,9 @@ speakernotes: |
 
 ##### 1. Autocomplétion
 
-<p class="text-[1.6rem]">Tu écris, l'outil finit la ligne.</p>
+<p class="text-[1.6rem]">On écrit, l'outil finit la ligne.</p>
 
-<h6>Tu délègues la frappe.</h6>
+<h6>On délègue la frappe.</h6>
 
 :::
 
@@ -312,9 +311,9 @@ speakernotes: |
 
 ##### 2. Chat
 
-<p class="text-[1.6rem]">Tu décris une fonction, tu relis, tu colles.</p>
+<p class="text-[1.6rem]">On décrit une fonction, on la relis, on la colle.</p>
 
-<h6>Tu délègues un bout de code.</h6>
+<h6>On délègue un bout de code.</h6>
 
 :::
 
@@ -322,9 +321,9 @@ speakernotes: |
 
 ##### 3. Agent
 
-<p class="text-[1.6rem]">Tu donnes une tâche. Il lit le dépôt, édite, lance les tests.</p>
+<p class="text-[1.6rem]">On donne une tâche. L'agent lit le dépôt, édite, lance les tests.</p>
 
-<h6>Tu délègues une tâche.</h6>
+<h6>On délègue une tâche.</h6>
 
 :::
 
@@ -332,9 +331,9 @@ speakernotes: |
 
 ##### 4. Agent autonome
 
-<p class="text-[1.6rem]">Tu donnes un objectif. Il découpe le travail lui-même.</p>
+<p class="text-[1.6rem]">On donne un objectif. L'agent découpe le travail lui-même et travaille en quasi-autonomie.</p>
 
-<h6>Tu délègues l'intention.</h6>
+<h6>On délègue l'intention.</h6>
 
 :::
 
@@ -342,7 +341,7 @@ speakernotes: |
 
 <div class="h-8"></div>
 
-<h4 class="reveal"> Plus on monte, moins l'intention tient dans ta tête. Il faut l'<em>écrire</em>.</h4>
+<h4 class="reveal"> Plus on monte, moins l'intention tient dans la tête. Il faut l'<em>écrire</em>.</h4>
 
 
 
@@ -385,7 +384,7 @@ speakernotes: |
 
 ##### La fenêtre de contexte, c'est de la *RAM*
 
-<p class="text-[1.6rem]">Petite, rapide, et vidée à la fin de la session. Tout ce que l'agent sait de ton projet tient là-dedans, et seulement là.</p>
+<p class="text-[1.6rem]">Petite, rapide, et vidée à la fin de la session. Tout ce que l'agent sait du projet tient là-dedans, et seulement là.</p>
 
 :::
 
@@ -400,7 +399,7 @@ speakernotes: |
 :::col{class="col-span-12"}
 
 <div class="reveal text-center">
-  <h5>Et dans la fenêtre, rien n'est garanti : être présent ne veut pas dire être retrouvé.</h5>
+  <h5>Et dans la fenêtre, <em>rien n'est garanti</em> : être présent ne veut pas dire être retrouvé.</h5>
   <h5>Un prompt très long n'est pas une mémoire.</h5>
 </div>
 
@@ -648,7 +647,7 @@ casse quand le code s'en éloigne, et personne ne s'en aperçoit.</p>
 ##### <em>La spec</em>
 
 <p class="text-[1.6rem]">Elle dit ce qu'on attend. Elle est appliquée : la dérive
-se détecte par l'outillage, pas par la bonne volonté de chacun.</p>
+se détecte par l'outillage.</p>
 
 :::
 
@@ -821,7 +820,7 @@ speakernotes: |
 
 :::grid{class="grid grid-cols-12 gap-4 h-stage-large text-center"}
 
-:::col{class="col-span-6"}
+:::col{class="col-span-6" reveal}
 
 ##### En amont : l'*intention*
 
@@ -832,7 +831,7 @@ speakernotes: |
 
 :::
 
-:::col{class="col-span-6"}
+:::col{class="col-span-6" reveal}
 
 ##### En aval : la *vérification*
 
@@ -845,13 +844,13 @@ speakernotes: |
 
 :::col{class="col-span-12"}
 
-<blockquote class="text-left">
-  <h5>La revue remonte d'un cran : 200 lignes de markdown qu'on a écrites, au lieu de 2 000 lignes de diff qu'on n'a pas écrites.</h5>
+<blockquote class="text-left reveal">
+  <h5><em>La revue remonte d'un cran</em> : 200 lignes de markdown qu'on a écrites, au lieu de 2 000 lignes de diff qu'on n'a pas écrites.</h5>
 </blockquote>
 
 :::
 
-:::col{class="col-span-12"}
+:::col{class="col-span-12" reveal}
 
 #### Aucun de ces gains ne vient du modèle. Ils viennent du fait d'avoir écrit.
 
@@ -921,8 +920,8 @@ garantit d'éviter.</p>
 :::col{class="col-span-12" reveal}
 
 <blockquote class="text-left">
-  <h5>Le SDD est peu adapté pour de petite tâche.</h5>
-  <h5>La dérive spec/code est réélle. Aucun outil ne réconcilie cela tout seul : il faut le déclencher, et relire la sortie.</h5>
+  <h5>Le SDD est <em>peu adapté pour de petite tâche</em>.</h5>
+  <h5>La <em>dérive spec/code est réélle</em>. Aucun outil ne réconcilie cela tout seul : il faut le déclencher, et relire la sortie.</h5>
 </blockquote>
 
 :::
@@ -972,7 +971,7 @@ speakernotes: |
 
 :::col{class="col-span-12 text-center" reveal}
 
-#### Parfait pour une tâche de 30 minutes.
+#### <em>Parfait pour une tâche de 30 minutes.</em>
 #### Insuffisant dès qu'il y a plusieurs sessions, plusieurs agents, ou une revue par un tiers.
 
 :::
@@ -1054,6 +1053,19 @@ speakernotes: |
 :::
 :::
 
+
+---
+layout: content
+title: GitHub Spec Kit
+github: github/spec-kit
+sources:
+  - github.com/Fission-AI/OpenSpec
+speakernotes: |
+
+---
+
+::browser{src=https://speckit.org/}
+
 ---
 layout: default
 title: "OpenSpec"
@@ -1118,6 +1130,18 @@ speakernotes: |
 :::
 
 ---
+layout: content
+title: "OpenSpec"
+github: Fission-AI/OpenSpec/
+sources:
+  - github.com/Fission-AI/OpenSpec
+speakernotes: |
+
+---
+
+::browser{src=https://openspec.dev/}
+
+---
 layout: default
 title: "Superpowers : la méthode comme artefact"
 github: obra/superpowers
@@ -1174,6 +1198,12 @@ speakernotes: |
 
 #### Ce n'est pas un dépôt de specs, c'est une méthode sur base de skills.
 
+
+<div class="text-center">
+  <a href="https://github.com/obra/superpowers#the-basic-workflow" target="_blank">
+    obra/superpowers
+  </a>
+</div>
 :::
 :::
 
@@ -1242,6 +1272,19 @@ speakernotes: |
 
 :::
 :::
+
+
+---
+layout: content
+title: "BMAD"
+github: bmad-code-org/bmad-method
+sources:
+  
+speakernotes: |
+
+---
+
+::browser{src=https://docs.bmad-method.org/fr/}
 
 ---
 layout: default
@@ -1475,9 +1518,9 @@ moins de 8, quand elles sont d'abord rédigées comme specs.</p>
 
 :::col{class="col-span-4" reveal}
 
-<h3><em>25%</em></h3>
+<h3><em>40% (1,7x)</em></h3>
 
-<p class="text-[1.6rem]">de jours gagnés sur un développement AI Driven.</p>
+<p class="text-[1.6rem]">de jours gagnés (productivité) sur un développement AI Driven.</p>
 
 <p class="text-[1.6rem]">Nous avons sorti un projet estimé à 660 jours en 400.</p>
 
@@ -1529,6 +1572,12 @@ speakernotes: |
 :::col{class="col-span-12 text-center" reveal}
 
 #### Le rework est une taxe cachée sur la productivité. Générer plus de code peut très vite l'*aggraver*.
+
+:::
+
+:::col{class="col-span-12 text-center" reveal}
+
+#### Seules <em>7,3 %</em> des équipes (élites) ont un taux de rework sous 2 %.
 
 :::
 :::
@@ -1648,7 +1697,7 @@ speakernotes: |
 
 :::col{class="col-span-12 text-left" reveal}
 
-##### Ça fait beaucoup pour une seule personne, et ce n'est pas une question de bonne volonté.</p>
+##### <em>Ça fait beaucoup pour une seule personne</em>, et ce n'est pas une question de bonne volonté.</p>
 
 :::
 
@@ -1705,3 +1754,42 @@ speakernotes: |
   </tbody>
 </table>
 
+
+---
+layout: closing
+speakernotes: |
+  Slide de fin, celle qui reste affichée pendant les questions.
+  Rappeler que le brief, les sources et le deck sont publics, et que l'atelier
+  de l'après-midi reprend là où le talk s'arrête.
+---
+
+# zatsit !
+
+<div class="h-8"></div>
+
+### Restons en contact sur
+
+<div class="h-4"></div>
+
+### [www.zatsit.fr](https://zatsit.fr)
+### [blog.zatsit.fr](https://blog.zatsit.fr)
+
+<div class="h-8"></div>
+
+<div class="contact-icons">
+  <a href="https://zatsit.fr" aria-label="Le site zatsit">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+  </a>
+  <a href="https://blog.zatsit.fr" aria-label="Le blog technique">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+  </a>
+  <a href="https://www.linkedin.com/company/zatsit/" aria-label="zatsit sur LinkedIn">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+  </a>
+  <a href="https://github.com/zatsit-oss" aria-label="zatsit sur GitHub">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+  </a>
+  <a href="mailto:contact@zatsit.fr" aria-label="Écrire à contact@zatsit.fr">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+  </a>
+</div>

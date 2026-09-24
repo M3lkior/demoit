@@ -260,3 +260,116 @@ of each shrinking to its own text.
         line-height: 1.4;
     }
 }
+
+/*
+The ground of the closing card: the brand gradient, full bleed, and the ink
+that reads on it.
+
+Full bleed for real: the layout drops slide-main's padding rather than keeping
+it, because the gradient is painted by this element and any padding left on it
+would show the page through on all four sides. The columns carry their own
+spacing instead.
+
+The gradient follows the theme -- blue in light, gold in dark -- so the ink
+has to follow it too: white on the blue, near-black on the gold. A single
+colour cannot serve both, and white on gold is the one combination this deck
+must not end on.
+*/
+@utility slide-closing {
+    --closing-ink: #ffffff;
+
+    color: var(--closing-ink);
+    background-image: linear-gradient(150deg, var(--logo-gradient-start) 0%, var(--logo-gradient-mid) 45%, var(--logo-gradient-end) 100%);
+
+    /*
+    Everything the slide writes takes that ink, the deck's accent `em`
+    included.
+
+    The !important on the links is not a shortcut, it is the only thing that
+    works here, and the reason is cascade layers rather than specificity. This
+    rule is generated into @layer utilities; a talk's own style.css is loaded
+    after the chassis and belongs to no layer, and unlayered CSS beats layered
+    CSS outright -- no selector, however specific, changes that. Every talk in
+    this repo colours `a, a:visited` with its accent, so without this the
+    closing links render accent-on-accent: blue on the blue ground in light,
+    orange on the gold one in dark. Illegible, and the last slide of the talk.
+
+    The underline carries the same weight for the same reason: it is what
+    marks a link once colour can no longer, and it survives whatever a talk
+    sets elsewhere.
+    */
+    & :is(h1, h2, h3, h4, h5, h6, p, li, strong, em) {
+        color: var(--closing-ink);
+        background: none;
+        -webkit-text-fill-color: currentColor;
+        filter: none;
+    }
+
+    & a,
+    & a:visited,
+    & a:hover,
+    & a:focus {
+        color: var(--closing-ink) !important;
+        -webkit-text-fill-color: var(--closing-ink) !important;
+        background: none;
+        filter: none;
+        text-decoration: underline !important;
+        text-underline-offset: 0.2em;
+    }
+
+    /*
+    The talk's logo, taking the ink through a filter: it arrives as an <img>,
+    an isolated document no rule of ours can reach into to recolour.
+    brightness(0) flattens it to black, and the invert is what the light theme
+    adds to make it white.
+    */
+    & .closing-logo {
+        filter: brightness(0) invert(1);
+    }
+}
+
+/*
+Pure black rather than the deck's --color-fg, and measured rather than picked:
+the dark gradient ends on #ef4444, where the usual near-black #1c1e21 reads at
+4.44:1 -- just under the 4.5:1 WCAG asks for. Black takes the worst point of
+the gradient to 5.58:1, and the best to 12.22:1.
+*/
+.dark .slide-closing {
+    --closing-ink: #000000;
+
+    & .closing-logo {
+        filter: brightness(0);
+    }
+}
+
+/*
+The row of contact links a closing card ends on, drawn the way zatsit.fr draws
+its footer: the icons are inlined SVG taking `currentColor`, so they are the
+slide's ink and nothing else -- white on the blue ground, black on the gold,
+with no second rule to keep in step and no white disc to sit on.
+
+That disc was there because the previous icons were bitmaps from wherever each
+service publishes them, and only some carried an alpha channel: turning them
+white with a filter painted the whole square for the others. An inlined path
+has no ground to paint, so the problem goes with it.
+
+The links carry no underline here, unlike the ones in the prose above: a
+pictogram is its own affordance, and a rule under an icon reads as a mistake.
+*/
+@utility contact-icons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    & a,
+    & a:visited {
+        display: inline-flex;
+        color: currentColor;
+        text-decoration: none !important;
+    }
+
+    & svg {
+        block-size: 3.5rem;
+        inline-size: 3.5rem;
+    }
+}

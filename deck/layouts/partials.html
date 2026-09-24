@@ -59,6 +59,21 @@
     {{ end }}{{ end }}
 </div>{{ end }}
 
+{{/* The speaker's logo at the size a closing card shows it: as tall as the
+     slide allows, since it is half of what that slide is.
+
+     One image, not the pair every other logo block emits, and one variant
+     whatever the talk declares: the stylesheet turns it white with the filter
+     it already uses on the contact pictograms. The ground is the brand
+     gradient in both themes, so there is one right answer here and no theme to
+     follow -- which also means a talk needs no white cut of its logo for this
+     slide to be right.
+
+     The event's logo is left out: a closing card is the speaker's, and the
+     event is named on the cover. */}}
+{{ define "closingLogo" }}{{ with .Talk.Logo }}<img class="closing-logo h-auto w-full max-w-[34rem] object-contain" src="{{ if .White }}{{ .White }}{{ else }}{{ .Dark }}{{ end }}" alt="">
+{{ end }}{{ end }}
+
 {{/* The star button of a slide's `github:` key, between the title and the
      logos.
 
