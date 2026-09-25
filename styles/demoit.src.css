@@ -470,6 +470,30 @@ thing CSS can test.
 }
 
 /*
+`/pdf` captures each slide once, with nobody there to walk its steps, so it asks
+for them all up front with `?export=pdf` -- which the head script of
+index.tmpl.html turns into `data-export="pdf"` on the root before the first
+paint. The transition goes too: the screenshot is taken as soon as the page has
+loaded, and a step caught mid-fade would print half transparent.
+*/
+:root[data-export="pdf"] .reveal {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+}
+
+/*
+The GitHub star button is live data: on paper it is at best a count that was
+true on the day, at worst the bare "Star" link it is before buttons.js has run,
+which is what a capture that does not wait on GitHub gets. So a PDF drops it.
+The export skips buttons.js as well, so the <a> this matches is still there.
+*/
+:root[data-export="pdf"] .github-button {
+    display: none;
+}
+
+/*
 Honour the system setting. The step still appears and disappears -- that is the
 content, not the decoration -- it just stops moving and fading.
 */

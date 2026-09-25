@@ -973,6 +973,17 @@ body {
   }
 }
 
+:root[data-export="pdf"] .reveal {
+  opacity: 1;
+  visibility: visible;
+  transition: none;
+  transform: none;
+}
+
+:root[data-export="pdf"] .github-button {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     transition: none;

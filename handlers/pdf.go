@@ -21,10 +21,14 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"log"
 	"net/http"
+	"strings"
+	"time"
 
 	"github.com/chromedp/cdproto/emulation"
 	"github.com/chromedp/cdproto/page"
+	"github.com/chromedp/cdproto/runtime"
 	"github.com/chromedp/chromedp"
 	"github.com/dgageot/demoit/files"
 	"github.com/dgageot/demoit/flags"
@@ -81,17 +85,27 @@ func readPagesAsPNG(ctx context.Context, images [](chan image)) {
 		result := result
 
 		actions[group] = append(actions[group],
-			// theme=light is forced rather than inherited: a PDF of dark slides
-			// is a PDF of ink. The query parameter wins over whatever the
-			// browser remembered, the same way ?grid=true already steers a
-			// render.
-			chromedp.Navigate(fmt.Sprintf("http://%s/%d?theme=light&display=screen", flags.WebServerAddress(), i)),
+			// The viewport is sized before the slide loads, not after: the
+			// stage computes its scale on load, and mermaid lays its diagram
+			// out against that scale. Resized afterwards, the capture caught a
+			// diagram laid out for another viewport and not yet repainted --
+			// an empty pane.
 			chromedp.ActionFunc(func(ctx context.Context) error {
 				if err := emulation.SetDeviceMetricsOverride(width*int64(zoom), height*int64(zoom), 1, false).Do(ctx); err != nil {
 					result <- image{err: err}
 					return err
 				}
-
+				return nil
+			}),
+			// theme=light is forced rather than inherited: a PDF of dark slides
+			// is a PDF of ink. The query parameter wins over whatever the
+			// browser remembered, the same way ?grid=true already steers a
+			// render. export=pdf shows every progressive-reveal step, which a
+			// single capture has nobody to walk, and hides the GitHub star
+			// button, a live count that has no business on paper.
+			chromedp.Navigate(fmt.Sprintf("http://%s/%d?theme=light&display=screen&export=pdf", flags.WebServerAddress(), i)),
+			waitForMermaid(),
+			chromedp.ActionFunc(func(ctx context.Context) error {
 				buf, err := page.CaptureScreenshot().WithClip(&page.Viewport{
 					Width:  width * zoom,
 					Height: height * zoom,
@@ -112,12 +126,58 @@ func readPagesAsPNG(ctx context.Context, images [](chan image)) {
 
 	for _, tasks := range actions {
 		go func(tasks []chromedp.Action) {
-			ctx, cancel := chromedp.NewContext(ctx)
+			ctx, cancel := chromedp.NewContext(ctx, chromedp.WithErrorf(logBrowserError))
 			defer cancel()
 
 			chromedp.Run(ctx, tasks...)
 		}(tasks)
 	}
+}
+
+// mermaidRendered is true once every diagram on the slide is drawn, and
+// trivially true on a slide without one. data-processed alone is not enough:
+// mermaid sets it before it renders, not after. Nor is the SVG: the talk's
+// renderMermaid counter-scales the container while mermaid measures, and only
+// removes that inline transform once mermaid.run has settled -- a capture
+// taken in between shows the diagram blown up out of its pane.
+const mermaidRendered = `Array.from(document.querySelectorAll('.mermaid')).every(n => n.dataset.processed === 'true' && n.querySelector('svg') && !n.style.transform)`
+
+// waitForMermaid holds the capture until the slide's diagrams are drawn.
+// Navigate returns on the load event, and mermaid renders later than that: it
+// waits for the fonts first, then lays out asynchronously, and the talk keeps
+// the element hidden until it is done -- so a capture taken on load prints an
+// empty pane. A diagram that never finishes (a syntax error, no network for
+// the CDN) must not cost the whole export, so a timeout captures the slide as
+// it stands rather than failing.
+func waitForMermaid() chromedp.Action {
+	return chromedp.ActionFunc(func(ctx context.Context) error {
+		var done bool
+		if err := chromedp.Poll(mermaidRendered, &done, chromedp.WithPollingTimeout(10*time.Second)).Do(ctx); err != nil {
+			fmt.Println("Mermaid not rendered before capture:", err)
+		}
+
+		// Two frames, so what the condition saw has been painted. Not fatal
+		// either: an error returned here would stop the tab before the capture
+		// action ever reports to its channel, and hang the whole export.
+		if err := chromedp.Evaluate(`new Promise(r => requestAnimationFrame(() => requestAnimationFrame(() => r(true))))`, &done, func(p *runtime.EvaluateParams) *runtime.EvaluateParams {
+			return p.WithAwaitPromise(true)
+		}).Do(ctx); err != nil {
+			fmt.Println("Could not wait for a paint before capture:", err)
+		}
+		return nil
+	})
+}
+
+// logBrowserError drops the events the vendored cdproto cannot decode. It is
+// older than the Chrome it drives, so every enum value Chrome added since
+// (an IPAddressSpace of "Loopback", say) fails to unmarshal and chromedp logs
+// it as an error -- on every request, while the export works perfectly well.
+// Those events are ones this code never listens to.
+func logBrowserError(format string, args ...interface{}) {
+	if strings.HasPrefix(format, "could not unmarshal event") {
+		return
+	}
+	log.Printf("ERROR: "+format, args...)
 }
 
 func writePagesToPDF(images [](chan image)) (*gofpdf.Fpdf, error) {
