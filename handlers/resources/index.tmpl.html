@@ -18,6 +18,17 @@
 			const NextURL = '{{ .NextURL }}';
 			const PrevURL = '{{ .PrevURL }}';
 			const ThemeEnabled = {{ .Dark }};
+			// ?export=pdf marks a page /pdf is about to capture. A one-shot
+			// capture has nobody to walk the progressive-reveal steps, and would
+			// otherwise print every marked element still hidden; and it cannot
+			// wait on a star counter fetched from GitHub. The engine stylesheet
+			// shows the former and hides the latter under data-export="pdf".
+			// Set before the first paint, like the theme below, and for every
+			// talk, since the rules it enables live in the engine's own sheet.
+			const Exporting = new URLSearchParams(location.search).get('export') === 'pdf';
+			if (Exporting) {
+				document.documentElement.dataset.export = 'pdf';
+			}
 		</script>
 		{{ if .Dark }}<script>
 			// Runs before the first paint on purpose. Every slide is a full page
@@ -53,8 +64,21 @@
 
 		     Loaded for every talk rather than only for the slides that use it:
 		     the tag costs one cached request, and making it conditional would
-		     mean the page template knowing what the slide body contains. */}}
-		<script async defer src="https://buttons.github.io/buttons.js"></script>
+		     mean the page template knowing what the slide body contains.
+
+		     Skipped under ?export=pdf: the button is hidden there, and a
+		     script that swaps the <a> for its own markup would leave nothing
+		     for the hiding rule to match. Injected rather than written as a
+		     tag because a tag cannot be made conditional on the URL; an
+		     injected script is async already. */}}
+		<script>
+			if (!Exporting) {
+				const s = document.createElement('script');
+				s.src = 'https://buttons.github.io/buttons.js';
+				s.defer = true;
+				document.head.appendChild(s);
+			}
+		</script>
 	</head>
 	<body>
 		<div id="app" class="{{ if .Stage }}stage{{ else }}no-stage{{ end }}">
