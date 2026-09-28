@@ -102,7 +102,7 @@ class FakeWindow extends BaseHTMLElement {
             display: inline-block;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0.25em 0.9em -0.1em rgba(0,0,0,.2);
+            box-shadow: var(--dm-window-shadow, 0 0.25em 0.9em -0.1em rgba(0,0,0,.2));
             width: 100%;
             height: calc(100% - 40px);
             background-color: var(--dm-window-bg, #fff);

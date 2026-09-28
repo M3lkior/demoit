@@ -494,6 +494,48 @@ The export skips buttons.js as well, so the <a> this matches is still there.
 }
 
 /*
+The stage decor has no vector form in a PDF: Chrome prints the dot grid and the
+masked mesh as full-page bitmaps, a quarter of a megabyte per slide against a
+few kilobytes for everything else on it. On paper it is the first thing to go.
+
+Except on the cover and the closing slide, which keep every effect and are the
+two pages a reader actually looks at as pages: `slide-cover` marks the first
+(slide-hero alone would take the quotes along), `slide-closing` the second.
+:has() because the decor belongs to the stage and the marker to its <main>. A
+slide that sets its own `class:` drops the marker with the layout's defaults,
+and exports flat like any other.
+
+Only the cover keeps the decor itself: the closing slide paints its own opaque
+gradient over the whole stage, so its decor would be bitmaps nobody can see.
+*/
+:root[data-export="pdf"] .stage:not(:has(main.slide-cover))::before,
+:root[data-export="pdf"] .stage:not(:has(main.slide-cover))::after {
+    display: none;
+}
+
+/*
+Same reason for every blurred glow: a PDF has no blur, so Chrome prints a
+drop-shadow filter or a box-shadow as a bitmap of the whole box it covers --
+the cover's logo glow alone was two thirds of a megabyte, which is the price of
+keeping it. !important because the glows are declared by the talks' own
+sheets, which load after this one and must otherwise win; this rule only ever
+applies inside an export. On #app rather than .stage, so a talk off the stage
+is covered too.
+
+The selector stops at shadow roots, so the window chrome of <fake-window>,
+drawn inside its own, reads its shadow from --dm-window-shadow instead: a
+custom property is the one thing that crosses that boundary.
+*/
+:root[data-export="pdf"] {
+    --dm-window-shadow: none;
+}
+
+:root[data-export="pdf"] #app:not(:has(main:is(.slide-cover, .slide-closing))) * {
+    filter: none !important;
+    box-shadow: none !important;
+}
+
+/*
 Honour the system setting. The step still appears and disappears -- that is the
 content, not the decoration -- it just stops moving and fading.
 */

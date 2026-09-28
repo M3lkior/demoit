@@ -148,7 +148,7 @@ speakernotes: |
 
 <div class="text-center">
   <a href="https://sfeir.com/concepts/product-engineer" target="_blank">
-    <img src="/images/sfeir_product_engineer.png" alt="Product Engineer" />
+    <img src="/images/sfeir_product_engineer.jpg" alt="Product Engineer" />
   </a>
 </div>
 

@@ -18,151 +18,118 @@ limitations under the License.
 package handlers
 
 import (
-	"bytes"
 	"context"
+	_ "embed"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"strings"
 	"time"
 
-	"github.com/chromedp/cdproto/emulation"
 	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/cdproto/runtime"
 	"github.com/chromedp/chromedp"
 	"github.com/dgageot/demoit/files"
 	"github.com/dgageot/demoit/flags"
-	"github.com/jung-kurt/gofpdf"
 )
 
-const (
-	width  = 1920.0
-	height = 1080.0
-	zoom   = 2.0
-)
+//go:embed resources/print.tmpl.html
+var printHTML string
+var printTemplate = template.Must(template.New("print").Funcs(templateFuncs).Parse(printHTML))
 
-type image struct {
-	buf []byte
-	err error
-}
+// Print renders every step into one printable page, one step per page, for
+// ExportToPDF to hand to Chrome's own PDF printer.
+func Print(w http.ResponseWriter, r *http.Request) {
+	steps, err := readSteps(files.Root)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Unable to read steps: %v", err), http.StatusInternalServerError)
+		return
+	}
 
-// ExportToPDF generates a pdf that contains one page per slide.
-func ExportToPDF(w http.ResponseWriter, r *http.Request) {
-	if err := exportPagesToPdf(r.Context(), w); err != nil {
-		http.Error(w, fmt.Sprintf("Unable export to pdf: %v", err), http.StatusInternalServerError)
+	w.Header().Set("Content-Type", "text/html")
+
+	if err := printTemplate.Execute(w, steps); err != nil {
+		http.Error(w, "Unable to render print view", http.StatusInternalServerError)
 		return
 	}
 }
 
-func exportPagesToPdf(ctx context.Context, w http.ResponseWriter) error {
-	pageCount, err := readPageCount()
+// ExportToPDF generates a pdf that contains one page per slide.
+//
+// Chrome prints /print, the whole deck in one document, with its own PDF
+// printer rather than having each slide screenshotted: text and shapes stay
+// vectors, and fonts are embedded once for the deck. The screenshots it
+// replaces made a 42-slide deck weigh 34MB, one 3840x2160 bitmap a page, where
+// this one is under 1MB.
+func ExportToPDF(w http.ResponseWriter, r *http.Request) {
+	buf, err := printDeck(r.Context())
 	if err != nil {
-		return err
-	}
-
-	var images [](chan image)
-	for p := 0; p < pageCount; p++ {
-		images = append(images, make(chan image))
-	}
-
-	readPagesAsPNG(ctx, images)
-
-	pdf, err := writePagesToPDF(images)
-	if err != nil {
-		return err
+		http.Error(w, fmt.Sprintf("Unable export to pdf: %v", err), http.StatusInternalServerError)
+		return
 	}
 
 	w.Header().Set("Content-Type", "application/pdf")
-	return pdf.Output(w)
+	w.Write(buf)
 }
 
-func readPagesAsPNG(ctx context.Context, images [](chan image)) {
-	var actions [4][]chromedp.Action
+func printDeck(ctx context.Context) ([]byte, error) {
+	ctx, cancel := chromedp.NewContext(ctx, chromedp.WithErrorf(logBrowserError))
+	defer cancel()
 
-	group := 0
-	for i, result := range images {
-		i := i
-		result := result
+	var buf []byte
+	err := chromedp.Run(ctx,
+		chromedp.Navigate(fmt.Sprintf("http://%s/print", flags.WebServerAddress())),
+		waitForSlides(),
+		chromedp.ActionFunc(func(ctx context.Context) error {
+			var err error
+			// The page size comes from the @page rule of print.tmpl.html,
+			// which is the stage's own 1920x1080.
+			buf, _, err = page.PrintToPDF().
+				WithPrintBackground(true).
+				WithPreferCSSPageSize(true).
+				WithMarginTop(0).
+				WithMarginBottom(0).
+				WithMarginLeft(0).
+				WithMarginRight(0).
+				Do(ctx)
+			return err
+		}),
+	)
 
-		actions[group] = append(actions[group],
-			// The viewport is sized before the slide loads, not after: the
-			// stage computes its scale on load, and mermaid lays its diagram
-			// out against that scale. Resized afterwards, the capture caught a
-			// diagram laid out for another viewport and not yet repainted --
-			// an empty pane.
-			chromedp.ActionFunc(func(ctx context.Context) error {
-				if err := emulation.SetDeviceMetricsOverride(width*int64(zoom), height*int64(zoom), 1, false).Do(ctx); err != nil {
-					result <- image{err: err}
-					return err
-				}
-				return nil
-			}),
-			// theme=light is forced rather than inherited: a PDF of dark slides
-			// is a PDF of ink. The query parameter wins over whatever the
-			// browser remembered, the same way ?grid=true already steers a
-			// render. export=pdf shows every progressive-reveal step, which a
-			// single capture has nobody to walk, and hides the GitHub star
-			// button, a live count that has no business on paper.
-			chromedp.Navigate(fmt.Sprintf("http://%s/%d?theme=light&display=screen&export=pdf", flags.WebServerAddress(), i)),
-			waitForMermaid(),
-			chromedp.ActionFunc(func(ctx context.Context) error {
-				buf, err := page.CaptureScreenshot().WithClip(&page.Viewport{
-					Width:  width * zoom,
-					Height: height * zoom,
-					Scale:  1,
-				}).Do(ctx)
-				if err != nil {
-					result <- image{err: err}
-					return err
-				}
-
-				fmt.Println("Exported page", i)
-				result <- image{buf: buf}
-				return nil
-			}))
-
-		group = (group + 1) % 4
-	}
-
-	for _, tasks := range actions {
-		go func(tasks []chromedp.Action) {
-			ctx, cancel := chromedp.NewContext(ctx, chromedp.WithErrorf(logBrowserError))
-			defer cancel()
-
-			chromedp.Run(ctx, tasks...)
-		}(tasks)
-	}
+	return buf, err
 }
 
-// mermaidRendered is true once every diagram on the slide is drawn, and
-// trivially true on a slide without one. data-processed alone is not enough:
-// mermaid sets it before it renders, not after. Nor is the SVG: the talk's
-// renderMermaid counter-scales the container while mermaid measures, and only
-// removes that inline transform once mermaid.run has settled -- a capture
-// taken in between shows the diagram blown up out of its pane.
-const mermaidRendered = `Array.from(document.querySelectorAll('.mermaid')).every(n => n.dataset.processed === 'true' && n.querySelector('svg') && !n.style.transform)`
+// slidesReady is true once every slide's iframe has loaded and every diagram
+// in it is drawn. data-processed alone is not enough: mermaid sets it before
+// it renders, not after. Nor is the SVG: the talk's renderMermaid
+// counter-scales the container while mermaid measures, and only removes that
+// inline transform once mermaid.run has settled -- a print taken in between
+// shows the diagram blown up out of its pane, or not at all.
+const slidesReady = `Array.from(document.querySelectorAll('iframe')).every(f => {
+	const d = f.contentDocument;
+	return d && d.readyState === 'complete' && d.location.href !== 'about:blank' &&
+		Array.from(d.querySelectorAll('.mermaid')).every(n => n.dataset.processed === 'true' && n.querySelector('svg') && !n.style.transform);
+})`
 
-// waitForMermaid holds the capture until the slide's diagrams are drawn.
-// Navigate returns on the load event, and mermaid renders later than that: it
-// waits for the fonts first, then lays out asynchronously, and the talk keeps
-// the element hidden until it is done -- so a capture taken on load prints an
-// empty pane. A diagram that never finishes (a syntax error, no network for
-// the CDN) must not cost the whole export, so a timeout captures the slide as
-// it stands rather than failing.
-func waitForMermaid() chromedp.Action {
+// waitForSlides holds the print until every slide is ready. The load event
+// of /print comes before mermaid is done: it waits for the fonts first, then
+// lays out asynchronously, and the talk keeps the element hidden until then.
+// A slide that never finishes (a diagram with a syntax error, no network for
+// the CDN) must not cost the whole export, so a timeout prints the deck as it
+// stands rather than failing.
+func waitForSlides() chromedp.Action {
 	return chromedp.ActionFunc(func(ctx context.Context) error {
 		var done bool
-		if err := chromedp.Poll(mermaidRendered, &done, chromedp.WithPollingTimeout(10*time.Second)).Do(ctx); err != nil {
-			fmt.Println("Mermaid not rendered before capture:", err)
+		if err := chromedp.Poll(slidesReady, &done, chromedp.WithPollingTimeout(30*time.Second)).Do(ctx); err != nil {
+			fmt.Println("Slides not all rendered before print:", err)
 		}
 
-		// Two frames, so what the condition saw has been painted. Not fatal
-		// either: an error returned here would stop the tab before the capture
-		// action ever reports to its channel, and hang the whole export.
+		// Two frames, so what the condition saw has been laid out.
 		if err := chromedp.Evaluate(`new Promise(r => requestAnimationFrame(() => requestAnimationFrame(() => r(true))))`, &done, func(p *runtime.EvaluateParams) *runtime.EvaluateParams {
 			return p.WithAwaitPromise(true)
 		}).Do(ctx); err != nil {
-			fmt.Println("Could not wait for a paint before capture:", err)
+			fmt.Println("Could not wait for a frame before print:", err)
 		}
 		return nil
 	})
@@ -178,38 +145,4 @@ func logBrowserError(format string, args ...interface{}) {
 		return
 	}
 	log.Printf("ERROR: "+format, args...)
-}
-
-func writePagesToPDF(images [](chan image)) (*gofpdf.Fpdf, error) {
-	pdf := gofpdf.NewCustom(&gofpdf.InitType{
-		UnitStr: "cm",
-		Size:    gofpdf.SizeType{Wd: 29.7, Ht: 29.7 * height / width},
-	})
-
-	for i, result := range images {
-		image := <-result
-		if image.err != nil {
-			return nil, image.err
-		}
-
-		imageName := fmt.Sprintf("image%d", i)
-		pdf.AddPage()
-		pdf.RegisterImageReader(imageName, "png", bytes.NewReader(image.buf))
-		pdf.ImageOptions(imageName, 0, 0, 29.7, 0, false, gofpdf.ImageOptions{ImageType: "png", ReadDpi: true}, 0, "")
-
-		if err := pdf.Error(); err != nil {
-			return nil, err
-		}
-	}
-
-	return pdf, nil
-}
-
-func readPageCount() (int, error) {
-	steps, err := readSteps(files.Root)
-	if err != nil {
-		return 0, err
-	}
-
-	return len(steps), nil
 }

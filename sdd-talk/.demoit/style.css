@@ -158,6 +158,19 @@ every path would fall back to black.
     filter: drop-shadow(0 0 40px color-mix(in srgb, var(--color-main) 40%, transparent));
 }
 
+/*
+In a PDF export the glow is redrawn as a radial gradient behind the logo. A
+PDF has no blur, so Chrome prints a drop-shadow as a bitmap of the whole
+filtered element -- here the logo and its halo together, 2753x2329 pixels and
+two thirds of a megabyte for one page. A gradient stays a vector. It is a soft
+halo around the figure rather than one that hugs its outline, which on paper is
+as close as the export can get for a few hundred bytes.
+*/
+:root[data-export="pdf"] .logo-full-gradient-glow {
+    filter: none;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--color-main) 30%, transparent), transparent);
+}
+
 /* An emphasis in this deck means the accent colour, not italics. */
 em {
     font-style: normal;
@@ -180,6 +193,17 @@ room.
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 30px color-mix(in srgb, var(--color-main) 50%, transparent));
+}
+
+/*
+In a PDF export the gradient goes back to the flat accent. Chrome has no vector
+form for background-clip:text: it prints each such run as a full-page bitmap
+mask, close to a hundred kilobytes a hero slide for three words. The cover
+keeps it, like every other effect on it (see the engine's export rules).
+*/
+:root[data-export="pdf"] .slide-hero:not(.slide-cover) em {
+    background: none;
+    -webkit-text-fill-color: currentColor;
 }
 
 a,

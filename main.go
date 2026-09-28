@@ -73,6 +73,7 @@ func main() {
 	r.HandleFunc("/pdf", handlers.ExportToPDF).Methods("GET")
 	r.HandleFunc("/speakernotes", handlers.SpeakerNotes).Methods("GET")
 	r.HandleFunc("/grid", handlers.Grid).Methods("GET")
+	r.HandleFunc("/print", handlers.Print).Methods("GET")
 	r.HandleFunc("/beta/vscode/{folder}", handlers.VSCode).Methods("GET")
 
 	// Reverse Proxy Shell Server

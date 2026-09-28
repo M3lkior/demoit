@@ -9,7 +9,6 @@ require (
 	github.com/docker/go-connections v0.4.0
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/websocket v1.5.0
-	github.com/jung-kurt/gofpdf v1.16.2
 	github.com/rjeczalik/notify v0.9.2
 	github.com/sorenisanerd/gotty v1.5.0
 	github.com/yuin/goldmark v1.7.8

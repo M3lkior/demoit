@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Print</title>
+		{{/* The whole deck as one printable document, for /pdf: one slide per
+		     page, each in an iframe of exactly the stage's size, so every
+		     slide still gets its own document -- its own demoit.js, stage fit,
+		     reveal and mermaid -- while Chrome prints them all into a single
+		     vector PDF whose fonts are embedded once rather than per page. */}}
+		<style>
+			@page {
+				size: 1920px 1080px;
+				margin: 0;
+			}
+			html, body {
+				margin: 0;
+				padding: 0;
+			}
+			iframe {
+				display: block;
+				width: 1920px;
+				height: 1080px;
+				border: 0;
+				break-after: page;
+			}
+			iframe:last-child {
+				break-after: auto;
+			}
+		</style>
+	</head>
+	<body>{{ range $i, $step := . }}<iframe src="/{{ $i }}?theme=light&amp;display=screen&amp;export=pdf"></iframe>{{ end }}</body>
+</html>

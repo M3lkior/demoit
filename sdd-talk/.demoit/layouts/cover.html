@@ -9,7 +9,7 @@
      slide-hero is written out here rather than inherited from the embedded
      cover layout, which this file replaces: a talk that overrides a layout
      owns its default classes too. */}}
-<main class="{{ if .Class }}{{ .Class }}{{ else }}slide-main slide-hero flex flex-col items-center justify-center text-center{{ end }}">
+<main class="{{ if .Class }}{{ .Class }}{{ else }}slide-main slide-hero slide-cover flex flex-col items-center justify-center text-center{{ end }}">
 
     <svg class="logo-full-gradient-glow h-auto w-[40rem] max-w-[70%]" viewBox="0 0 523.94 426.01" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="zatsit">
         <defs>

@@ -980,8 +980,17 @@ body {
   transform: none;
 }
 
-:root[data-export="pdf"] .github-button {
+:root[data-export="pdf"] .github-button, :root[data-export="pdf"] .stage:not(:has(main.slide-cover)):before, :root[data-export="pdf"] .stage:not(:has(main.slide-cover)):after {
   display: none;
+}
+
+:root[data-export="pdf"] {
+  --dm-window-shadow: none;
+}
+
+:root[data-export="pdf"] #app:not(:has(main:is(.slide-cover, .slide-closing))) * {
+  filter: none !important;
+  box-shadow: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
